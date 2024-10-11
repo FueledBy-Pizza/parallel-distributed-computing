@@ -247,6 +247,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"HEADER_SEARCH_PATHS[arch=*]" = /opt/homebrew/opt/libomp/include;
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /opt/homebrew/opt/libomp/lib;
+				"OTHER_CFLAGS[arch=*]" = (
+					"-Xclang",
+					"-fopenmp",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
