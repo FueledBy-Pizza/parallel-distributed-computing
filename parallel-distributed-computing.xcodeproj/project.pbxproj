@@ -19,7 +19,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		613E11602CB97F5C00820F7E /* parallel-distributed-computing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "parallel-distributed-computing"; sourceTree = BUILT_PRODUCTS_DIR; };
+		613E117D2CB9928500820F7E /* parallel-distributed-computing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "parallel-distributed-computing"; path = "/Users/giuliano/Projects/C/parallel-distributed-computing/build/Debug/parallel-distributed-computing"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -45,16 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				613E11622CB97F5C00820F7E /* parallel-distributed-computing */,
-				613E11612CB97F5C00820F7E /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		613E11612CB97F5C00820F7E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				613E11602CB97F5C00820F7E /* parallel-distributed-computing */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -79,7 +70,7 @@
 			packageProductDependencies = (
 			);
 			productName = "parallel-distributed-computing";
-			productReference = 613E11602CB97F5C00820F7E /* parallel-distributed-computing */;
+			productReference = 613E117D2CB9928500820F7E /* parallel-distributed-computing */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -106,7 +97,7 @@
 			mainGroup = 613E11572CB97F5C00820F7E;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 613E11612CB97F5C00820F7E /* Products */;
+			productRefGroup = 613E11572CB97F5C00820F7E;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -244,6 +235,7 @@
 		613E11682CB97F5C00820F7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -260,6 +252,7 @@
 		613E11692CB97F5C00820F7E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
