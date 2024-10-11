@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <omp.h>
 #include "../common/c_timer.h"
+#include "src/maxsum.h"
 
 int main(int argc, const char * argv[]) {
     double cur_time = get_cur_time();

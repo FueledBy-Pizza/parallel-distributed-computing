@@ -8,6 +8,13 @@
 #include "c_timer.h"
 #include <sys/time.h>
 
+/**
+ * The difference between two calls gives the execution time of a section of code.
+ *
+ * Credits: prof. Marco Lapegna
+ *
+ * @return current system time in seconds
+ */
 double get_cur_time() {
   struct timeval   tv;
   struct timezone  tz;
