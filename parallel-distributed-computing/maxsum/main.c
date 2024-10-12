@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
     
     init_matrix_randomly(&N, &LD, &A);
 
-    print_matrix(N, LD, A);
+    //print_matrix(N, LD, A);
 
     t1 = get_cur_time();
     MAX = maxsum(N, LD, A, NT);

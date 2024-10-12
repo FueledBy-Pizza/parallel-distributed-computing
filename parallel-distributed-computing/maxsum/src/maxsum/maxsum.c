@@ -10,9 +10,8 @@
 
 double maxsum(int N, int LD, double *A, int NT){
 
-    int n_threads = 4;
-    int start_row = log2(NT) * (N/n_threads);
-    int end_row = start_row + 200;
+    int start_row = 0;
+    int end_row = 800;
 
     int i, j;
     double max_sum = 0;
