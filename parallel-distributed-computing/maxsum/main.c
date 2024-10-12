@@ -24,6 +24,14 @@ int main(int argc, const char * argv[]) {
     init_matrix_randomly(&N, &LD, &A);
 
     print_matrix(N, LD, A);
-    
+
+    t1 = get_cur_time();
+    MAX = maxsum(N, LD, A, NT);
+    t2 = get_cur_time();
+
+    save = t2 - t1;
+    printf("\n\nIl massimo della somma dei moduli con N = %d e' %f\n", N, MAX);
+    printf("Il tempo totale e' %e, lo speedup = %f, l'efficienza = %f", save, save/(t2 - t1), save/(t2 - t1)/NT);
+
     return 0;
 }

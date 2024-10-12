@@ -19,7 +19,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		613E117D2CB9928500820F7E /* parallel-distributed-computing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "parallel-distributed-computing"; path = "/Users/giuliano/Projects/C/parallel-distributed-computing/build/Debug/parallel-distributed-computing"; sourceTree = "<absolute>"; };
+		611B406B2CBA5E75003E294F /* parallel-distributed-computing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "parallel-distributed-computing"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -45,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				613E11622CB97F5C00820F7E /* parallel-distributed-computing */,
+				611B406B2CBA5E75003E294F /* parallel-distributed-computing */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,7 +71,7 @@
 			packageProductDependencies = (
 			);
 			productName = "parallel-distributed-computing";
-			productReference = 613E117D2CB9928500820F7E /* parallel-distributed-computing */;
+			productReference = 611B406B2CBA5E75003E294F /* parallel-distributed-computing */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
