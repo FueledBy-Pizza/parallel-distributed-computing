@@ -6,7 +6,7 @@
 //
 
 #include <stdio.h>
-#include <omp.h>
+#include <stdlib.h>
 #include "../common/c_timer.h"
 #include "src/maxsum/maxsum.h"
 
@@ -14,24 +14,40 @@ void init_matrix_randomly(int *N, int *LD, double **A);
 void print_matrix(int N, int LD, double *A);
 
 int main(int argc, const char * argv[]) {
-    
+
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <matrix_order>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
     int NT;
-    int N = 800;
+    int N = atoi(argv[1]);
     int LD = N;
     double MAX, *A = NULL;
-    double t1, t2, save;
-    
+    double t1, t2, exec_time, speedup, efficiency, one_thread_exec_time = 0.0;
+
     init_matrix_randomly(&N, &LD, &A);
 
     //print_matrix(N, LD, A);
 
-    t1 = get_cur_time();
-    MAX = maxsum(N, LD, A, NT);
-    t2 = get_cur_time();
+    for (NT = 1; NT <= 8; NT = NT * 2) {
+        printf("===============\n");
+        printf("THREAD ID = %d\n", NT);
 
-    save = t2 - t1;
-    printf("\n\nIl massimo della somma dei moduli con N = %d e' %f\n", N, MAX);
-    printf("Il tempo totale e' %e, lo speedup = %f, l'efficienza = %f", save, save/(t2 - t1), save/(t2 - t1)/NT);
+        t1 = get_cur_time();
+        MAX = maxsum(N, LD, A, NT);
+        t2 = get_cur_time();
+
+        if (NT == 1)
+            one_thread_exec_time = t2-t1;
+
+        exec_time = t2 - t1;
+        speedup = one_thread_exec_time / exec_time;
+        efficiency = speedup / NT;
+
+        printf("The maximum sum of the square roots from any row (with N = %d) is %f\n", N,  MAX);
+        printf("Execution time is %e, speedup is %f, efficiency is %f\n", exec_time, speedup, efficiency);
+    }
 
     return 0;
 }

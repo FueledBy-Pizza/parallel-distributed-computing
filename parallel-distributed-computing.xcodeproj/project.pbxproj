@@ -237,15 +237,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = /opt/homebrew/opt/libomp/include;
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libomp/include;
+				LD_ENVIRONMENT = "";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libomp/lib;
 				"LIBRARY_SEARCH_PATHS[arch=*]" = /opt/homebrew/opt/libomp/lib;
+				MACH_O_TYPE = mh_execute;
+				MERGEABLE_LIBRARY = NO;
 				"OTHER_CFLAGS[arch=*]" = (
 					"-Xclang",
 					"-fopenmp",
 				);
+				OTHER_LDFLAGS = "-lomp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -254,9 +262,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libomp/include;
+				LD_ENVIRONMENT = "";
+				LD_RUNPATH_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libomp/lib;
+				MACH_O_TYPE = mh_execute;
+				MERGEABLE_LIBRARY = NO;
+				OTHER_LDFLAGS = "-lomp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
