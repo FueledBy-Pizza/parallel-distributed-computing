@@ -1,3 +1,4 @@
 parallel-distributed-computing/maxsum/config.sh
 
 .DS_Store
+*.xcuserstate
