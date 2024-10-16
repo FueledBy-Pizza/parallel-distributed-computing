@@ -22,9 +22,22 @@
 		611B406B2CBA5E75003E294F /* parallel-distributed-computing */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "parallel-distributed-computing"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "parallel-distributed-computing" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				maxsum/build/Makefile,
+			);
+			target = 613E115F2CB97F5C00820F7E /* parallel-distributed-computing */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		613E11622CB97F5C00820F7E /* parallel-distributed-computing */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "parallel-distributed-computing" target */,
+			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
 		};
