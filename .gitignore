@@ -3,4 +3,4 @@
 *.DS_Store
 *.xcuserstate
 
-/parallel-distributed-computing/maxsum
+parallel-distributed-computing/maxsum/config.sh
