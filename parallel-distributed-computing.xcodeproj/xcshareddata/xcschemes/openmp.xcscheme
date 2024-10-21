@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "613E115F2CB97F5C00820F7E"
-               BuildableName = "parallel-distributed-computing"
-               BlueprintName = "parallel-distributed-computing"
+               BuildableName = "openmp"
+               BlueprintName = "openmp"
                ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,14 +46,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "613E115F2CB97F5C00820F7E"
-            BuildableName = "parallel-distributed-computing"
-            BlueprintName = "parallel-distributed-computing"
+            BuildableName = "openmp"
+            BlueprintName = "openmp"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "200"
+            argument = "400"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -69,8 +69,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "613E115F2CB97F5C00820F7E"
-            BuildableName = "parallel-distributed-computing"
-            BlueprintName = "parallel-distributed-computing"
+            BuildableName = "openmp"
+            BlueprintName = "openmp"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
