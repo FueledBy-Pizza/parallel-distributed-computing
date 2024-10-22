@@ -19,16 +19,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		611B406B2CBA5E75003E294F /* openmp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = openmp; sourceTree = BUILT_PRODUCTS_DIR; };
+		611B406B2CBA5E75003E294F /* maxsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = maxsum; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "openmp" target */ = {
+		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				maxsum/build/Makefile,
 			);
-			target = 613E115F2CB97F5C00820F7E /* openmp */;
+			target = 613E115F2CB97F5C00820F7E /* maxsum */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -36,7 +36,7 @@
 		613E11622CB97F5C00820F7E /* parallel-distributed-computing */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "openmp" target */,
+				61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -58,16 +58,16 @@
 			isa = PBXGroup;
 			children = (
 				613E11622CB97F5C00820F7E /* parallel-distributed-computing */,
-				611B406B2CBA5E75003E294F /* openmp */,
+				611B406B2CBA5E75003E294F /* maxsum */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		613E115F2CB97F5C00820F7E /* openmp */ = {
+		613E115F2CB97F5C00820F7E /* maxsum */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 613E11672CB97F5C00820F7E /* Build configuration list for PBXNativeTarget "openmp" */;
+			buildConfigurationList = 613E11672CB97F5C00820F7E /* Build configuration list for PBXNativeTarget "maxsum" */;
 			buildPhases = (
 				613E115C2CB97F5C00820F7E /* Sources */,
 				613E115D2CB97F5C00820F7E /* Frameworks */,
@@ -80,11 +80,11 @@
 			fileSystemSynchronizedGroups = (
 				613E11622CB97F5C00820F7E /* parallel-distributed-computing */,
 			);
-			name = openmp;
+			name = maxsum;
 			packageProductDependencies = (
 			);
 			productName = "parallel-distributed-computing";
-			productReference = 611B406B2CBA5E75003E294F /* openmp */;
+			productReference = 611B406B2CBA5E75003E294F /* maxsum */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				613E115F2CB97F5C00820F7E /* openmp */,
+				613E115F2CB97F5C00820F7E /* maxsum */,
 			);
 		};
 /* End PBXProject section */
@@ -303,7 +303,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		613E11672CB97F5C00820F7E /* Build configuration list for PBXNativeTarget "openmp" */ = {
+		613E11672CB97F5C00820F7E /* Build configuration list for PBXNativeTarget "maxsum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				613E11682CB97F5C00820F7E /* Debug */,
