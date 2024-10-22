@@ -26,11 +26,9 @@ int main(int argc, const char * argv[]) {
 
     init_matrix_randomly(&N, &LD, &A);
 
-    //print_matrix(N, LD, A);
-
     for (NT = 1; NT <= 8; NT = NT * 2) {
         printf("===============\n");
-        printf("THREAD ID = %d\n", NT);
+        printf("%d thread(s)\n", NT);
 
         t1 = get_cur_time();
         MAX = maxsum(N, LD, A, NT);
