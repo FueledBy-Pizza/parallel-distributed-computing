@@ -8,10 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../common/c_timer.h"
+#include "src/matrix_ops/matrix_ops.h"
 #include "src/maxsum/maxsum.h"
-
-void init_matrix_randomly(int *N, int *LD, double **A);
-void print_matrix(int N, int LD, double *A);
 
 int main(int argc, const char * argv[]) {
 
