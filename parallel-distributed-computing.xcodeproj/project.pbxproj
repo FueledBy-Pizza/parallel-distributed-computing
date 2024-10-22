@@ -16,10 +16,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		61E7DD0D2CC83F23005C25CB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		611B406B2CBA5E75003E294F /* maxsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = maxsum; sourceTree = BUILT_PRODUCTS_DIR; };
+		61E7DD0F2CC83F23005C25CB /* ring-sum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ring-sum"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -27,8 +37,16 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				maxsum/build/Makefile,
+				"ring-sum/main.c",
 			);
 			target = 613E115F2CB97F5C00820F7E /* maxsum */;
+		};
+		61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ring-sum" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"ring-sum/main.c",
+			);
+			target = 61E7DD0E2CC83F23005C25CB /* ring-sum */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -37,6 +55,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */,
+				61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ring-sum" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -51,6 +70,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61E7DD0C2CC83F23005C25CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +85,7 @@
 			children = (
 				613E11622CB97F5C00820F7E /* parallel-distributed-computing */,
 				611B406B2CBA5E75003E294F /* maxsum */,
+				61E7DD0F2CC83F23005C25CB /* ring-sum */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +114,25 @@
 			productReference = 611B406B2CBA5E75003E294F /* maxsum */;
 			productType = "com.apple.product-type.tool";
 		};
+		61E7DD0E2CC83F23005C25CB /* ring-sum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61E7DD132CC83F23005C25CB /* Build configuration list for PBXNativeTarget "ring-sum" */;
+			buildPhases = (
+				61E7DD0B2CC83F23005C25CB /* Sources */,
+				61E7DD0C2CC83F23005C25CB /* Frameworks */,
+				61E7DD0D2CC83F23005C25CB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ring-sum";
+			packageProductDependencies = (
+			);
+			productName = "ring-sum";
+			productReference = 61E7DD0F2CC83F23005C25CB /* ring-sum */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -97,6 +143,9 @@
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					613E115F2CB97F5C00820F7E = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					61E7DD0E2CC83F23005C25CB = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
@@ -116,12 +165,20 @@
 			projectRoot = "";
 			targets = (
 				613E115F2CB97F5C00820F7E /* maxsum */,
+				61E7DD0E2CC83F23005C25CB /* ring-sum */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
 		613E115C2CB97F5C00820F7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61E7DD0B2CC83F23005C25CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -291,6 +348,34 @@
 			};
 			name = Release;
 		};
+		61E7DD142CC83F23005C25CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
+				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
+				OTHER_LDFLAGS = "-lmpi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61E7DD152CC83F23005C25CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
+				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
+				OTHER_LDFLAGS = "-lmpi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -308,6 +393,15 @@
 			buildConfigurations = (
 				613E11682CB97F5C00820F7E /* Debug */,
 				613E11692CB97F5C00820F7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61E7DD132CC83F23005C25CB /* Build configuration list for PBXNativeTarget "ring-sum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61E7DD142CC83F23005C25CB /* Debug */,
+				61E7DD152CC83F23005C25CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
