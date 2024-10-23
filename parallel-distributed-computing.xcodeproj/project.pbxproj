@@ -36,7 +36,6 @@
 		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				maxsum/build/Makefile,
 				"ring-sum/main.c",
 			);
 			target = 613E115F2CB97F5C00820F7E /* maxsum */;

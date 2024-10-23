@@ -1,5 +1,5 @@
-CC = cc
-CFLAGS = -Xclang -fopenmp -I/opt/homebrew/opt/libomp/include
+CC = gcc-14
+CFLAGS = -fopenmp -I/opt/homebrew/opt/libomp/include
 LDFLAGS = -L/opt/homebrew/opt/libomp/lib -lomp
 SOURCES = ../../common/c_timer.c \
           ../src/matrix_ops/matrix_ops.c \

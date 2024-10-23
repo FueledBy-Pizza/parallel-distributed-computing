@@ -1,5 +1,5 @@
 # This build script is no longer in use.
-# It has been replaced by a Makefile for easier builds.
+# Build process has been replaced by `make`.
 # Retaining this file for reference and legacy support.
 
 #!/bin/bash
