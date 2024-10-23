@@ -45,6 +45,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"ring-sum/main.c",
+				"ring-sum/src/ring-sum/ring-sum.c",
 			);
 			target = 61E7DD0E2CC83F23005C25CB /* ring-sum */;
 		};

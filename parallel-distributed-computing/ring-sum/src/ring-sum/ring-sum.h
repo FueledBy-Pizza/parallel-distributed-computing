@@ -8,6 +8,7 @@
 #ifndef ring_sum_h
 #define ring_sum_h
 
-#include <stdio.h>
+int somma(int *A, int N);
+void populate_vector_by_procrank(int *A, int N, int proc_rank);
 
 #endif /* ring_sum_h */

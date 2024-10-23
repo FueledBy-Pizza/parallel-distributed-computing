@@ -6,18 +6,25 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <mpi.h>
+#include "src/ring-sum/ring-sum.h"
 
 int main(int argc, const char * argv[]) {
+
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <vector_size>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    int *A;
+    int vector_size = atoi(argv[1]);
+
     MPI_Init(&argc, (char ***) &argv);
-    int world_size;
-    MPI_Comm_size(MPI_COMM_WORLD, &world_size);
 
-    int world_rank;
-    MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+    int sum = somma(A, vector_size);
 
-    printf("hello from process %d of %d total processes\n", world_rank, world_size);
     MPI_Finalize();
-    
+
     return 0;
 }
