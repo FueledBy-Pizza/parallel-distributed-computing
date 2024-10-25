@@ -1,23 +1,20 @@
-# Define the compiler (MPI compiler)
 CC = mpicc
-
-# Compiler flags
-CFLAGS = 
-
-# Source files
-SOURCES = ../main.c
-
-# Target executable
+SOURCES = ../src/ring-sum/ring-sum.c \
+          ../../common/mpiproc/mpi_proc.c \
+          ../../common/integer/integer.c \
+          ../../common/vector_ops/vector_ops.c \
+          ../../common/mpiproc/vector/vector.c \
+          ../main.c
 TARGET = ring-sum.out
 
-# Default target to build the executable
+# Default target
 all: $(TARGET)
 
 # Rule to build the target
 $(TARGET): $(SOURCES)
-	$(CC) $(CFLAGS) $(SOURCES) -o $(TARGET)
+	$(CC) $(SOURCES) -o $@
 
-# Clean up generated files
+# Check for build errors
 .PHONY: all clean
 clean:
 	rm -f $(TARGET)

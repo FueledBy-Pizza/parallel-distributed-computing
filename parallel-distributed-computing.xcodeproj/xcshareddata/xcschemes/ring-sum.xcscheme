@@ -56,10 +56,25 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-np 4 &quot;$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_NAME)&quot;"
+            argument = "-np 4"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "${BUILT_PRODUCTS_DIR}/${EXECUTABLE_NAME}"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "$VECTOR_SIZE"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "VECTOR_SIZE"
+            value = "10"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

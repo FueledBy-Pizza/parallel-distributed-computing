@@ -9,6 +9,7 @@ if [ -f config.sh ]; then
     source config.sh
 else
     MPI_PROCS=4
+    VECTOR_SIZE=4
 fi
 
-mpiexec -np $MPI_PROCS ./build/ring-sum.out
+mpiexec -np $MPI_PROCS ./build/ring-sum.out $VECTOR_SIZE

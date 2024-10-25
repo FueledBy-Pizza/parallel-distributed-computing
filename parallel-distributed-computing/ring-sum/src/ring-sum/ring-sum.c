@@ -6,23 +6,27 @@
 //
 
 #include "ring-sum.h"
-#include <stdlib.h>
+#include "../../../common/vector_ops/vector_ops.h"
+#include "../../../common/mpiproc/mpi_proc.h"
 #include <mpi.h>
+#include <stdbool.h>
 
 int somma(int *A, int N){
 
-    A = (int *) malloc(sizeof(int) * N);
     int proc_rank = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
 
-    populate_vector_by_procrank(A, N, proc_rank);
+    int calculated_partial_sum = partial_sum(A, N);
 
-    return 0;
+    if (is_proc_rank_even(proc_rank)) {
+        
+    } else {
+        
+    }
+
+    return calculated_partial_sum;
 }
 
-void populate_vector_by_procrank(int *A, int N, int proc_rank){
-    int i;
-    for (i = 0; i < N; ++i) {
-        A[i] = proc_rank * N + i;
-    }
+int partial_sum(int *A, int N){
+    return array_sum(A, N);
 }

@@ -9,6 +9,6 @@
 #define ring_sum_h
 
 int somma(int *A, int N);
-void populate_vector_by_procrank(int *A, int N, int proc_rank);
+int partial_sum(int *A, int N);
 
 #endif /* ring_sum_h */

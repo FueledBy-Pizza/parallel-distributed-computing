@@ -36,14 +36,23 @@
 		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				common/integer/integer.c,
+				common/mpiproc/mpi_proc.c,
+				common/mpiproc/vector/vector.c,
+				common/vector_ops/vector_ops.c,
 				"ring-sum/build/Makefile",
 				"ring-sum/main.c",
+				"ring-sum/src/ring-sum/ring-sum.c",
 			);
 			target = 613E115F2CB97F5C00820F7E /* maxsum */;
 		};
 		61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ring-sum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				common/integer/integer.c,
+				common/mpiproc/mpi_proc.c,
+				common/mpiproc/vector/vector.c,
+				common/vector_ops/vector_ops.c,
 				"ring-sum/main.c",
 				"ring-sum/src/ring-sum/ring-sum.c",
 			);
