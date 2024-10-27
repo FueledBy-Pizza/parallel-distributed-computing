@@ -4,7 +4,7 @@ SOURCES = ../src/ring-sum/ring-sum.c \
           ../../common/integer/integer.c \
           ../../common/vector/vector.c \
           ../../common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c \
-          ../main.c
+          ../src/main.c
 TARGET = ring-sum.out
 
 # Default target

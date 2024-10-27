@@ -41,7 +41,7 @@
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
 				"ring-sum/build/Makefile",
-				"ring-sum/main.c",
+				"ring-sum/src/main.c",
 				"ring-sum/src/ring-sum/ring-sum.c",
 			);
 			target = 613E115F2CB97F5C00820F7E /* maxsum */;
@@ -53,7 +53,7 @@
 				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
-				"ring-sum/main.c",
+				"ring-sum/src/main.c",
 				"ring-sum/src/ring-sum/ring-sum.c",
 			);
 			target = 61E7DD0E2CC83F23005C25CB /* ring-sum */;

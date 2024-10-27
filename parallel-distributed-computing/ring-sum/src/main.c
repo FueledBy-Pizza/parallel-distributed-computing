@@ -8,8 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
-#include "../common/mpi_proc/mpi_proc_vector/mpi_proc_vector.h"
-#include "src/ring-sum/ring-sum.h"
+#include "../../common/mpi_proc/mpi_proc_vector/mpi_proc_vector.h"
+#include "ring-sum/ring-sum.h"
 
 int main(int argc, const char * argv[]) {
 
