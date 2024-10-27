@@ -1,9 +1,9 @@
 CC = mpicc
 SOURCES = ../src/ring-sum/ring-sum.c \
-          ../../common/mpiproc/mpi_proc.c \
+          ../../common/mpi_proc/mpi_proc.c \
           ../../common/integer/integer.c \
-          ../../common/vector_ops/vector_ops.c \
-          ../../common/mpiproc/vector/vector.c \
+          ../../common/vector/vector.c \
+          ../../common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c \
           ../main.c
 TARGET = ring-sum.out
 

@@ -1,8 +1,8 @@
 CC = gcc-14
 CFLAGS = -fopenmp -I/opt/homebrew/opt/libomp/include
 LDFLAGS = -L/opt/homebrew/opt/libomp/lib -lomp
-SOURCES = ../../common/c_timer.c \
-          ../src/matrix_ops/matrix_ops.c \
+SOURCES = ../../common/c_timer/c_timer.c \
+          ../../common/matrix/matrix.c \
           ../src/maxsum/maxsum.c \
           ../main.c
 TARGET = maxsum.out

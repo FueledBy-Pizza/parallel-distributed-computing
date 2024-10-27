@@ -37,9 +37,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				common/integer/integer.c,
-				common/mpiproc/mpi_proc.c,
-				common/mpiproc/vector/vector.c,
-				common/vector_ops/vector_ops.c,
+				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
+				common/mpi_proc/mpi_proc.c,
+				common/vector/vector.c,
 				"ring-sum/build/Makefile",
 				"ring-sum/main.c",
 				"ring-sum/src/ring-sum/ring-sum.c",
@@ -50,9 +50,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				common/integer/integer.c,
-				common/mpiproc/mpi_proc.c,
-				common/mpiproc/vector/vector.c,
-				common/vector_ops/vector_ops.c,
+				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
+				common/mpi_proc/mpi_proc.c,
+				common/vector/vector.c,
 				"ring-sum/main.c",
 				"ring-sum/src/ring-sum/ring-sum.c",
 			);

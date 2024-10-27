@@ -1,11 +1,15 @@
-//
-//  matrix_ops.c
-//  parallel-distributed-computing
-//
-//  Created by Giuliano Aiello on 11/10/24.
-//
+/******************************************************************************
+ * Library Name: `matrix`
+ * Overview: this library provides functions for basic matrix operations.
+ * Version: 1.0.0
+ * Author: Giuliano Aiello
+ * Created: 2024-10-11
+ * Updated: 2024-10-27
+ * License: MIT
+ *
+ */
 
-#include "matrix_ops.h"
+#include "matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
 

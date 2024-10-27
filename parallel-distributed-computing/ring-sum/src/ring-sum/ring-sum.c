@@ -6,8 +6,8 @@
 //
 
 #include "ring-sum.h"
-#include "../../../common/vector_ops/vector_ops.h"
-#include "../../../common/mpiproc/mpi_proc.h"
+#include "../../../common/vector/vector.h"
+#include "../../../common/mpi_proc/mpi_proc.h"
 #include <mpi.h>
 #include <stdbool.h>
 
@@ -28,5 +28,5 @@ int somma(int *A, int N){
 }
 
 int partial_sum(int *A, int N){
-    return array_sum(A, N);
+    return vector_sum(A, N);
 }

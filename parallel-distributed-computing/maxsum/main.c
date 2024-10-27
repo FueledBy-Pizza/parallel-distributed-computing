@@ -7,8 +7,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../common/c_timer.h"
-#include "src/matrix_ops/matrix_ops.h"
+#include "../common/c_timer/c_timer.h"
+#include "../common/matrix/matrix.h"
 #include "src/maxsum/maxsum.h"
 
 int main(int argc, const char * argv[]) {
