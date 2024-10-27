@@ -18,17 +18,19 @@ int main(int argc, const char * argv[]) {
         return EXIT_FAILURE;
     }
 
-    //int *A = NULL;
-    //int vector_size = atoi(argv[1]);
+    int *A = NULL;
+    int vector_size = atoi(argv[1]);
 
     MPI_Init(&argc, (char ***) &argv);
 
+    A = (int *) malloc(sizeof(int) * vector_size);
+
     int proc_rank = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
-    printf("Hello\n");
-    //populate_vector_by_proc_rank(A, vector_size);
 
-    //int sum = somma(A, vector_size);
+    populate_vector_by_proc_rank(A, vector_size);
+
+    int sum = somma(A, vector_size);
 
     //printf("Hello from process %d, total sum is %d", proc_rank);
 

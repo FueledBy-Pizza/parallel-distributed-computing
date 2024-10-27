@@ -23,8 +23,6 @@
  @param N dimension of A
  */
 void populate_vector_by_proc_rank(int *A, int N){
-    A = (int *) malloc(sizeof(int) * N);
-
     int proc_rank = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
 
