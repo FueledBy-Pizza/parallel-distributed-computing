@@ -23,16 +23,15 @@ int main(int argc, const char * argv[]) {
 
     MPI_Init(&argc, (char ***) &argv);
 
-    A = (int *) malloc(sizeof(int) * vector_size);
-
     int proc_rank = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
 
+    A = (int *) malloc(sizeof(int) * vector_size);
     populate_vector_by_proc_rank(A, vector_size);
 
-    int sum = somma(A, vector_size);
+    int total_sum = ring_sum(A, vector_size);
 
-    //printf("Hello from process %d, total sum is %d", proc_rank);
+    printf("Hello from process ranked %d, total sum is %d.\n", proc_rank, total_sum);
 
     MPI_Finalize();
 

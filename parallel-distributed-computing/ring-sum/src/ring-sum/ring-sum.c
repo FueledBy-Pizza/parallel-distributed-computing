@@ -11,7 +11,7 @@
 #include <mpi.h>
 #include <stdbool.h>
 
-int somma(int *A, int N){
+int ring_sum(int *A, int N){
 
     int proc_rank = -1, num_proc = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);

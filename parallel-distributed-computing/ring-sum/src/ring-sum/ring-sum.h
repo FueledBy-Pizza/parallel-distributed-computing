@@ -8,7 +8,7 @@
 #ifndef ring_sum_h
 #define ring_sum_h
 
-int somma(int *A, int N);
+int ring_sum(int *A, int N);
 int calculate_partial_sum(int *A, int N);
 
 #endif /* ring_sum_h */

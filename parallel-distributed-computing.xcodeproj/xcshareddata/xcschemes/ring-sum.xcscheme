@@ -64,19 +64,19 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "$VECTOR_SIZE"
+            argument = "20"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
-            key = "VECTOR_SIZE"
-            value = "10"
+            key = "MPI_PROCS"
+            value = "4"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "MPI_PROCS"
-            value = "4"
+            key = "VECTOR_SIZE"
+            value = "20"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
