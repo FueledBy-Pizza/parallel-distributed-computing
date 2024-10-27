@@ -21,13 +21,22 @@ bool is_proc_rank_even(int proc_rank){
     return is_even(proc_rank);
 }
 
-int get_next_proc_rank(void){
-    int proc_rank, num_procs, next_proc_rank = 0;
+int get_next_proc_rank(int proc_rank){
+    int num_procs, next_proc_rank = 0;
 
-    MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
 
     next_proc_rank = (proc_rank + num_procs + 1) % num_procs;
 
     return next_proc_rank;
+}
+
+int get_prev_proc_rank(int proc_rank){
+    int num_procs, prev_proc_rank = 0;
+
+    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
+
+    prev_proc_rank = (proc_rank + num_procs - 1) % num_procs;
+
+    return prev_proc_rank;
 }

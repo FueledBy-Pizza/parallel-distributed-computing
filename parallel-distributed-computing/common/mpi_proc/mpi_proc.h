@@ -19,6 +19,7 @@
 #include <stdbool.h>
 
 bool is_proc_rank_even(int proc_rank);
-int get_next_proc_rank(void);
+int get_next_proc_rank(int proc_rank);
+int get_prev_proc_rank(int proc_rank);
 
 #endif /* mpi_proc_h */
