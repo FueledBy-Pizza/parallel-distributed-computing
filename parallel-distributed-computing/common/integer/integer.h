@@ -1,9 +1,13 @@
-//
-//  integer.h
-//  ring-sum
-//
-//  Created by Giuliano Aiello on 25/10/24.
-//
+/******************************************************************************
+ * Library Name: `integer`
+ * Overview: this library provides functions for basic integer operations.
+ * Version: 1.0.0
+ * Author: Giuliano Aiello
+ * Created: 2024-10-25
+ * Updated: 2024-10-27
+ * License: MIT
+ *
+ */
 
 #ifndef integer_h
 #define integer_h
