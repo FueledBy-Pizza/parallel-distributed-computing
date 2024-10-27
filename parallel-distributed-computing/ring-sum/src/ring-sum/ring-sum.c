@@ -30,20 +30,14 @@ int ring_sum(int *A, int N){
         if (is_proc_rank_even(proc_rank)) {
             MPI_Send(&partial_sum_calculated, 1, MPI_INT, proc_rank_receiver, TAG, MPI_COMM_WORLD);
             MPI_Recv(&partial_sum_received, 1, MPI_INT, proc_rank_sender, TAG, MPI_COMM_WORLD, NULL);
-
-            total_sum += partial_sum_received;
-
-            proc_rank_receiver = get_next_proc_rank(proc_rank_receiver);
-            proc_rank_sender = get_prev_proc_rank(proc_rank_sender);
         } else {
             MPI_Recv(&partial_sum_received, 1, MPI_INT, proc_rank_sender, TAG, MPI_COMM_WORLD, NULL);
             MPI_Send(&partial_sum_calculated, 1, MPI_INT, proc_rank_receiver, TAG, MPI_COMM_WORLD);
-
-            total_sum += partial_sum_received;
-
-            proc_rank_receiver = get_next_proc_rank(proc_rank_receiver);
-            proc_rank_sender = get_prev_proc_rank(proc_rank_sender);
         }
+        total_sum += partial_sum_received;
+
+        proc_rank_receiver = get_next_proc_rank(proc_rank_receiver);
+        proc_rank_sender = get_prev_proc_rank(proc_rank_sender);
     }
 
     return total_sum;
