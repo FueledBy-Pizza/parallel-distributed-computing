@@ -17,7 +17,7 @@
 #include "../integer/integer.h"
 #include <mpi.h>
 
-bool is_proc_rank_even(int proc_rank){
+bool is_even_proc_rank(int proc_rank){
     return is_even(proc_rank);
 }
 

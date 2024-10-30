@@ -27,7 +27,7 @@ int ring_sum(int *A, int N){
 
     int i;
     for (i = 0; i < (num_proc - 1); ++i) {
-        if (is_proc_rank_even(proc_rank)) {
+        if (is_even_proc_rank(proc_rank)) {
             MPI_Send(&partial_sum_calculated, 1, MPI_INT, proc_rank_receiver, TAG, MPI_COMM_WORLD);
             MPI_Recv(&partial_sum_received, 1, MPI_INT, proc_rank_sender, TAG, MPI_COMM_WORLD, NULL);
         } else {
