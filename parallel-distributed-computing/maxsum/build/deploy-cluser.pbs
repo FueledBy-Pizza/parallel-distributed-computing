@@ -7,8 +7,8 @@
 
 cd $PBS_O_WORKDIR
 
-CONFIG_PATH="$(pwd)/../config.sh"
-. "${CONFIG_PATH}"
+CONFIG_SOURCE="$(pwd)/../config.sh"
+. "${CONFIG_SOURCE}"
 
 cc ../../common/c_timer/c_timer.c ../../common/matrix/matrix.c ../src/maxsum/maxsum.c ../src/main.c -fopenmp -lm
 
