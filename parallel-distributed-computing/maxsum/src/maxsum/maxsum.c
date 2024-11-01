@@ -18,7 +18,6 @@ double maxsum(int N, int LD, double *A, int NT){
     double curr_sum = 0;
     double max_sum = curr_sum;
 
-    double *MAX_SUMS = (double *) malloc(sizeof(double) * NT);
     double MAX_OVERALL = 0;
 
     omp_set_num_threads(NT);
@@ -37,13 +36,11 @@ double maxsum(int N, int LD, double *A, int NT){
                 max_sum = curr_sum;
         }
 
-        MAX_SUMS[thread_id] = max_sum;
-    }
-
-    int index = 0;
-    for (index = 0; index < NT; ++index) {
-        if (MAX_SUMS[index] > MAX_OVERALL) {
-            MAX_OVERALL = MAX_SUMS[index];
+        # pragma omp critical
+        {
+            if (MAX_OVERALL < max_sum) {
+                MAX_OVERALL = max_sum;
+            }
         }
     }
 
