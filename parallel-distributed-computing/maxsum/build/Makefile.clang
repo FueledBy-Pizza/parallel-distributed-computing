@@ -1,6 +1,6 @@
 CC = clang
-CFLAGS = -Xclang -fopenmp -I/opt/homebrew/opt/libomp/include
-LDFLAGS = -L/opt/homebrew/opt/libomp/lib -lomp
+CFLAGS = -Xclang -fopenmp -I$(shell brew --prefix libomp)/include
+LDFLAGS = -L$(shell brew --prefix libomp)/lib -lomp
 SOURCES = ../../common/c_timer/c_timer.c \
           ../../common/matrix/matrix.c \
           ../src/maxsum/maxsum.c \
