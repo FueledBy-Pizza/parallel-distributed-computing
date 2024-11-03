@@ -1,6 +1,7 @@
 *.out
 
-/parallel-distributed-computing/parallel-distributed-computing/maxsum/config.sh
+parallel-distributed-computing/maxsum/config.sh
+parallel-distributed-computing/ring-sum/config.sh
 
 *.DS_Store
 *.xcuserstate
