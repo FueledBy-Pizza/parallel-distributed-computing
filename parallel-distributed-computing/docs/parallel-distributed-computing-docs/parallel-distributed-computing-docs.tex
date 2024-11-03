@@ -1,0 +1,18 @@
+\documentclass{book}
+
+\usepackage{mypackage}
+
+\begin{document}
+
+	\frontmatter
+		\maketitle
+		\tableofcontents
+	\mainmatter
+		\part{First part}
+		\input{chapter/chapter1/prolusion}
+	\backmatter
+		\printbibliography
+		\printglossary
+		\printglossary[type=\acronymtype]
+
+\end{document}

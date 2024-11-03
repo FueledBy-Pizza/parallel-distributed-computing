@@ -1,0 +1,27 @@
+\begin{chapter}{Prolusion}
+    \begin{section}{Supercomputing}
+        \par Supercomputing is a way to solve a problem by using a supercomputer. The term "supercomputer" refers to a system that provides the most high performances, in that exact moment ("that moment" is specified because, as history has taught, today's enhanced technology is tomorrow's ordinary/outdated tool\footnote{In 80s, Cray 1 (100 Mflops) performed a calculation in one year. Nowadays (2023), the same calculation is performed in less than \SI{2}{\micro\second} by Frontier (1.6 Eflops)}). Performance is measured by the needed time to solve a particular application.
+        \par This is a citation in a footnote: \footnote{\cite{martin2009clean}, pp 123}.
+        \par This is an acronym: \glsxtrfull{dbms}.
+        \par Here is a glossary word: \gls{bug}
+    \end{section}
+    \newpage
+    \begin{section}{Figures}
+    	\begin{subsection}{Option inkscapelatex}
+		\par This is an imported SVG with \LaTeX embedded text.
+		\begin{figure}[ht]
+			\centering
+			\includesvg[inkscapelatex=true]{drawing.svg}
+			\caption{\emph{True inkscapelatex option}}
+			\label{fig:latexembedded}
+		\end{figure}
+		\par This is an imported SVG without \LaTeX embedded text.
+		\begin{figure}[ht]
+			\centering
+			\includesvg[inkscapelatex=false]{drawing.svg}
+			\caption{\emph{False inkscapelatex option}}
+			\label{fig:latexnotembedded}
+		\end{figure}
+	\end{subsection}
+    \end{section}
+\end{chapter}

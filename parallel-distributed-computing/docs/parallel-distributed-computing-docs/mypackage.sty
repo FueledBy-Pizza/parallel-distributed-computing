@@ -1,0 +1,82 @@
+\ProvidesPackage{mypackage}
+
+\usepackage[a4paper]{geometry}
+\usepackage{hyperref}
+\usepackage{titling}
+\usepackage{svg}
+\svgsetup{inkscape={$(which inkscape)}}
+\graphicspath{{figure}}
+\usepackage[acronym]{glossaries-extra}
+\usepackage{epigraph}
+\usepackage{bookmark}
+\usepackage[style=alphabetic]{biblatex}
+\addbibresource{bibliography.bib}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage{siunitx}
+\usepackage{listings}
+\definecolor{cosmiclatte}{rgb}{1.0, 0.97, 0.91}
+\definecolor{burntumber}{rgb}{0.54, 0.2, 0.14}
+\definecolor{denim}{rgb}{0.08, 0.38, 0.74}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{darkpastelgreen}{rgb}{0.01, 0.75, 0.24}
+\definecolor{aurometalsaurus}{rgb}{0.43, 0.5, 0.5}
+\lstdefinestyle{codestyle}{
+    basicstyle=\ttfamily\footnotesize,
+    backgroundcolor=\color{cosmiclatte},
+    keywordstyle=\color{burntumber},
+    identifierstyle=\color{denim},
+    stringstyle=\color{codepurple},
+    commentstyle=\color{darkpastelgreen},
+    showspaces=false,
+    showstringspaces=true,
+    showtabs=false,
+    tabsize=2,
+    frame=single,
+    numberstyle=\tiny\color{aurometalsaurus},  %Line number style.
+    numbers=left,
+    numbersep=8pt,
+    %firstnumber=1000,
+    keepspaces=true,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b
+}
+\lstset{inputpath=code_snippet,style=codestyle}
+
+\pretitle{
+    \centering
+    \null\vspace{-8cm} \SchoolNameTitling \SchoolDeptTitling \SchoolLogoTitling
+}
+\title{
+    \centering
+    \vspace{4cm} {\Large \textbf{Parallel and Distributed Computing submissions}}\\[\baselineskip]
+}
+\posttitle{}
+\date{2024}
+\author{Giuliano Aiello}
+
+\newcommand{\SchoolNameTitling}{
+    {\Large \textsc{Università degli Studi di Napoli Federico II}}\\[\baselineskip] 
+}
+
+\newcommand{\SchoolDeptTitling}{
+    {\Large Dipartimento di Ingegneria Elettrica e delle Tecnologie dell'Informazione}\\[\baselineskip]
+}
+
+\newcommand{\SchoolLogoTitling}{
+    \begin{figure}[h]
+        \centering
+        \includesvg[width=4cm]{UniNa_logo.svg}
+    \end{figure}
+}
+
+\makeglossaries
+
+\newglossaryentry{bug}
+{
+    name=bug,
+    description={Possibile causa di una failure di un software.}
+}
+
+\newacronym{dbms}{DBMS}{DataBase Management System}
