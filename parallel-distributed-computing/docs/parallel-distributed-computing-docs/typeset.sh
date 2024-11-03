@@ -25,3 +25,5 @@ execute_controlled_command biber $filename
 execute_controlled_command makeglossaries $filename
 execute_controlled_command pdflatex --shell-escape --file-line-error --synctex=1 $1
 execute_controlled_command pdflatex --shell-escape --file-line-error --synctex=1 $1
+
+mv $filename.pdf ../
