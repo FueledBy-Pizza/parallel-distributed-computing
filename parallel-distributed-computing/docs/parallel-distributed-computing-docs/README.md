@@ -13,7 +13,7 @@ This has been built in order to use a local TeX distribution and not online tool
 
 Built with MacTeX.
 
-tex --version\
+`tex --version`\
 &emsp;TeX 3.141592653 (TeX Live 2023)
     kpathsea version 6.3.5
     Copyright 2023 D.E. Knuth.
@@ -24,7 +24,7 @@ tex --version\
     named COPYING and the TeX source.
     Primary author of TeX: D.E. Knuth.
 
-pdflatex --version\
+`pdflatex --version`\
 &emsp;pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023)
     kpathsea version 6.3.5
     Copyright 2023 Han The Thanh (pdfTeX) et al.
@@ -38,7 +38,7 @@ pdflatex --version\
     Compiled with zlib 1.2.13; using zlib 1.2.13
     Compiled with xpdf version 4.04
 
-biber --version\
+`biber --version`\
 &emsp;biber version: 2.19
 
 ## Usage
@@ -55,10 +55,10 @@ Ensure the following project structure is in place.
 |-- main.tex
 |-- mypackage.sty
 |-- README.md
-|-- render.sh
+|-- typeset.sh
 ```
 
-Run `render.sh main.tex`. Open your `main.pdf` file.\
+Run `typeset.sh main.tex`. Open your `main.pdf` file.\
 The script that was just executed performs the following steps:
 
 ### Svg
