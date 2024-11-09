@@ -12,6 +12,7 @@
 #include "matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <mpi.h>
 
 void init_matrix_randomly(int *N, int *LD, double **A){
     *A = (double *) malloc(sizeof(double) * (*N) * (*LD));
@@ -24,13 +25,11 @@ void init_matrix_randomly(int *N, int *LD, double **A){
     }
 }
 
-void print_matrix(int N, int LD, double *A){
-    printf("Matrix is:\n\n");
-    
+void print_matrix(int N, int LD, float *A){
     int i, j;
     for (i = 0; i < N; ++i) {
         for (j = 0; j < LD; ++j) {
-            printf("%f ", A[i * LD + j]);
+            printf("%f ", A[(i * LD) + j]);
         }
         printf("\n");
     }

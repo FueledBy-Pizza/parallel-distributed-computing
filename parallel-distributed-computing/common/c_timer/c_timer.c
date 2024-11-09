@@ -18,7 +18,7 @@
  *
  * @return current system time in seconds
  */
-double get_cur_time() {
+double get_cur_time(void) {
   struct timeval   tv;
   struct timezone  tz;
   double cur_time;

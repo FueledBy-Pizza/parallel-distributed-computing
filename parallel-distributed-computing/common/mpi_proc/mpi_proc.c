@@ -17,6 +17,22 @@
 #include "../integer/integer.h"
 #include <mpi.h>
 
+bool is_first_proc_rank(int proc_rank){
+    int num_procs = 0;
+
+    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
+
+    return (proc_rank == num_procs - num_procs);
+}
+
+bool is_last_proc_rank(int proc_rank){
+    int num_procs = 0;
+
+    MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
+
+    return (proc_rank == num_procs - 1);
+}
+
 bool is_even_proc_rank(int proc_rank){
     return is_even(proc_rank);
 }

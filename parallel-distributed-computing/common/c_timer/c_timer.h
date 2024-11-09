@@ -13,6 +13,6 @@
 #ifndef c_timer_h
 #define c_timer_h
 
-double get_cur_time();
+double get_cur_time(void);
 
 #endif /* c_timer_h */

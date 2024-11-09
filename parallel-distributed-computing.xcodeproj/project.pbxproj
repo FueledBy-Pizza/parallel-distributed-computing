@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXCopyFilesBuildPhase section */
+		612A816D2CD93F320020E786 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		613E115E2CB97F5C00820F7E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -29,10 +38,23 @@
 
 /* Begin PBXFileReference section */
 		611B406B2CBA5E75003E294F /* maxsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = maxsum; sourceTree = BUILT_PRODUCTS_DIR; };
+		612A816F2CD93F320020E786 /* laplace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = laplace; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E7DD0F2CC83F23005C25CB /* ring-sum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ring-sum"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		612A81792CD93F460020E786 /* Exceptions for "parallel-distributed-computing" folder in "laplace" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				common/c_timer/c_timer.c,
+				common/integer/integer.c,
+				common/matrix/matrix.c,
+				common/mpi_proc/mpi_proc.c,
+				laplace/src/laplace/laplace.c,
+				laplace/src/main.c,
+			);
+			target = 612A816E2CD93F320020E786 /* laplace */;
+		};
 		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -40,6 +62,7 @@
 				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
+				laplace/src/main.c,
 				"ring-sum/build/Makefile",
 				"ring-sum/src/main.c",
 				"ring-sum/src/ring-sum/ring-sum.c",
@@ -66,6 +89,7 @@
 			exceptions = (
 				61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */,
 				61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ring-sum" target */,
+				612A81792CD93F460020E786 /* Exceptions for "parallel-distributed-computing" folder in "laplace" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -73,6 +97,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		612A816C2CD93F320020E786 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		613E115D2CB97F5C00820F7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -96,12 +127,32 @@
 				613E11622CB97F5C00820F7E /* parallel-distributed-computing */,
 				611B406B2CBA5E75003E294F /* maxsum */,
 				61E7DD0F2CC83F23005C25CB /* ring-sum */,
+				612A816F2CD93F320020E786 /* laplace */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		612A816E2CD93F320020E786 /* laplace */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 612A81752CD93F320020E786 /* Build configuration list for PBXNativeTarget "laplace" */;
+			buildPhases = (
+				612A816B2CD93F320020E786 /* Sources */,
+				612A816C2CD93F320020E786 /* Frameworks */,
+				612A816D2CD93F320020E786 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = laplace;
+			packageProductDependencies = (
+			);
+			productName = laplace;
+			productReference = 612A816F2CD93F320020E786 /* laplace */;
+			productType = "com.apple.product-type.tool";
+		};
 		613E115F2CB97F5C00820F7E /* maxsum */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 613E11672CB97F5C00820F7E /* Build configuration list for PBXNativeTarget "maxsum" */;
@@ -152,6 +203,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					612A816E2CD93F320020E786 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					613E115F2CB97F5C00820F7E = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -176,11 +230,19 @@
 			targets = (
 				613E115F2CB97F5C00820F7E /* maxsum */,
 				61E7DD0E2CC83F23005C25CB /* ring-sum */,
+				612A816E2CD93F320020E786 /* laplace */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		612A816B2CD93F320020E786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		613E115C2CB97F5C00820F7E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -198,6 +260,34 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		612A81732CD93F320020E786 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
+				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
+				OTHER_LDFLAGS = "-lmpi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		612A81742CD93F320020E786 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
+				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
+				OTHER_LDFLAGS = "-lmpi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		613E11652CB97F5C00820F7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -391,6 +481,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		612A81752CD93F320020E786 /* Build configuration list for PBXNativeTarget "laplace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				612A81732CD93F320020E786 /* Debug */,
+				612A81742CD93F320020E786 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		613E115B2CB97F5C00820F7E /* Build configuration list for PBXProject "parallel-distributed-computing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

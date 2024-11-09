@@ -13,6 +13,6 @@
 #define matrix_h
 
 void init_matrix_randomly(int *N, int *LD, double **A);
-void print_matrix(int N, int LD, double *A);
+void print_matrix(int N, int LD, float *A);
 
 #endif /* matrix_h */

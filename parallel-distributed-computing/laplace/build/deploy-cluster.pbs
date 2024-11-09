@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#PBS -q studenti
+#PBS -l nodes=8:ppn=8
+#PBS -l mem=1GB
+#PBS -N laplace
+#PBS -o laplace.out
+#PBS -e laplace.err
+
+cd $PBS_O_WORKDIR
+
+sort -u $PBS_NODEFILE > machinefile
+NCPU=`wc -l < machinefile`
+
+CONFIG_SOURCE="$(pwd)/../config.sh"
+
+if [ -f $CONFIG_SOURCE ]; then
+    . $CONFIG_SOURCE
+else
+    N=400
+    N_ITER=8000
+fi
+
+MPI_DIR=/usr/lib64/openmpi/1.4-gcc/bin
+$MPI_DIR/mpicc -o laplace ../src/laplace/laplace.c \
+                           ../../common/mpi_proc/mpi_proc.c \
+                           ../../common/integer/integer.c \
+                           ../../common/matrix/matrix.c \
+                           ../../common/c_timer/c_timer.c \
+                           ../src/main.c
+$MPI_DIR/mpiexec -np $NCPU -machinefile machinefile laplace $N $N_ITER
+
+rm -rf machinefile
