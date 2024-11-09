@@ -18,7 +18,7 @@ float discrete_laplacian(const float *A, const int i, const int j, const int LD)
 float discrete_laplacian_top(const float *matrix, const int i, const int j, const int LD, const float *daprev);
 float discrete_laplacian_bottom(const float *matrix, const int i, const int j, const int LD, const float *danext);
 
-void copy_inner(float *A, float *Anew, int rows_per_proc, int N, const int LD);
+void copy_inner(float *A, float *Anew, int N_Anew, int N, const int LD);
 void copy_row_top(float *A, float *Anew, const int N, const int LD);
 void copy_row_bottom(float *A, float * Anew, int rows_per_proc, const int N, const int LD);
 

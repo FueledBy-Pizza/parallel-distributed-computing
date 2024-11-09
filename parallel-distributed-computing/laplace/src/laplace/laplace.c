@@ -139,12 +139,12 @@ float discrete_laplacian_bottom(const float *matrix, const int i, const int j, c
 }
 
 /**
- @brief There is a mapping between element indexes of `A` and element indexes of `Anew` on which the Laplacian elements have been calculated.
-        This function performs the "mapped" copy of the inner matrix of `Anew` into `A`.
+ @brief Performs a copy of `Anew`'s inner matrix into `A`'s inner matrix.
+ @param N_Anew a "logic" number of rows of `Anew` up to which (except first and last) the copy will be applied. `Anew` physically has `N` rows.
  */
-void copy_inner(float *A, float *Anew, int rows_per_proc, int N, const int LD) {
+void copy_inner(float *A, float *Anew, int N_Anew, int N, const int LD) {
     int i, j;
-    for (i = 1; i < rows_per_proc - 1; ++i) {
+    for (i = 1; i < N_Anew - 1; ++i) {
         for (j = 1; j < N - 1; ++j) {
             A[(i * LD) + j] = Anew[(i * LD) + j];
         }
@@ -152,8 +152,7 @@ void copy_inner(float *A, float *Anew, int rows_per_proc, int N, const int LD) {
 }
 
 /**
- @brief There is a mapping between element indexes of `A` and element indexes of `Anew` on which the Laplacian elements have been calculated.
-        This function performs the "mapped" copy of `Anew`'s top row into `A`.
+ @brief Performs a copy of `Anew`'s top-row into `A`'s top-row.
  */
 void copy_row_top(float *A, float *Anew, const int N, const int LD) {
     int i = 0, j;
@@ -163,11 +162,11 @@ void copy_row_top(float *A, float *Anew, const int N, const int LD) {
 }
 
 /**
- @brief There is a mapping between element indexes of `A` and element indexes of `Anew` on which the Laplacian elements have been calculated.
-        This function performs the "mapped" copy of `Anew`'s bottom row into `A`.
+ @brief Performs a copy of `Anew`'s bottom-row into `A`'s bottom-row. `Anew`'s bottom row is `N_Anew`.
+ @param N_Anew the "logically" last row index of `Anew` which will be subjected to the copy. `Anew` physically has `N` rows.
  */
-void copy_row_bottom(float *A, float * Anew, int rows_per_proc, const int N, const int LD) {
-    int i = rows_per_proc, j;
+void copy_row_bottom(float *A, float * Anew, int N_Anew, const int N, const int LD) {
+    int i = N_Anew, j;
     for (j = 1; j < N - 1; ++j) {
         A[(i * LD) + j] = Anew[(i * LD) + j];
     }
