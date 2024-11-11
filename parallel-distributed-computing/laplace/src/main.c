@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]) {
     if (myid ==0) printf("N = %d\nIterations = %d\n", N, Niter);
 
     t1 = get_cur_time();
-    laplace (A, Anew, daprev, danext, N, LD, Niter);
+    laplace_nb (A, Anew, daprev, danext, N, LD, Niter);
     t2 = get_cur_time();
 
     if (myid == 0){
