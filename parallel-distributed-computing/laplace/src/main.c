@@ -34,17 +34,18 @@ int main(int argc, const char * argv[]) {
 
     sleep(1);
 
-    LD = N + 100;
-    A = (float*)malloc(LD*LD*sizeof(float));
-    Anew = (float*)malloc(LD*LD*sizeof(float));
-    daprev = (float*)malloc(LD*sizeof(float));
-    danext = (float*)malloc(LD*sizeof(float));
+    LD = N;
+    A = (float *) malloc(500 * 500 * sizeof(float));
+    Anew = (float *) malloc(500 * 500 * sizeof(float));
+    daprev = (float *) malloc(500 * sizeof(float));
+    danext = (float *) malloc(500 * sizeof(float));
 
     for (i = 0; i< N/nproc; i++){              // tutta la matrice locale = 0
         for (j = 0; j< N; j++){
             A[i*LD+j] = 0.;
         }
     }
+
     if (myid == 0){
         for (j = 0; j < N; j++){
             A[0*LD+j] = j;                // prima riga matrice del proc id=0  da 0 a 399
@@ -63,24 +64,24 @@ int main(int argc, const char * argv[]) {
         A[i*LD+N-1] = N - 1 - A[i*LD+0];      // A[i][0] + A[i][N-1] = 0 sempre
     }
 
-    if (myid ==0) printf("N = %d\nIterations = %d\n\n", N, Niter);
+    if (myid ==0) printf("N = %d\nIterations = %d\n", N, Niter);
 
     t1 = get_cur_time();
     laplace (A, Anew, daprev, danext, N, LD, Niter);
     t2 = get_cur_time();
 
-    if (myid == 0) printf("%f running time with %d processes\n\n", t2-t1, nproc);
-
-    sleep(1);
+    if (myid == 0){
+        printf("\n%f running time with %d processes.\n", t2-t1, nproc);
+    }
 
     if (myid==0)
-        printf("prima  %d -->   %f  %f  \n", myid, A[1*LD+1], A[1*LD+398]);
+        printf("\nprima  %d -->   %f  %f", myid, A[1*LD+1], A[1*LD+398]);
     if (myid==3)
-        printf("centro %d -->   %f  %f  \n", myid, A[49*LD+199], A[49*LD+200]);
+        printf("\ncentro %d -->   %f  %f", myid, A[49*LD+199], A[49*LD+200]);
     if (myid==4)
-        printf("centro %d -->   %f  %f  \n", myid, A[00*LD+199], A[00*LD+200]);
+        printf("\ncentro %d -->   %f  %f", myid, A[0*LD+199], A[0*LD+200]);
     if (myid==7)
-        printf("ultima %d -->   %f  %f  \n", myid, A[48*LD+1], A[48*LD+398]);
+        printf("\nultima %d -->   %f  %f", myid, A[48*LD+1], A[48*LD+398]);
 
     MPI_Finalize();
 
