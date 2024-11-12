@@ -8,8 +8,6 @@
 #ifndef laplace_h
 #define laplace_h
 
-#include <mpi.h>
-
 void laplace (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter);
 void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter);
 

@@ -20,6 +20,7 @@
 
 bool is_first_proc_rank(int proc_rank);
 bool is_last_proc_rank(int proc_rank);
+
 bool is_even_proc_rank(int proc_rank);
 
 int get_next_proc_rank(int proc_rank);

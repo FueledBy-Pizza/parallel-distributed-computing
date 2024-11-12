@@ -7,15 +7,13 @@
 
 #include "laplace.h"
 #include "../../../common/mpi_proc/mpi_proc.h"
-#include "../../../common/matrix/matrix.h"
 #include <mpi.h>
 #include <stdio.h>
-#include <unistd.h>
 
 #define NEXT_TO_PREV 10
 #define PREV_TO_NEXT 20
 
-void laplace (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter){
+void laplace (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter) {
     int proc_rank = -1, n_proc = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
@@ -37,25 +35,25 @@ void laplace (float *A, float *Anew, float *daprev, float *danext, int N, int LD
         }
 
         calculate_inner(A, N, LD, Anew, rows_per_proc);
-        if (!(is_first_proc_rank(proc_rank))){
+        if (!(is_first_proc_rank(proc_rank))) {
             calculate_row_top(A, N, LD, Anew, daprev);
         }
-        if (!(is_last_proc_rank(proc_rank))){
+        if (!(is_last_proc_rank(proc_rank))) {
             calculate_row_bottom(A, N, LD, rows_per_proc, Anew, danext);
         }
 
         copy_inner(A, N, LD, Anew, rows_per_proc);
-        if (!(is_first_proc_rank(proc_rank))){
+        if (!(is_first_proc_rank(proc_rank))) {
             copy_row_top(A, N, Anew);
         }
-        if (!(is_last_proc_rank(proc_rank))){
+        if (!(is_last_proc_rank(proc_rank))) {
             copy_row_bottom(A, N, LD, rows_per_proc, Anew);
         }
 
     }
 }
 
-void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter){
+void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter) {
     int proc_rank = -1, n_proc = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
@@ -67,8 +65,8 @@ void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int
 
     int i;
     for (i = 0; i < Niter; ++i) {                       // Niter can be seen as how much "heat" gets dissipated.
-        MPI_Request request_daprev, request_danext, request_sendlast, request_sendfirst;
-        MPI_Status status_danext, status_daprev, status_sendfirst, status_sendlast;
+        MPI_Request request_daprev, request_danext, request_sendfirst, request_sendlast;
+        MPI_Status status_daprev, status_danext, status_sendfirst, status_sendlast;
 
         if (!(is_first_proc_rank(proc_rank))) {
             MPI_Isend(&(A[0]), N, MPI_FLOAT, proc_rank_prev, NEXT_TO_PREV, MPI_COMM_WORLD, &request_sendfirst);
@@ -80,14 +78,14 @@ void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int
         }
 
         calculate_inner(A, N, LD, Anew, rows_per_proc);
-        // Before reading a variable that is going to be recv, it must be ensured it's already recv.
-        if (!(is_first_proc_rank(proc_rank))){
+        // Before reading a chunk that is going to be recv, it must be ensured it's already recv.
+        if (!(is_first_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_daprev, &status_daprev) == MPI_SUCCESS)
                 calculate_row_top(A, N, LD, Anew, daprev);
             else
                 handle_mpi_error(proc_rank, status_daprev.MPI_ERROR);
         }
-        if (!(is_last_proc_rank(proc_rank))){
+        if (!(is_last_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_danext, &status_danext) == MPI_SUCCESS)
                 calculate_row_bottom(A, N, LD, rows_per_proc, Anew, danext);
             else
@@ -95,14 +93,14 @@ void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int
         }
 
         copy_inner(A, N, LD, Anew, rows_per_proc);
-        // Before writing a variable that is going to be sent, it must be ensured it's already sent.
-        if (!(is_first_proc_rank(proc_rank))){
+        // Before writing a chunk that is going to be sent, it must be ensured it's already sent.
+        if (!(is_first_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_sendfirst, &status_sendfirst) == MPI_SUCCESS)
                 copy_row_top(A, N, Anew);
             else
                 handle_mpi_error(proc_rank, status_sendfirst.MPI_ERROR);
         }
-        if (!(is_last_proc_rank(proc_rank))){
+        if (!(is_last_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_sendlast, &status_sendlast) == MPI_SUCCESS)
                 copy_row_bottom(A, N, LD, rows_per_proc, Anew);
             else
@@ -232,10 +230,14 @@ void copy_row_bottom(float *A, const int N, const int LD, const int rows_per_pro
     }
 }
 
+/**
+ @brief Inform the user about the MPI error that has occurred.
+ @param mpi_error has to be of type `MPI_Status.MPI_ERROR`.
+ */
 void handle_mpi_error(int proc_rank, int mpi_error) {
     char mpi_error_string[100];
     int mpi_error_string_length;
 
     MPI_Error_string(mpi_error, mpi_error_string, &mpi_error_string_length);
-    fprintf(stderr, "Process ranked %d failed with MPI error: %s\n", proc_rank, mpi_error_string);
+    fprintf(stderr, "\nProcess ranked %d failed with MPI error: %s\n", proc_rank, mpi_error_string);
 }

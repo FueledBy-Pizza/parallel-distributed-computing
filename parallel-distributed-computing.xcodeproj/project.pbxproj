@@ -48,7 +48,6 @@
 			membershipExceptions = (
 				common/c_timer/c_timer.c,
 				common/integer/integer.c,
-				common/matrix/matrix.c,
 				common/mpi_proc/mpi_proc.c,
 				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,

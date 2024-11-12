@@ -35,10 +35,10 @@ int main(int argc, const char * argv[]) {
     sleep(1);
 
     LD = N;
-    A = (float *) malloc(500 * 500 * sizeof(float));
-    Anew = (float *) malloc(500 * 500 * sizeof(float));
-    daprev = (float *) malloc(500 * sizeof(float));
-    danext = (float *) malloc(500 * sizeof(float));
+    A = (float *) malloc(N * N * sizeof(float));
+    Anew = (float *) malloc(N * N * sizeof(float));
+    daprev = (float *) malloc(N * sizeof(float));
+    danext = (float *) malloc(N * sizeof(float));
 
     for (i = 0; i< N/nproc; i++){              // tutta la matrice locale = 0
         for (j = 0; j< N; j++){
@@ -64,25 +64,31 @@ int main(int argc, const char * argv[]) {
         A[i*LD+N-1] = N - 1 - A[i*LD+0];      // A[i][0] + A[i][N-1] = 0 sempre
     }
 
-    if (myid ==0) printf("N = %d\nIterations = %d\n", N, Niter);
+    if (myid ==0)
+        printf("N = %d\nIterations = %d\n", N, Niter);
 
     t1 = get_cur_time();
-    laplace_nb (A, Anew, daprev, danext, N, LD, Niter);
+    laplace(A, Anew, daprev, danext, N, LD, Niter);
     t2 = get_cur_time();
 
-    if (myid == 0){
-        printf("\n%f running time with %d processes.\n", t2-t1, nproc);
-    }
+    if (myid == 0)
+        printf("\nFunction %s addressed the problem in %f(s) running time with %d processes.\n", "laplace", t2-t1, nproc);
 
     if (myid==0)
-        printf("\nprima  %d -->   %f  %f", myid, A[1*LD+1], A[1*LD+398]);
+        printf("\nFirst row %d --> %f      %f", myid, A[1*LD+1], A[1*LD+398]);
     if (myid==3)
-        printf("\ncentro %d -->   %f  %f", myid, A[49*LD+199], A[49*LD+200]);
+        printf("\nCenter %d    --> %f      %f", myid, A[49*LD+199], A[49*LD+200]);
     if (myid==4)
-        printf("\ncentro %d -->   %f  %f", myid, A[0*LD+199], A[0*LD+200]);
+        printf("\nCenter %d    --> %f      %f", myid, A[0*LD+199], A[0*LD+200]);
     if (myid==7)
-        printf("\nultima %d -->   %f  %f", myid, A[48*LD+1], A[48*LD+398]);
+        printf("\nLast row %d  --> %f    %f\n", myid, A[48*LD+1], A[48*LD+398]);
+
+    free(A);
+    free(Anew);
+    free(daprev);
+    free(danext);
 
     MPI_Finalize();
 
+    return 0;
 }
