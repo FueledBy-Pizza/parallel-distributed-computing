@@ -61,6 +61,8 @@
 				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
+				laplace/build/Makefile,
+				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,
 				"ring-sum/build/Makefile",
 				"ring-sum/src/main.c",

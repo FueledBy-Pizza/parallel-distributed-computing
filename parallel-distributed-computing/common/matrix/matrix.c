@@ -12,7 +12,6 @@
 #include "matrix.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <mpi.h>
 
 void init_matrix_randomly(int *N, int *LD, double **A){
     *A = (double *) malloc(sizeof(double) * (*N) * (*LD));
