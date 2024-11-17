@@ -8,6 +8,7 @@
 #ifndef hpc_h
 #define hpc_h
 
-#include <stdio.h>
+void gemm_ikj(double *C, const double *A, const double *B, const int N, const int LD);
+void gemm_kji(double *C, const double *A, const double *B, const int N, const int LD);
 
 #endif /* hpc_h */

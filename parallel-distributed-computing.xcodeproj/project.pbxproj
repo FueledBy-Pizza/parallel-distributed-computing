@@ -67,6 +67,9 @@
 		619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				common/c_timer/c_timer.c,
+				common/matrix/matrix.c,
+				hpc/src/hpc/hpc.c,
 				hpc/src/main.c,
 			);
 			target = 619D66E22CE8DA1400E95D23 /* hpc */;
