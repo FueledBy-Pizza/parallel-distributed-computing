@@ -25,6 +25,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		619D66E12CE8DA1400E95D23 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		61E7DD0D2CC83F23005C25CB /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -39,6 +48,7 @@
 /* Begin PBXFileReference section */
 		611B406B2CBA5E75003E294F /* maxsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = maxsum; sourceTree = BUILT_PRODUCTS_DIR; };
 		612A816F2CD93F320020E786 /* laplace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = laplace; sourceTree = BUILT_PRODUCTS_DIR; };
+		619D66E32CE8DA1400E95D23 /* hpc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E7DD0F2CC83F23005C25CB /* ring-sum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ring-sum"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -54,6 +64,13 @@
 			);
 			target = 612A816E2CD93F320020E786 /* laplace */;
 		};
+		619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				hpc/main.c,
+			);
+			target = 619D66E22CE8DA1400E95D23 /* hpc */;
+		};
 		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -61,6 +78,7 @@
 				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
+				hpc/main.c,
 				laplace/build/Makefile,
 				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,
@@ -91,6 +109,7 @@
 				61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */,
 				61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ring-sum" target */,
 				612A81792CD93F460020E786 /* Exceptions for "parallel-distributed-computing" folder in "laplace" target */,
+				619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -106,6 +125,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		613E115D2CB97F5C00820F7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		619D66E02CE8DA1400E95D23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -129,6 +155,7 @@
 				611B406B2CBA5E75003E294F /* maxsum */,
 				61E7DD0F2CC83F23005C25CB /* ring-sum */,
 				612A816F2CD93F320020E786 /* laplace */,
+				619D66E32CE8DA1400E95D23 /* hpc */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +203,25 @@
 			productReference = 611B406B2CBA5E75003E294F /* maxsum */;
 			productType = "com.apple.product-type.tool";
 		};
+		619D66E22CE8DA1400E95D23 /* hpc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 619D66E92CE8DA1400E95D23 /* Build configuration list for PBXNativeTarget "hpc" */;
+			buildPhases = (
+				619D66DF2CE8DA1400E95D23 /* Sources */,
+				619D66E02CE8DA1400E95D23 /* Frameworks */,
+				619D66E12CE8DA1400E95D23 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hpc;
+			packageProductDependencies = (
+			);
+			productName = hpc;
+			productReference = 619D66E32CE8DA1400E95D23 /* hpc */;
+			productType = "com.apple.product-type.tool";
+		};
 		61E7DD0E2CC83F23005C25CB /* ring-sum */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61E7DD132CC83F23005C25CB /* Build configuration list for PBXNativeTarget "ring-sum" */;
@@ -210,6 +256,9 @@
 					613E115F2CB97F5C00820F7E = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					619D66E22CE8DA1400E95D23 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					61E7DD0E2CC83F23005C25CB = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -232,6 +281,7 @@
 				613E115F2CB97F5C00820F7E /* maxsum */,
 				61E7DD0E2CC83F23005C25CB /* ring-sum */,
 				612A816E2CD93F320020E786 /* laplace */,
+				619D66E22CE8DA1400E95D23 /* hpc */,
 			);
 		};
 /* End PBXProject section */
@@ -245,6 +295,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		613E115C2CB97F5C00820F7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		619D66DF2CE8DA1400E95D23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -449,6 +506,26 @@
 			};
 			name = Release;
 		};
+		619D66E72CE8DA1400E95D23 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		619D66E82CE8DA1400E95D23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		61E7DD142CC83F23005C25CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -505,6 +582,15 @@
 			buildConfigurations = (
 				613E11682CB97F5C00820F7E /* Debug */,
 				613E11692CB97F5C00820F7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		619D66E92CE8DA1400E95D23 /* Build configuration list for PBXNativeTarget "hpc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				619D66E72CE8DA1400E95D23 /* Debug */,
+				619D66E82CE8DA1400E95D23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
