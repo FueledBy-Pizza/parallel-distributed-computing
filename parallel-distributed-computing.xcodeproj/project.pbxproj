@@ -67,7 +67,7 @@
 		619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				hpc/main.c,
+				hpc/src/main.c,
 			);
 			target = 619D66E22CE8DA1400E95D23 /* hpc */;
 		};
@@ -78,7 +78,7 @@
 				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
-				hpc/main.c,
+				hpc/src/main.c,
 				laplace/build/Makefile,
 				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,
