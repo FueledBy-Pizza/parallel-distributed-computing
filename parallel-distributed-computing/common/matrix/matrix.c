@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void init_matrix_randomly(const int N, const int LD, double *A){
+void init_matrix_randomly_float(const int N, const int LD, float *A){
     int i, j;
     for (i = 0; i < N; ++i) {
         for (j = 0; j < LD; ++j) {
@@ -22,7 +22,26 @@ void init_matrix_randomly(const int N, const int LD, double *A){
     }
 }
 
-void print_matrix(const int N, const int LD, const float *A){
+void init_matrix_randomly_double(const int N, const int LD, double *A){
+    int i, j;
+    for (i = 0; i < N; ++i) {
+        for (j = 0; j < LD; ++j) {
+            A[(i * LD) + j] = (rand() % 100);
+        }
+    }
+}
+
+void print_matrix_float(const int N, const int LD, const float *A){
+    int i, j;
+    for (i = 0; i < N; ++i) {
+        for (j = 0; j < LD; ++j) {
+            printf("%f ", A[(i * LD) + j]);
+        }
+        printf("\n");
+    }
+}
+
+void print_matrix_double(const int N, const int LD, const double *A){
     int i, j;
     for (i = 0; i < N; ++i) {
         for (j = 0; j < LD; ++j) {
