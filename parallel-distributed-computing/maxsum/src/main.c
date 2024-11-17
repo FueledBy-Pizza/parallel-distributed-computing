@@ -23,7 +23,7 @@ int main(int argc, const char * argv[]) {
     int LD = N;
     double MAX;
     double *A = (double *) malloc(sizeof(double) * N * LD);
-    double t1, t2, exec_time, speedup, efficiency, one_thread_exec_time = 0.0;
+    double t1, t2, exec_time, speedup, efficiency, single_thread_exec_time = 0.0;
 
     init_matrix_randomly(N, LD, A);
 
@@ -36,10 +36,10 @@ int main(int argc, const char * argv[]) {
         t2 = get_cur_time();
 
         if (NT == 1)
-            one_thread_exec_time = t2-t1;
+            single_thread_exec_time = t2-t1;
 
         exec_time = t2 - t1;
-        speedup = one_thread_exec_time / exec_time;
+        speedup = single_thread_exec_time / exec_time;
         efficiency = speedup / NT;
 
         printf("The maximum sum of the square roots from any row (with N = %d) is %f\n", N,  MAX);
