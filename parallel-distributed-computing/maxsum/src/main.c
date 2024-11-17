@@ -21,10 +21,11 @@ int main(int argc, const char * argv[]) {
     int NT;
     int N = atoi(argv[1]);
     int LD = N;
-    double MAX, *A = NULL;
+    double MAX;
+    double *A = (double *) malloc(sizeof(double) * N * LD);
     double t1, t2, exec_time, speedup, efficiency, one_thread_exec_time = 0.0;
 
-    init_matrix_randomly(&N, &LD, &A);
+    init_matrix_randomly(N, LD, A);
 
     for (NT = 1; NT <= 8; NT = NT * 2) {
         printf("===============\n");

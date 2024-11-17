@@ -13,18 +13,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void init_matrix_randomly(int *N, int *LD, double **A){
-    *A = (double *) malloc(sizeof(double) * (*N) * (*LD));
-
+void init_matrix_randomly(const int N, const int LD, double *A){
     int i, j;
-    for (i = 0; i < (*N); ++i) {
-        for (j = 0; j < (*LD); ++j) {
-            (*A)[i * (*LD) + j] = (rand() % 100);
+    for (i = 0; i < N; ++i) {
+        for (j = 0; j < LD; ++j) {
+            A[(i * LD) + j] = (rand() % 100);
         }
     }
 }
 
-void print_matrix(int N, int LD, float *A){
+void print_matrix(const int N, const int LD, const float *A){
     int i, j;
     for (i = 0; i < N; ++i) {
         for (j = 0; j < LD; ++j) {

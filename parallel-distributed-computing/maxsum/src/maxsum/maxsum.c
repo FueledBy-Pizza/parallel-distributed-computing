@@ -30,7 +30,7 @@ double maxsum(int N, int LD, double *A, int NT){
         for (i = start_row; i < end_row; ++i) {
             curr_sum = 0;
             for (j = 0; j < LD; ++j) {
-                curr_sum += sqrt(A[i * LD + j]);
+                curr_sum += sqrt(A[(i * LD) + j]);
             }
             if (curr_sum > max_sum)
                 max_sum = curr_sum;

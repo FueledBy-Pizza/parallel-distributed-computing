@@ -12,7 +12,7 @@
 #ifndef matrix_h
 #define matrix_h
 
-void init_matrix_randomly(int *N, int *LD, double **A);
-void print_matrix(int N, int LD, float *A);
+void init_matrix_randomly(const int N, const int LD, double *A);
+void print_matrix(const int N, const int LD, const float *A);
 
 #endif /* matrix_h */
