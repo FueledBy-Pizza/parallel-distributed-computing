@@ -12,8 +12,8 @@
 #include "../../common/c_timer/c_timer.h"
 
 int main(int argc, const char * argv[]) {
-    int N = 2000;
-    int LD = 2500;
+    int N = 256;
+    int LD = N;
 
     double t0, t1, t2, t3;
 
@@ -30,19 +30,22 @@ int main(int argc, const char * argv[]) {
     print_matrix_double(N, LD, C);*/
 
     t0 = get_cur_time();
-    gemm_ikj(C, A, B, N, LD);
+    matmatikj(C, A, B, N, LD);
     t1 = get_cur_time();
 
     /*printf("\nC after GeMM (ikj):\n");
     print_matrix_double(N, LD, C);*/
     printf("\nExecution time of GeMM (ikj) is %f(s)\n", t1 - t0);
 
-    
     t2 = get_cur_time();
-    gemm_kji(C, A, B, N, LD);
+    matmatkji(C, A, B, N, LD);
     t3 = get_cur_time();
 
     /*printf("\nC after GeMM (kji):\n");
     print_matrix_double(N, LD, C);*/
     printf("\nExecution time of GeMM (kji) is %f(s)\n", t1 - t0);
+
+    free(A);
+    free(B);
+    free(C);
 }

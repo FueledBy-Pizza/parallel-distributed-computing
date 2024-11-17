@@ -8,7 +8,11 @@
 #ifndef hpc_h
 #define hpc_h
 
-void gemm_ikj(double *C, const double *A, const double *B, const int N, const int LD);
-void gemm_kji(double *C, const double *A, const double *B, const int N, const int LD);
+void matmatijk(double *C, const double *A, const double *B, const int N, const int LD);
+void matmatkji(double *C, const double *A, const double *B, const int N, const int LD);
+void matmatikj(double *C, const double *A, const double *B, const int N, const int LD);
+void matmatjik(double *C, const double *A, const double *B, const int N, const int LD);
+void matmatkij(double *C, const double *A, const double *B, const int N, const int LD);
+void matmatjki(double *C, const double *A, const double *B, const int N, const int LD);
 
 #endif /* hpc_h */
