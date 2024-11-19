@@ -15,7 +15,7 @@ int main(int argc, const char * argv[]) {
     int N = 3;
     int LD = N;
 
-    double t0, t1, t2, t3;
+    double t0, t1;
 
     double *A = (double *) malloc(sizeof(double) * N * LD);
     double *B = (double *) malloc(sizeof(double) * N * LD);
@@ -30,7 +30,7 @@ int main(int argc, const char * argv[]) {
     print_matrix_double(N, LD, C);*/
 
     t0 = get_cur_time();
-    matmatijk(N, N, N, C, A, B, LD, LD, LD);
+    matmatjki(N, N, N, C, A, B, LD, LD, LD);
     t1 = get_cur_time();
 
     printf("\nC after GeMM (ikj):\n");
@@ -42,8 +42,8 @@ int main(int argc, const char * argv[]) {
     t3 = get_cur_time();*/
 
     /*printf("\nC after GeMM (kji):\n");
-    print_matrix_double(N, LD, C);*/
-    printf("\nExecution time of GeMM (kji) is %f(s)\n", t1 - t0);
+    print_matrix_double(N, LD, C);
+    printf("\nExecution time of GeMM (kji) is %f(s)\n", t1 - t0);*/
 
     free(A);
     free(B);
