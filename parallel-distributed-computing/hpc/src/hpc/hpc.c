@@ -10,12 +10,12 @@
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the ijk indexes order.
  */
-void matmatijk(double *C, const double *A, const double *B, const int N, const int LD) {
+void matmatijk(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N1, int N2, int N3) {
     int i, j, k;
-    for (i = 0; i < N; ++i) {
-        for (j = 0; j < N; ++j) {
-            for (k = 0; k < N; ++k) {
-                C[(i * LD) + j] = C[(i * LD) + j] + (A[(i * LD) + k] * B[(k * LD) + j]);
+    for (i = 0; i < N1; ++i) {
+        for (j = 0; j < N3; ++j) {
+            for (k = 0; k < N2; ++k) {
+                C[(i * ldC) + j] = C[(i * ldC) + j] + (A[(i * ldA) + k] * B[(k * ldB) + j]);
             }
         }
     }

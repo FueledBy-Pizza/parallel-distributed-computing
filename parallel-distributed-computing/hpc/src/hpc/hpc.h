@@ -8,7 +8,7 @@
 #ifndef hpc_h
 #define hpc_h
 
-void matmatijk(double *C, const double *A, const double *B, const int N, const int LD);
+void matmatijk(int ldA, int ldB, int ldC, double *A, double*B, double *C, int N1, int N2, int N3);
 void matmatkji(double *C, const double *A, const double *B, const int N, const int LD);
 void matmatikj(double *C, const double *A, const double *B, const int N, const int LD);
 void matmatjik(double *C, const double *A, const double *B, const int N, const int LD);

@@ -12,7 +12,7 @@
 #include "../../common/c_timer/c_timer.h"
 
 int main(int argc, const char * argv[]) {
-    int N = 256;
+    int N = 3;
     int LD = N;
 
     double t0, t1, t2, t3;
@@ -30,16 +30,16 @@ int main(int argc, const char * argv[]) {
     print_matrix_double(N, LD, C);*/
 
     t0 = get_cur_time();
-    matmatikj(C, A, B, N, LD);
+    matmatijk(N, N, N, C, A, B, LD, LD, LD);
     t1 = get_cur_time();
 
-    /*printf("\nC after GeMM (ikj):\n");
-    print_matrix_double(N, LD, C);*/
+    printf("\nC after GeMM (ikj):\n");
+    print_matrix_double(N, LD, C);
     printf("\nExecution time of GeMM (ikj) is %f(s)\n", t1 - t0);
 
-    t2 = get_cur_time();
+    /*t2 = get_cur_time();
     matmatkji(C, A, B, N, LD);
-    t3 = get_cur_time();
+    t3 = get_cur_time();*/
 
     /*printf("\nC after GeMM (kji):\n");
     print_matrix_double(N, LD, C);*/
