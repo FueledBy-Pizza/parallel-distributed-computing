@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "61E7DD0E2CC83F23005C25CB"
-               BuildableName = "ring-sum"
-               BlueprintName = "ring-sum"
+               BuildableName = "ringsum"
+               BlueprintName = "ringsum"
                ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -49,8 +49,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "61E7DD0E2CC83F23005C25CB"
-            BuildableName = "ring-sum"
-            BlueprintName = "ring-sum"
+            BuildableName = "ringsum"
+            BlueprintName = "ringsum"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -92,8 +92,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "61E7DD0E2CC83F23005C25CB"
-            BuildableName = "ring-sum"
-            BlueprintName = "ring-sum"
+            BuildableName = "ringsum"
+            BlueprintName = "ringsum"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

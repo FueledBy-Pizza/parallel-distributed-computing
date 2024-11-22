@@ -1,6 +1,6 @@
 //
 //  main.c
-//  ring-sum
+//  ringsum
 //
 //  Created by Giuliano Aiello on 22/10/24.
 //
@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <mpi.h>
 #include "../../common/mpi_proc/mpi_proc_vector/mpi_proc_vector.h"
-#include "ring-sum/ring-sum.h"
+#include "ringsum/ringsum.h"
 
 int main(int argc, const char * argv[]) {
 
@@ -29,7 +29,7 @@ int main(int argc, const char * argv[]) {
     A = (int *) malloc(sizeof(int) * vector_size);
     populate_vector_by_proc_rank(A, vector_size);
 
-    int total_sum = ring_sum(A, vector_size);
+    int total_sum = ringsum(A, vector_size);
 
     printf("Hello from process ranked %d, total sum is %d.\n", proc_rank, total_sum);
 

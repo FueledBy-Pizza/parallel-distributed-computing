@@ -1,11 +1,11 @@
 CC = mpicc
-SOURCES = ../src/ring-sum/ring-sum.c \
+SOURCES = ../src/ringsum/ringsum.c \
           ../../common/mpi_proc/mpi_proc.c \
           ../../common/integer/integer.c \
           ../../common/vector/vector.c \
           ../../common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c \
           ../src/main.c
-TARGET = ring-sum.out
+TARGET = ringsum.out
 
 # Default target
 all: $(TARGET)

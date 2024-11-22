@@ -3,9 +3,9 @@
 #PBS -q studenti
 #PBS -l nodes=8:ppn=8
 #PBS -l mem=1GB
-#PBS -N ring-sum
-#PBS -o ring-sum.out
-#PBS -e ring-sum.err
+#PBS -N ringsum
+#PBS -o ringsum.out
+#PBS -e ringsum.err
 
 cd $PBS_O_WORKDIR
 
@@ -16,12 +16,12 @@ CONFIG_SOURCE="$(pwd)/../config.sh"
 . "${CONFIG_SOURCE}"
 
 MPI_DIR=/usr/lib64/openmpi/1.4-gcc/bin
-$MPI_DIR/mpicc -o ring-sum ../src/ring-sum/ring-sum.c \
+$MPI_DIR/mpicc -o ringsum ../src/ringsum/ringsum.c \
                            ../../common/mpi_proc/mpi_proc.c \
                            ../../common/integer/integer.c \
                            ../../common/vector/vector.c \
                            ../../common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c \
                            ../src/main.c
-$MPI_DIR/mpiexec -np $NCPU -machinefile machinefile ring-sum $VECTOR_SIZE
+$MPI_DIR/mpiexec -np $NCPU -machinefile machinefile ringsum $VECTOR_SIZE
 
 rm -rf machinefile

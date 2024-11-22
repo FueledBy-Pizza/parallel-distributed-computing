@@ -1,17 +1,17 @@
 //
-//  ring-sum.c
-//  ring-sum
+//  ringsum.c
+//  ringsum
 //
 //  Created by Giuliano Aiello on 23/10/24.
 //
 
-#include "ring-sum.h"
+#include "ringsum.h"
 #include "../../../common/vector/vector.h"
 #include "../../../common/mpi_proc/mpi_proc.h"
 #include <mpi.h>
 #include <stdbool.h>
 
-int ring_sum(int *A, int N){
+int ringsum(int *A, int N){
 
     int proc_rank, num_proc = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
