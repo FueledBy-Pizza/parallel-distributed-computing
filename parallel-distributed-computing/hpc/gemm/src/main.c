@@ -15,6 +15,14 @@
 
 int main(int argc, const char * argv[]) {
 
+    if (argc < 2) {
+        fprintf(stderr, "Usage: %s <matrix_order>\n", argv[0]);
+        return EXIT_FAILURE;
+    }
+
+    int N = atoi(argv[1]);
+    int LD = N;
+
 #ifdef __clang__
     printf("  Compiler: Clang\n");
     printf("  Version: %d.%d.%d\n", __clang_major__, __clang_minor__, __clang_patchlevel__);
@@ -31,9 +39,6 @@ int main(int argc, const char * argv[]) {
 #ifdef __OPTIMIZE__
     printf("  Optimization: Enabled\n");
 #endif
-
-    int N = 128;
-    int LD = N;
 
     double *A = (double *) malloc(sizeof(double) * N * LD);
     double *B = (double *) malloc(sizeof(double) * N * LD);
