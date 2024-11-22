@@ -4,7 +4,7 @@ SOURCES = ../src/gemm/gemm.c \
           ../../../common/matrix/matrix.c \
           ../../../common/c_timer/c_timer.c \
           ../src/main.c
-TARGET = gemm.out
+TARGET = hpc-gemm.out
 
 # Default target
 all: $(TARGET)
