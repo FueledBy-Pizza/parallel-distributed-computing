@@ -34,6 +34,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		61DF17172CF0E86100065A51 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		61E7DD0D2CC83F23005C25CB /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,6 +58,7 @@
 		611B406B2CBA5E75003E294F /* maxsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = maxsum; sourceTree = BUILT_PRODUCTS_DIR; };
 		612A816F2CD93F320020E786 /* laplace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = laplace; sourceTree = BUILT_PRODUCTS_DIR; };
 		619D66E32CE8DA1400E95D23 /* hpc-gemm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-gemm"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61DF17192CF0E86100065A51 /* matmatblock */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = matmatblock; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E7DD0F2CC83F23005C25CB /* ringsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ringsum; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,6 +92,7 @@
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
 				hpc/gemm/src/main.c,
+				hpc/matmatblock/main.c,
 				laplace/build/Makefile,
 				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,
@@ -90,6 +101,13 @@
 				ringsum/src/ringsum/ringsum.c,
 			);
 			target = 613E115F2CB97F5C00820F7E /* maxsum */;
+		};
+		61DF17232CF0E86700065A51 /* Exceptions for "parallel-distributed-computing" folder in "matmatblock" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				hpc/matmatblock/main.c,
+			);
+			target = 61DF17182CF0E86100065A51 /* matmatblock */;
 		};
 		61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ringsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -113,6 +131,7 @@
 				61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ringsum" target */,
 				612A81792CD93F460020E786 /* Exceptions for "parallel-distributed-computing" folder in "laplace" target */,
 				619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc-gemm" target */,
+				61DF17232CF0E86700065A51 /* Exceptions for "parallel-distributed-computing" folder in "matmatblock" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -141,6 +160,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61DF17162CF0E86100065A51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61E7DD0C2CC83F23005C25CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,6 +185,7 @@
 				61E7DD0F2CC83F23005C25CB /* ringsum */,
 				612A816F2CD93F320020E786 /* laplace */,
 				619D66E32CE8DA1400E95D23 /* hpc-gemm */,
+				61DF17192CF0E86100065A51 /* matmatblock */,
 			);
 			sourceTree = "<group>";
 		};
@@ -225,6 +252,25 @@
 			productReference = 619D66E32CE8DA1400E95D23 /* hpc-gemm */;
 			productType = "com.apple.product-type.tool";
 		};
+		61DF17182CF0E86100065A51 /* matmatblock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61DF171F2CF0E86100065A51 /* Build configuration list for PBXNativeTarget "matmatblock" */;
+			buildPhases = (
+				61DF17152CF0E86100065A51 /* Sources */,
+				61DF17162CF0E86100065A51 /* Frameworks */,
+				61DF17172CF0E86100065A51 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = matmatblock;
+			packageProductDependencies = (
+			);
+			productName = matmatblock;
+			productReference = 61DF17192CF0E86100065A51 /* matmatblock */;
+			productType = "com.apple.product-type.tool";
+		};
 		61E7DD0E2CC83F23005C25CB /* ringsum */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61E7DD132CC83F23005C25CB /* Build configuration list for PBXNativeTarget "ringsum" */;
@@ -262,6 +308,9 @@
 					619D66E22CE8DA1400E95D23 = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					61DF17182CF0E86100065A51 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					61E7DD0E2CC83F23005C25CB = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -285,6 +334,7 @@
 				61E7DD0E2CC83F23005C25CB /* ringsum */,
 				612A816E2CD93F320020E786 /* laplace */,
 				619D66E22CE8DA1400E95D23 /* hpc-gemm */,
+				61DF17182CF0E86100065A51 /* matmatblock */,
 			);
 		};
 /* End PBXProject section */
@@ -305,6 +355,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		619D66DF2CE8DA1400E95D23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61DF17152CF0E86100065A51 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -530,6 +587,26 @@
 			};
 			name = Release;
 		};
+		61DF171D2CF0E86100065A51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61DF171E2CF0E86100065A51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		61E7DD142CC83F23005C25CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -595,6 +672,15 @@
 			buildConfigurations = (
 				619D66E72CE8DA1400E95D23 /* Debug */,
 				619D66E82CE8DA1400E95D23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61DF171F2CF0E86100065A51 /* Build configuration list for PBXNativeTarget "matmatblock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61DF171D2CF0E86100065A51 /* Debug */,
+				61DF171E2CF0E86100065A51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
