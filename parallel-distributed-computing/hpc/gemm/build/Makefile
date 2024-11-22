@@ -1,10 +1,10 @@
 CC = cc
 CFLAGS = -O3
-SOURCES = ../src/hpc/hpc.c \
-          ../../common/matrix/matrix.c \
-          ../../common/c_timer/c_timer.c \
+SOURCES = ../src/gemm/gemm.c \
+          ../../../common/matrix/matrix.c \
+          ../../../common/c_timer/c_timer.c \
           ../src/main.c
-TARGET = hpc.out
+TARGET = gemm.out
 
 # Default target
 all: $(TARGET)

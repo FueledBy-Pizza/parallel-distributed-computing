@@ -1,11 +1,11 @@
 //
-//  hpc.c
-//  hpc
+//  gemm.c
+//  gemm
 //
 //  Created by Giuliano Aiello on 17/11/24.
 //
 
-#include "hpc.h"
+#include "gemm.h"
 
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the ijk indexes order.

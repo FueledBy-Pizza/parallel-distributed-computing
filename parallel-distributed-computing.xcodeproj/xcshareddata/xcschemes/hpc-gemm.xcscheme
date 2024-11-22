@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "619D66E22CE8DA1400E95D23"
-               BuildableName = "hpc"
-               BlueprintName = "hpc"
+               BuildableName = "hpc-gemm"
+               BlueprintName = "hpc-gemm"
                ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "619D66E22CE8DA1400E95D23"
-            BuildableName = "hpc"
-            BlueprintName = "hpc"
+            BuildableName = "hpc-gemm"
+            BlueprintName = "hpc-gemm"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -63,8 +63,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "619D66E22CE8DA1400E95D23"
-            BuildableName = "hpc"
-            BlueprintName = "hpc"
+            BuildableName = "hpc-gemm"
+            BlueprintName = "hpc-gemm"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

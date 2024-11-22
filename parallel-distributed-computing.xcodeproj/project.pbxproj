@@ -48,7 +48,7 @@
 /* Begin PBXFileReference section */
 		611B406B2CBA5E75003E294F /* maxsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = maxsum; sourceTree = BUILT_PRODUCTS_DIR; };
 		612A816F2CD93F320020E786 /* laplace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = laplace; sourceTree = BUILT_PRODUCTS_DIR; };
-		619D66E32CE8DA1400E95D23 /* hpc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		619D66E32CE8DA1400E95D23 /* hpc-gemm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-gemm"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E7DD0F2CC83F23005C25CB /* ring-sum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "ring-sum"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -64,15 +64,15 @@
 			);
 			target = 612A816E2CD93F320020E786 /* laplace */;
 		};
-		619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc" target */ = {
+		619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc-gemm" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				common/c_timer/c_timer.c,
 				common/matrix/matrix.c,
-				hpc/src/hpc/hpc.c,
-				hpc/src/main.c,
+				hpc/gemm/src/gemm/gemm.c,
+				hpc/gemm/src/main.c,
 			);
-			target = 619D66E22CE8DA1400E95D23 /* hpc */;
+			target = 619D66E22CE8DA1400E95D23 /* hpc-gemm */;
 		};
 		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -81,7 +81,7 @@
 				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
 				common/mpi_proc/mpi_proc.c,
 				common/vector/vector.c,
-				hpc/src/main.c,
+				hpc/gemm/src/main.c,
 				laplace/build/Makefile,
 				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,
@@ -112,7 +112,7 @@
 				61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */,
 				61E7DD1B2CC8404D005C25CB /* Exceptions for "parallel-distributed-computing" folder in "ring-sum" target */,
 				612A81792CD93F460020E786 /* Exceptions for "parallel-distributed-computing" folder in "laplace" target */,
-				619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc" target */,
+				619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc-gemm" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -158,7 +158,7 @@
 				611B406B2CBA5E75003E294F /* maxsum */,
 				61E7DD0F2CC83F23005C25CB /* ring-sum */,
 				612A816F2CD93F320020E786 /* laplace */,
-				619D66E32CE8DA1400E95D23 /* hpc */,
+				619D66E32CE8DA1400E95D23 /* hpc-gemm */,
 			);
 			sourceTree = "<group>";
 		};
@@ -206,9 +206,9 @@
 			productReference = 611B406B2CBA5E75003E294F /* maxsum */;
 			productType = "com.apple.product-type.tool";
 		};
-		619D66E22CE8DA1400E95D23 /* hpc */ = {
+		619D66E22CE8DA1400E95D23 /* hpc-gemm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 619D66E92CE8DA1400E95D23 /* Build configuration list for PBXNativeTarget "hpc" */;
+			buildConfigurationList = 619D66E92CE8DA1400E95D23 /* Build configuration list for PBXNativeTarget "hpc-gemm" */;
 			buildPhases = (
 				619D66DF2CE8DA1400E95D23 /* Sources */,
 				619D66E02CE8DA1400E95D23 /* Frameworks */,
@@ -218,11 +218,11 @@
 			);
 			dependencies = (
 			);
-			name = hpc;
+			name = "hpc-gemm";
 			packageProductDependencies = (
 			);
 			productName = hpc;
-			productReference = 619D66E32CE8DA1400E95D23 /* hpc */;
+			productReference = 619D66E32CE8DA1400E95D23 /* hpc-gemm */;
 			productType = "com.apple.product-type.tool";
 		};
 		61E7DD0E2CC83F23005C25CB /* ring-sum */ = {
@@ -284,7 +284,7 @@
 				613E115F2CB97F5C00820F7E /* maxsum */,
 				61E7DD0E2CC83F23005C25CB /* ring-sum */,
 				612A816E2CD93F320020E786 /* laplace */,
-				619D66E22CE8DA1400E95D23 /* hpc */,
+				619D66E22CE8DA1400E95D23 /* hpc-gemm */,
 			);
 		};
 /* End PBXProject section */
@@ -590,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		619D66E92CE8DA1400E95D23 /* Build configuration list for PBXNativeTarget "hpc" */ = {
+		619D66E92CE8DA1400E95D23 /* Build configuration list for PBXNativeTarget "hpc-gemm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				619D66E72CE8DA1400E95D23 /* Debug */,

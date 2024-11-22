@@ -1,6 +1,6 @@
 //
 //  main.c
-//  hpc
+//  gemm
 //
 //  Created by Giuliano Aiello on 16/11/24.
 //
@@ -9,9 +9,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <unistd.h>
-#include "hpc/hpc.h"
-#include "../../common/matrix/matrix.h"
-#include "../../common/c_timer/c_timer.h"
+#include "gemm/gemm.h"
+#include "../../../common/matrix/matrix.h"
+#include "../../../common/c_timer/c_timer.h"
 
 int main(int argc, const char * argv[]) {
 
@@ -105,7 +105,7 @@ int main(int argc, const char * argv[]) {
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
     printf("\nGeMM jki order. N: %d\n", N);
-    printf("Runtime (s): %f, Gflops: %f\n", exec_time, Gflops);
+    printf("Runtime (s): %f, Gflops: %f\n\n", exec_time, Gflops);
 
     free(A);
     free(B);
