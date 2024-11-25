@@ -107,6 +107,7 @@
 			membershipExceptions = (
 				common/c_timer/c_timer.c,
 				common/matrix/matrix.c,
+				hpc/gemm/src/gemm/gemm.c,
 				hpc/matmatblock/src/main.c,
 				hpc/matmatblock/src/matmatblock/matmatblock.c,
 			);
@@ -596,6 +597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;

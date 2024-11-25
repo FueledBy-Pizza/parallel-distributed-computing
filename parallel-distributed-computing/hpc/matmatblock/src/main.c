@@ -14,13 +14,14 @@
 
 int main(int argc, const char * argv[]) {
 
-    if (argc < 2) {
-        fprintf(stderr, "Usage: %s <matrix_order>\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "Usage: %s <matrix_order> <dim_block>\n", argv[0]);
         return EXIT_FAILURE;
     }
 
-    int N = atoi(argv[1]);
-    int LD = N;
+    const int N = atoi(argv[1]);
+    const int dim_block = atof(argv[2]);
+    const int LD = N;
 
 #ifdef __clang__
     printf("  Compiler: Clang\n");
@@ -49,16 +50,31 @@ int main(int argc, const char * argv[]) {
     double exec_time = 0.;
     double Gflops = 0.;
 
-    init_matrix_sequentially_double(N, LD, A);
-    init_matrix_sequentially_double(N, LD, B);
-    init_matrix_sequentially_double(N, LD, C);
+    const int N_A = N;
+    const int N_B = N;
+    const int N_C = N;
+    const int LD_A = LD;
+    const int LD_B = LD;
+    const int LD_C = LD;
+
+    init_matrix_sequentially_double(N_A, LD_A, A);
+    init_matrix_sequentially_double(N_B, LD_B, B);
+    init_matrix_sequentially_double(N_C, LD_C, C);
+
+    const int dimblock_A = dim_block;
+    const int dimblock_B = dim_block;
+    const int dimblock_C = dim_block;
 
     t0 = get_cur_time();
-    matmatblock(LD, LD, LD, A, B, C, N, N, N, 0, 0, 0);
+    matmatblock(LD_A, LD_B, LD_C, A, B, C, N_A, N_B, N_C, dimblock_A, dimblock_B, dimblock_C);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
     printf("\nMatmatblock (leverages on ikj order). N: %d\n", N);
     printf("Runtime (s): %f, Gflops: %f\n", exec_time, Gflops);
+
+    free(A);
+    free(B);
+    free(C);
 
 }
