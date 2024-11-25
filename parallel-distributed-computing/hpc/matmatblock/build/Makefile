@@ -1,6 +1,7 @@
 CC = cc
 CFLAGS = -O3
 SOURCES = ../src/matmatblock/matmatblock.c \
+          ../../gemm/src/gemm/gemm.c \
           ../../../common/matrix/matrix.c \
           ../../../common/c_timer/c_timer.c \
           ../src/main.c

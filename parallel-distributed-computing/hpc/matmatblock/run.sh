@@ -9,6 +9,7 @@ if [ -f config.sh ]; then
     source config.sh
 else
     N=128
+    DIM_BLOCK=256
 fi
 
-./build/hpc-matmatblock.out $N
+./build/hpc-matmatblock.out $N $DIM_BLOCK
