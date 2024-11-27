@@ -6,6 +6,7 @@
 //
 
 #include "gemm.h"
+#include <stdio.h>
 
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the ijk indexes order.
@@ -43,7 +44,7 @@ void matmatikj(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
     for (i = 0; i < N1; ++i) {
         for (k = 0; k < N2; ++k) {
             for (j = 0; j < N3; ++j) {
-                *(C + (i * ldC) + j) = *(C + (i * ldC) + j) + (*(A + (i * ldA) + k) * *(B + (k * ldB) + j));
+                *(C + (i * ldC) + j) += (*(A + (i * ldA) + k)) * (*(B + (k * ldB) + j));
             }
         }
     }
