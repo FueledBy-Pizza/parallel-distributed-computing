@@ -39,7 +39,7 @@ void matmatkji(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the ikj indexes order.
  */
-void matmatikj(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N1, int N2, int N3) {
+void matmatikj(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N1, int N2, int N3) {
     int i, k, j;
     for (i = 0; i < N1; ++i) {
         for (k = 0; k < N2; ++k) {

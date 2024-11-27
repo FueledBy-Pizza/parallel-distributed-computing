@@ -3,22 +3,4 @@
    uuid = "AC1D136C-405C-4F1C-9E96-B6FF7780326D"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "33BDF906-EEF3-4067-BEB0-FCD249C22C54"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "parallel-distributed-computing/hpc/matmatblock/src/matmatblock/matmatblock.c"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "15"
-            endingLineNumber = "15"
-            landmarkName = "matmatblock(ldA, ldB, ldC, A, B, C, N1, N2, N3, dbA, dbB, dbC)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
