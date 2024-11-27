@@ -13,9 +13,9 @@ void matmatblock(int ldA, int ldB, int ldC, double *A, double *B, double *C, int
     // doc: draw matrix multiplication by clearly writing the scope of N1, N2, N3, indexes etc. (pdf 13 - pp.2)
     int ii, jj, kk;
     for (ii = 0; ii < N1; ii+=dbA) {
-        for (jj = 0; jj < N3; jj+=dbB) {
-            for (kk = 0; kk < N2; kk+=dbC) {
-                matmatikj(ldA, ldB, ldC, &(C[(ii * ldC) + jj]), &(A[(ii * ldA) + kk]), &(B[(kk * ldB) + jj]), dbA, dbB, dbC);
+        for (jj = 0; jj < N3; jj+=dbC) {
+            for (kk = 0; kk < N2; kk+=dbB) {
+                matmatikj(ldA, ldB, ldC, &(A[(ii * ldA) + kk]), &(B[(kk * ldB) + jj]), &(C[(ii * ldC) + jj]), dbA, dbB, dbC);
             }
         }
     }
