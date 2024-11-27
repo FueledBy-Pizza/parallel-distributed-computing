@@ -70,7 +70,7 @@ int main(int argc, const char * argv[]) {
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
-    printf("\nMatmatblock (leverages on ikj order). N: %d\n", N);
+    printf("\nMatmatblock (leverages on ikj order). N: %d, DIM_BLOCK: %d\n", N, dim_block);
     printf("Runtime (s): %f, Gflops: %f\n", exec_time, Gflops);
 
     free(A);

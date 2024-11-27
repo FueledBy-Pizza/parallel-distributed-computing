@@ -53,23 +53,23 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "4096"
+            argument = "7000"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "256"
+            argument = "350"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "N"
-            value = "4096"
+            value = "7000"
             isEnabled = "YES">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "DIM_BLOCK"
-            value = "256"
+            value = "350"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

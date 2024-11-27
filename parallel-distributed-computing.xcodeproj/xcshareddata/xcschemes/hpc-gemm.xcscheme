@@ -53,14 +53,14 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "3"
+            argument = "6000"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "N"
-            value = "128"
+            value = "6000"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>
