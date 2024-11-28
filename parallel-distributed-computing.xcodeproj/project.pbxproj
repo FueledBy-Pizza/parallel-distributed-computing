@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXCopyFilesBuildPhase section */
+		612493C22CF897E200E56AB1 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		612A816D2CD93F320020E786 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -56,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		611B406B2CBA5E75003E294F /* maxsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = maxsum; sourceTree = BUILT_PRODUCTS_DIR; };
+		612493C42CF897E200E56AB1 /* hpc-matmatthread */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-matmatthread"; sourceTree = BUILT_PRODUCTS_DIR; };
 		612A816F2CD93F320020E786 /* laplace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = laplace; sourceTree = BUILT_PRODUCTS_DIR; };
 		619D66E32CE8DA1400E95D23 /* hpc-gemm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-gemm"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DF17192CF0E86100065A51 /* hpc-matmatblock */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-matmatblock"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +73,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		612493CE2CF897FF00E56AB1 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatthread" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				hpc/matmatthread/src/main.c,
+				hpc/matmatthread/src/matmatthread/matmatthread.c,
+			);
+			target = 612493C32CF897E200E56AB1 /* hpc-matmatthread */;
+		};
 		612A81792CD93F460020E786 /* Exceptions for "parallel-distributed-computing" folder in "laplace" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -93,6 +111,7 @@
 				common/vector/vector.c,
 				hpc/gemm/src/main.c,
 				hpc/matmatblock/src/main.c,
+				hpc/matmatthread/src/main.c,
 				laplace/build/Makefile,
 				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,
@@ -136,6 +155,7 @@
 				612A81792CD93F460020E786 /* Exceptions for "parallel-distributed-computing" folder in "laplace" target */,
 				619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc-gemm" target */,
 				61DF17232CF0E86700065A51 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatblock" target */,
+				612493CE2CF897FF00E56AB1 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatthread" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -143,6 +163,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		612493C12CF897E200E56AB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		612A816C2CD93F320020E786 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,12 +217,32 @@
 				612A816F2CD93F320020E786 /* laplace */,
 				619D66E32CE8DA1400E95D23 /* hpc-gemm */,
 				61DF17192CF0E86100065A51 /* hpc-matmatblock */,
+				612493C42CF897E200E56AB1 /* hpc-matmatthread */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		612493C32CF897E200E56AB1 /* hpc-matmatthread */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 612493CA2CF897E200E56AB1 /* Build configuration list for PBXNativeTarget "hpc-matmatthread" */;
+			buildPhases = (
+				612493C02CF897E200E56AB1 /* Sources */,
+				612493C12CF897E200E56AB1 /* Frameworks */,
+				612493C22CF897E200E56AB1 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "hpc-matmatthread";
+			packageProductDependencies = (
+			);
+			productName = "hpc-matmatthread";
+			productReference = 612493C42CF897E200E56AB1 /* hpc-matmatthread */;
+			productType = "com.apple.product-type.tool";
+		};
 		612A816E2CD93F320020E786 /* laplace */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 612A81752CD93F320020E786 /* Build configuration list for PBXNativeTarget "laplace" */;
@@ -303,6 +350,9 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					612493C32CF897E200E56AB1 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					612A816E2CD93F320020E786 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -339,11 +389,19 @@
 				612A816E2CD93F320020E786 /* laplace */,
 				619D66E22CE8DA1400E95D23 /* hpc-gemm */,
 				61DF17182CF0E86100065A51 /* hpc-matmatblock */,
+				612493C32CF897E200E56AB1 /* hpc-matmatthread */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		612493C02CF897E200E56AB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		612A816B2CD93F320020E786 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,6 +440,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		612493C82CF897E200E56AB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		612493C92CF897E200E56AB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		612A81732CD93F320020E786 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -645,6 +723,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		612493CA2CF897E200E56AB1 /* Build configuration list for PBXNativeTarget "hpc-matmatthread" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				612493C82CF897E200E56AB1 /* Debug */,
+				612493C92CF897E200E56AB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		612A81752CD93F320020E786 /* Build configuration list for PBXNativeTarget "laplace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
