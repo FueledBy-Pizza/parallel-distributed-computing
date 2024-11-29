@@ -22,6 +22,8 @@ int main(int argc, const char * argv[]) {
         return EXIT_FAILURE;
     }
 
+    print_cc();
+
     int N = atoi(argv[1]);
     int LD = N;
 
