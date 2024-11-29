@@ -21,6 +21,8 @@ int main(int argc, const char * argv[]) {
         return EXIT_FAILURE;
     }
 
+    print_cc();
+
     const int N = atoi(argv[1]);
     const int dim_block = atof(argv[2]);
     const int LD = N;
