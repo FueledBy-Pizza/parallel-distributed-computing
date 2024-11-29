@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#PBS -q studenti
+#PBS -l nodes=8:ppn=8
+#PBS -l mem=1GB
+#PBS -N hpc-matmatblock
+#PBS -o hpc-matmatblock.out
+#PBS -e hpc-matmatblock.err
+
+cd $PBS_O_WORKDIR
+
+sort -u $PBS_NODEFILE > machinefile
+NCPU=`wc -l < machinefile`
+
+CONFIG_SOURCE="$(pwd)/../config.sh"
+
+if [ -f $CONFIG_SOURCE ]; then
+    . $CONFIG_SOURCE
+else
+    N=512
+    DIM_BLOCK=64
+fi
+
+MPI_DIR=/usr/lib64/openmpi/1.4-gcc/bin
+$MPI_DIR/mpicc -o hpc-matmatblock ../src/matmatblock/matmatblock.c \
+                                  ../../gemm/src/gemm/gemm.c \
+                                  ../../../common/matrix/matrix.c \
+                                  ../../../common/c_timer/c_timer.c \
+                                  ../src/main.c
+$MPI_DIR/mpiexec -np $NCPU -machinefile machinefile hpc-matmatblock $N $DIM_BLOCK
+
+rm -rf machinefile
