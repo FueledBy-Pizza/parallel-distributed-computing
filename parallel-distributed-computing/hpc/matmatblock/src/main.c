@@ -24,7 +24,7 @@ int main(int argc, const char * argv[]) {
     print_cc();
 
     const int N = atoi(argv[1]);
-    const int dim_block = atof(argv[2]);
+    const int dim_block = atoi(argv[2]);
     const int LD = N;
 
     double *A = (double *) malloc(sizeof(double) * N * LD);
@@ -37,23 +37,23 @@ int main(int argc, const char * argv[]) {
     double exec_time = 0.;
     double Gflops = 0.;
 
-    const int N_A = N;
-    const int N_B = N;
-    const int N_C = N;
+    const int N1 = N;
+    const int N2 = N;
+    const int N3 = N;
     const int LD_A = LD;
     const int LD_B = LD;
     const int LD_C = LD;
 
-    init_matrix_sequentially_double(N_A, LD_A, A);
-    init_matrix_sequentially_double(N_B, LD_B, B);
-    init_matrix_sequentially_double(N_C, LD_C, C);
+    init_matrix_sequentially_double(N1, LD_A, A);
+    init_matrix_sequentially_double(N2, LD_B, B);
+    init_matrix_sequentially_double(N1, LD_C, C);
 
-    const int dimblock_A = dim_block;
-    const int dimblock_B = dim_block;
-    const int dimblock_C = dim_block;
+    const int dimblock1 = dim_block;
+    const int dimblock2 = dim_block;
+    const int dimblock3 = dim_block;
 
     t0 = get_cur_time();
-    matmatblock(LD_A, LD_B, LD_C, A, B, C, N_A, N_B, N_C, dimblock_A, dimblock_B, dimblock_C);
+    matmatblock(LD_A, LD_B, LD_C, A, B, C, N1, N2, N3, dimblock1, dimblock2, dimblock3);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;

@@ -76,6 +76,10 @@
 		612493CE2CF897FF00E56AB1 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatthread" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				common/c_timer/c_timer.c,
+				common/matrix/matrix.c,
+				hpc/gemm/src/gemm/gemm.c,
+				hpc/matmatblock/src/matmatblock/matmatblock.c,
 				hpc/matmatthread/src/main.c,
 				hpc/matmatthread/src/matmatthread/matmatthread.c,
 			);
