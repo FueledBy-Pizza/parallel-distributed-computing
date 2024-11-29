@@ -60,7 +60,6 @@ int main(int argc, const char * argv[]) {
     Gflops = Nflops / exec_time / value;
     printf("\nMatmatthread (exploits matmatblock). N: %d, DIM_BLOCK: %d, row thread(s): %d, col thread(s): %d\n", N, dim_block, NTROW, NTCOL);
     printf("Runtime (s): %f, Gflops: %f\n", exec_time, Gflops);
-    //print_matrix_double(N1, LD, C);
 
     free(A);
     free(B);

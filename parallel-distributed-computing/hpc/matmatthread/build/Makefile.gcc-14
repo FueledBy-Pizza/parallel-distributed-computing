@@ -1,0 +1,22 @@
+CC = gcc-14
+CFLAGS = -O3 -fopenmp -I/opt/homebrew/opt/libomp/include
+LDFLAGS = -L/opt/homebrew/opt/libomp/lib -lomp
+SOURCES = ../src/matmatthread/matmatthread.c \
+          ../../gemm/src/gemm/gemm.c \
+          ../../matmatblock/src/matmatblock/matmatblock.c \
+          ../../../common/matrix/matrix.c \
+          ../../../common/c_timer/c_timer.c \
+          ../src/main.c
+TARGET = hpc-matmatthread.out
+
+# Default target
+all: $(TARGET)
+
+# Rule to build the target
+$(TARGET): $(SOURCES)
+	$(CC) $(CFLAGS) $(SOURCES) -o $@
+
+# Check for build errors
+.PHONY: all clean
+clean:
+	rm -f $(TARGET)

@@ -40,7 +40,7 @@ int main(int argc, const char * argv[]) {
     init_matrix_sequentially_double(N, LD, A);
     init_matrix_sequentially_double(N, LD, B);
     init_matrix_sequentially_double(N, LD, C);
-/*
+
     t0 = get_cur_time();
     matmatijk(N, N, N, C, A, B, LD, LD, LD);
     t1 = get_cur_time();
@@ -60,7 +60,7 @@ int main(int argc, const char * argv[]) {
     printf("Runtime (s): %f, Gflops: %f\n", exec_time, Gflops);
 
     sleep(1);
-*/
+
     t0 = get_cur_time();
     matmatikj(N, N, N, C, A, B, LD, LD, LD);
     t1 = get_cur_time();
@@ -68,7 +68,7 @@ int main(int argc, const char * argv[]) {
     Gflops = Nflops / exec_time / value;
     printf("\nGeMM ikj order. N: %d\n", N);
     printf("Runtime (s): %f, Gflops: %f\n", exec_time, Gflops);
-/*
+
     sleep(1);
 
     t0 = get_cur_time();
@@ -98,7 +98,7 @@ int main(int argc, const char * argv[]) {
     Gflops = Nflops / exec_time / value;
     printf("\nGeMM jki order. N: %d\n", N);
     printf("Runtime (s): %f, Gflops: %f\n\n", exec_time, Gflops);
-*/
+
     free(A);
     free(B);
     free(C);
