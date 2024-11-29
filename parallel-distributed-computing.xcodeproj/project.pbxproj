@@ -443,9 +443,17 @@
 		612493C82CF897E200E56AB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libomp/include;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libomp/lib;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-fopenmp",
+				);
+				OTHER_LDFLAGS = "-lomp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -453,9 +461,17 @@
 		612493C92CF897E200E56AB1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = /opt/homebrew/opt/libomp/include;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/opt/libomp/lib;
+				OTHER_CFLAGS = (
+					"-Xclang",
+					"-fopenmp",
+				);
+				OTHER_LDFLAGS = "-lomp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
