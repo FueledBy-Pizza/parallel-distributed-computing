@@ -8,7 +8,7 @@ fi
 if [ -f config.sh ]; then
     source config.sh
 else
-    N=128
+    N=4096
     DIM_BLOCK=256
 fi
 
