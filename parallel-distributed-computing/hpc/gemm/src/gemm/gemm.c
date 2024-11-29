@@ -16,7 +16,7 @@ void matmatijk(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
     for (i = 0; i < N1; ++i) {
         for (j = 0; j < N3; ++j) {
             for (k = 0; k < N2; ++k) {
-                C[(i * ldC) + j] = C[(i * ldC) + j] + (A[(i * ldA) + k] * B[(k * ldB) + j]);
+                *(C + (i * ldC) + j) += (*(A + (i * ldA) + k)) * (*(B + (k * ldB) + j));
             }
         }
     }
@@ -30,7 +30,7 @@ void matmatkji(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
     for (k = 0; k < N2; ++k) {
         for (j = 0; j < N3; ++j) {
             for (i = 0; i < N1; ++i) {
-                C[(i * ldC) + j] = C[(i * ldC) + j] + (A[(i * ldA) + k] * B[(k * ldB) + j]);
+                *(C + (i * ldC) + j) += (*(A + (i * ldA) + k)) * (*(B + (k * ldB) + j));
             }
         }
     }
@@ -58,7 +58,7 @@ void matmatjik(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
     for (j = 0; j < N3; ++j) {
         for (i = 0; i < N1; ++i) {
             for (k = 0; k < N2; ++k) {
-                C[(i * ldC) + j] = C[(i * ldC) + j] + (A[(i * ldA) + k] * B[(k * ldB) + j]);
+                *(C + (i * ldC) + j) += (*(A + (i * ldA) + k)) * (*(B + (k * ldB) + j));
             }
         }
     }
@@ -72,7 +72,7 @@ void matmatkij(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
     for (k = 0; k < N2; ++k) {
         for (i = 0; i < N1; ++i) {
             for (j = 0; j < N3; ++j) {
-                C[(i * ldC) + j] = C[(i * ldC) + j] + (A[(i * ldA) + k] * B[(k * ldB) + j]);
+                *(C + (i * ldC) + j) += (*(A + (i * ldA) + k)) * (*(B + (k * ldB) + j));
             }
         }
     }
@@ -86,7 +86,7 @@ void matmatjki(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
     for (j = 0; j < N3; ++j) {
         for (k = 0; k < N2; ++k) {
             for (i = 0; i < N1; ++i) {
-                C[(i * ldC) + j] = C[(i * ldC) + j] + (A[(i * ldA) + k] * B[(k * ldB) + j]);
+                *(C + (i * ldC) + j) += (*(A + (i * ldA) + k)) * (*(B + (k * ldB) + j));
             }
         }
     }
