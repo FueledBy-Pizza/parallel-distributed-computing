@@ -42,7 +42,7 @@ int main(int argc, const char * argv[]) {
     init_matrix_sequentially_double(N, LD, C);
 
     t0 = get_cur_time();
-    matmatijk(N, N, N, C, A, B, LD, LD, LD);
+    matmatijk(LD, LD, LD, A, B, C, N, N, N);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
@@ -52,7 +52,7 @@ int main(int argc, const char * argv[]) {
     sleep(1);
 
     t0 = get_cur_time();
-    matmatkji(N, N, N, C, A, B, LD, LD, LD);
+    matmatkji(LD, LD, LD, A, B, C, N, N, N);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
@@ -62,7 +62,7 @@ int main(int argc, const char * argv[]) {
     sleep(1);
 
     t0 = get_cur_time();
-    matmatikj(N, N, N, C, A, B, LD, LD, LD);
+    matmatikj(LD, LD, LD, A, B, C, N, N, N);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
@@ -72,7 +72,7 @@ int main(int argc, const char * argv[]) {
     sleep(1);
 
     t0 = get_cur_time();
-    matmatjik(N, N, N, C, A, B, LD, LD, LD);
+    matmatjik(LD, LD, LD, A, B, C, N, N, N);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
@@ -82,7 +82,7 @@ int main(int argc, const char * argv[]) {
     sleep(1);
 
     t0 = get_cur_time();
-    matmatkij(N, N, N, C, A, B, LD, LD, LD);
+    matmatkij(LD, LD, LD, A, B, C, N, N, N);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;
@@ -92,7 +92,7 @@ int main(int argc, const char * argv[]) {
     sleep(1);
 
     t0 = get_cur_time();
-    matmatjki(N, N, N, C, A, B, LD, LD, LD);
+    matmatjki(LD, LD, LD, A, B, C, N, N, N);
     t1 = get_cur_time();
     exec_time = t1 - t0;
     Gflops = Nflops / exec_time / value;

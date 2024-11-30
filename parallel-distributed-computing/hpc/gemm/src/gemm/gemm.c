@@ -11,7 +11,7 @@
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the ijk indexes order.
  */
-void matmatijk(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N1, int N2, int N3) {
+void matmatijk(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N1, int N2, int N3) {
     int i, j, k;
     for (i = 0; i < N1; ++i) {
         for (j = 0; j < N3; ++j) {
@@ -25,7 +25,7 @@ void matmatijk(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the kji indexes order.
  */
-void matmatkji(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N1, int N2, int N3) {
+void matmatkji(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N1, int N2, int N3) {
     int k, j, i;
     for (k = 0; k < N2; ++k) {
         for (j = 0; j < N3; ++j) {
@@ -53,7 +53,7 @@ void matmatikj(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the jik indexes order.
  */
-void matmatjik(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N1, int N2, int N3) {
+void matmatjik(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N1, int N2, int N3) {
     int j, i, k;
     for (j = 0; j < N3; ++j) {
         for (i = 0; i < N1; ++i) {
@@ -67,7 +67,7 @@ void matmatjik(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the kij indexes order.
  */
-void matmatkij(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N1, int N2, int N3) {
+void matmatkij(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N1, int N2, int N3) {
     int k, i, j;
     for (k = 0; k < N2; ++k) {
         for (i = 0; i < N1; ++i) {
@@ -81,7 +81,7 @@ void matmatkij(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the jki indexes order.
  */
-void matmatjki(int ldA, int ldB, int ldC, double *C, double *A, double *B, int N1, int N2, int N3) {
+void matmatjki(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N1, int N2, int N3) {
     int j, k, i;
     for (j = 0; j < N3; ++j) {
         for (k = 0; k < N2; ++k) {
