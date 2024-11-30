@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "matmatthread/matmatthread.h"
+#include "../../matmatblock/src/matmatblock/matmatblock.h"
 #include "../../../common/matrix/matrix.h"
 #include "../../../common/c_timer/c_timer.h"
 
