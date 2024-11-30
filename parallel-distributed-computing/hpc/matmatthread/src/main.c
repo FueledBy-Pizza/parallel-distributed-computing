@@ -34,9 +34,14 @@ int main(int argc, const char * argv[]) {
 
     const double Nflops = 2 * pow(N, 3);
     const double value = 1e9;
-    double t0, t1 = 0.;
-    double exec_time = 0.;
-    double Gflops = 0.;
+
+    double t0_t, t1_t = 0.;
+    double exec_time_t = 0.;
+    double Gflops_t = 0.;
+
+    double t0_b, t1_b = 0.;
+    double exec_time_b = 0.;
+    double Gflops_b = 0.;
 
     const int N1 = N;
     const int N2 = N;
@@ -53,13 +58,26 @@ int main(int argc, const char * argv[]) {
     const int dimblock2 = dim_block;
     const int dimblock3 = dim_block;
 
-    t0 = get_cur_time();
+    t0_b = get_cur_time();
+    matmatblock(LD_A, LD_B, LD_C, A, B, C, N1, N2, N3, dimblock1, dimblock2, dimblock3);
+    t1_b = get_cur_time();
+    exec_time_b = t1_b - t0_b;
+    Gflops_b = Nflops / exec_time_b / value;
+    printf("\nMatmatblock (exploits GeMM ikj order). N: %d, DIM_BLOCK: %d\n", N, dim_block);
+    printf("Runtime (s): %f, Gflops: %f\n", exec_time_b, Gflops_b);
+
+    init_matrix_sequentially_double(N1, LD_C, C);
+
+    t0_t = get_cur_time();
     matmatthread(LD_A, LD_B, LD_C, A, B, C, N1, N2, N3, dimblock1, dimblock2, dimblock3, NTROW, NTCOL);
-    t1 = get_cur_time();
-    exec_time = t1 - t0;
-    Gflops = Nflops / exec_time / value;
+    t1_t = get_cur_time();
+    exec_time_t = t1_t - t0_t;
+    Gflops_t = Nflops / exec_time_t / value;
+    double speedup = exec_time_b / exec_time_t;
+    double efficiency = speedup / (NTROW * NTCOL);
     printf("\nMatmatthread (exploits matmatblock). N: %d, DIM_BLOCK: %d, row thread(s): %d, col thread(s): %d\n", N, dim_block, NTROW, NTCOL);
-    printf("Runtime (s): %f, Gflops: %f\n", exec_time, Gflops);
+    printf("Runtime (s): %f, Gflops: %f\n", exec_time_t, Gflops_t);
+    printf("Speed-up: %f, Efficiency: %f\n", speedup, efficiency);
 
     free(A);
     free(B);
