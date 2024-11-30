@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#PBS -N matmatthread
+#PBS -q studenti
+#PBS -o matmatthread.out
+#PBS -e matmatthread.err
+
+cd $PBS_O_WORKDIR
+
+CONFIG_SOURCE="$(pwd)/../config.sh"
+
+if [ -f $CONFIG_SOURCE ]; then
+    . $CONFIG_SOURCE
+else
+    N=1024
+    DIM_BLOCK=256
+    NTROW=4
+    NTCOL=4
+fi
+
+cc -fopenmp -lm ../src/main.c \
+                ../../../common/c_timer/c_timer.c \
+                ../../../common/matrix/matrix.c \
+                ../src/matmatthread/matmatthread.c \
+                ../../matmatblock/src/matmatblock/matmatblock.c \
+                ../../gemm/src/gemm/gemm.c \
+
+./a.out "${N}" "${DIM_BLOCK}" "${NTROW}" "${NTCOL}"
