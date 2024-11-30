@@ -18,11 +18,9 @@ else
     NTCOL=4
 fi
 
-cc -fopenmp -lm ../src/main.c \
+cc -O3 -fopenmp -lm ../src/main.c \
                 ../../../common/c_timer/c_timer.c \
                 ../../../common/matrix/matrix.c \
                 ../src/matmatthread/matmatthread.c \
-                ../../matmatblock/src/matmatblock/matmatblock.c \
-                ../../gemm/src/gemm/gemm.c \
 
 ./a.out "${N}" "${DIM_BLOCK}" "${NTROW}" "${NTCOL}"
