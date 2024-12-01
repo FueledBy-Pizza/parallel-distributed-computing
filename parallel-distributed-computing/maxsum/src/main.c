@@ -46,5 +46,7 @@ int main(int argc, const char * argv[]) {
         printf("Execution time is %e, speedup is %f, efficiency is %f\n", exec_time, speedup, efficiency);
     }
 
+    free(A);
+
     return 0;
 }
