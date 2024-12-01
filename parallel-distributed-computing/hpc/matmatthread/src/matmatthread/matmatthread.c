@@ -8,8 +8,10 @@
 #include "matmatthread.h"
 #include "../../../matmatblock/src/matmatblock/matmatblock.h"
 #include <omp.h>
-#include <stdio.h>
 
+/**
+ @brief Performs a multithreaded matmatblock.
+ */
 void matmatthread(int ldA, int ldB, int ldC, double *A, double *B, double *C, int N1, int N2, int N3, int db1, int db2, int db3, int NTROW, int NTCOL) {
     const int n_threads = NTROW * NTCOL;
     const int submatrix_rows = N1 / NTROW;
