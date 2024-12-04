@@ -43,6 +43,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		619DA3122D0083BA00CF5D21 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		61DF17172CF0E86100065A51 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -68,6 +77,7 @@
 		612493C42CF897E200E56AB1 /* hpc-matmatthread */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-matmatthread"; sourceTree = BUILT_PRODUCTS_DIR; };
 		612A816F2CD93F320020E786 /* laplace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = laplace; sourceTree = BUILT_PRODUCTS_DIR; };
 		619D66E32CE8DA1400E95D23 /* hpc-gemm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-gemm"; sourceTree = BUILT_PRODUCTS_DIR; };
+		619DA3142D0083BA00CF5D21 /* hpc-summa */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-summa"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DF17192CF0E86100065A51 /* hpc-matmatblock */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-matmatblock"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E7DD0F2CC83F23005C25CB /* ringsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ringsum; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,6 +116,14 @@
 			);
 			target = 619D66E22CE8DA1400E95D23 /* hpc-gemm */;
 		};
+		619DA31E2D0083BE00CF5D21 /* Exceptions for "parallel-distributed-computing" folder in "hpc-summa" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				hpc/summa/src/main.c,
+				hpc/summa/src/summa/summa.c,
+			);
+			target = 619DA3132D0083BA00CF5D21 /* hpc-summa */;
+		};
 		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -116,6 +134,7 @@
 				hpc/gemm/src/main.c,
 				hpc/matmatblock/src/main.c,
 				hpc/matmatthread/src/main.c,
+				hpc/summa/src/main.c,
 				laplace/build/Makefile,
 				laplace/src/laplace/laplace.c,
 				laplace/src/main.c,
@@ -160,6 +179,7 @@
 				619D66ED2CE8DA1D00E95D23 /* Exceptions for "parallel-distributed-computing" folder in "hpc-gemm" target */,
 				61DF17232CF0E86700065A51 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatblock" target */,
 				612493CE2CF897FF00E56AB1 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatthread" target */,
+				619DA31E2D0083BE00CF5D21 /* Exceptions for "parallel-distributed-computing" folder in "hpc-summa" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -195,6 +215,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		619DA3112D0083BA00CF5D21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61DF17162CF0E86100065A51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +249,7 @@
 				619D66E32CE8DA1400E95D23 /* hpc-gemm */,
 				61DF17192CF0E86100065A51 /* hpc-matmatblock */,
 				612493C42CF897E200E56AB1 /* hpc-matmatthread */,
+				619DA3142D0083BA00CF5D21 /* hpc-summa */,
 			);
 			sourceTree = "<group>";
 		};
@@ -307,6 +335,25 @@
 			productReference = 619D66E32CE8DA1400E95D23 /* hpc-gemm */;
 			productType = "com.apple.product-type.tool";
 		};
+		619DA3132D0083BA00CF5D21 /* hpc-summa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 619DA31A2D0083BA00CF5D21 /* Build configuration list for PBXNativeTarget "hpc-summa" */;
+			buildPhases = (
+				619DA3102D0083BA00CF5D21 /* Sources */,
+				619DA3112D0083BA00CF5D21 /* Frameworks */,
+				619DA3122D0083BA00CF5D21 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "hpc-summa";
+			packageProductDependencies = (
+			);
+			productName = "hpc-summa";
+			productReference = 619DA3142D0083BA00CF5D21 /* hpc-summa */;
+			productType = "com.apple.product-type.tool";
+		};
 		61DF17182CF0E86100065A51 /* hpc-matmatblock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61DF171F2CF0E86100065A51 /* Build configuration list for PBXNativeTarget "hpc-matmatblock" */;
@@ -366,6 +413,9 @@
 					619D66E22CE8DA1400E95D23 = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					619DA3132D0083BA00CF5D21 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					61DF17182CF0E86100065A51 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -394,6 +444,7 @@
 				619D66E22CE8DA1400E95D23 /* hpc-gemm */,
 				61DF17182CF0E86100065A51 /* hpc-matmatblock */,
 				612493C32CF897E200E56AB1 /* hpc-matmatthread */,
+				619DA3132D0083BA00CF5D21 /* hpc-summa */,
 			);
 		};
 /* End PBXProject section */
@@ -421,6 +472,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		619D66DF2CE8DA1400E95D23 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		619DA3102D0083BA00CF5D21 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -690,6 +748,26 @@
 			};
 			name = Release;
 		};
+		619DA3182D0083BA00CF5D21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		619DA3192D0083BA00CF5D21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		61DF171D2CF0E86100065A51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -785,6 +863,15 @@
 			buildConfigurations = (
 				619D66E72CE8DA1400E95D23 /* Debug */,
 				619D66E82CE8DA1400E95D23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		619DA31A2D0083BA00CF5D21 /* Build configuration list for PBXNativeTarget "hpc-summa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				619DA3182D0083BA00CF5D21 /* Debug */,
+				619DA3192D0083BA00CF5D21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
