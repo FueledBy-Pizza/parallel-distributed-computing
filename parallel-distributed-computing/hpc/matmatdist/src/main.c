@@ -57,30 +57,33 @@ int main(int argc, char * argv[]) {
     MPI_Cart_coords(GridCom, rank, 2, coord);
 
     // il calcolo del mcm serve solo per la stampa del risultato del test di correttezza
-            X = dims[0]; Y = dims[1];
-            while(Y != 0){
-                    Q = X/Y;
-                    R = X - Q*Y;
-                    X = Y;
-                    Y = R;
-            }
-            mcm = dims[0]*dims[1]/X;
+    X = dims[0]; Y = dims[1];
+    while(Y != 0){
+        Q = X/Y;
+        R = X - Q*Y;
+        X = Y;
+        Y = R;
+    }
+    mcm = dims[0]*dims[1]/X;
 
     //
     // definizione delle matrici di input
     //
     for (i=0; i<Nglob/dims[0]; i++){
-    for (j=0; j<Mglob/mcm; j++){
-    A[i*lda+j] = coord[0]*dims[1]*Mglob/mcm + coord[1]*Mglob/mcm + i*Mglob+j;
-    }}
+        for (j=0; j<Mglob/mcm; j++){
+            A[i*lda+j] = coord[0]*dims[1]*Mglob/mcm + coord[1]*Mglob/mcm + i*Mglob+j;
+        }
+    }
     for (i=0; i<Mglob/mcm; i++){
-    for (j=0; j<Pglob/dims[1]; j++){
-    B[i*lda+j] = 10 + coord[0]*dims[1]*Pglob + coord[1]*Pglob/dims[1] + i*Pglob+j;
-    }}
+        for (j=0; j<Pglob/dims[1]; j++){
+            B[i*lda+j] = 10 + coord[0]*dims[1]*Pglob + coord[1]*Pglob/dims[1] + i*Pglob+j;
+        }
+    }
     for (i=0; i<Nglob/dims[0]; i++){
-    for (j=0; j<Pglob/dims[1]; j++){
-    C[i*lda+j] = 0.0;
-    }}
+        for (j=0; j<Pglob/dims[1]; j++){
+            C[i*lda+j] = 0.0;
+        }
+    }
 
     matmatdist(GridCom, lda, lda, lda, A, B, C, Nglob, Mglob, Pglob, 1, 1, 1, TROW, TCOL);
 
@@ -88,21 +91,23 @@ int main(int argc, char * argv[]) {
     // stampa delle matrici A, B e C
     //
     for (i=0; i<Nglob/dims[0]; i++){
-    for (j=0; j<Mglob/mcm; j++){
-    printf("MAT A id %d->  %f \n",rank, A[i*lda+j]);
-    } }
+        for (j=0; j<Mglob/mcm; j++){
+            printf("MAT A id %d->  %f \n",rank, A[i*lda+j]);
+        }
+    }
     printf("------------------\n");
 
     for (i=0; i<Mglob/mcm; i++){
-    for (j=0; j<Pglob/dims[1]; j++){
-    printf("MAT B id %d->  %f \n",rank, B[i*lda+j]);
-    } }
+        for (j=0; j<Pglob/dims[1]; j++){
+            printf("MAT B id %d->  %f \n",rank, B[i*lda+j]);
+        }
+    }
     printf("------------------\n");
     for (i=0; i<Nglob/dims[0]; i++){
-    for (j=0; j<Pglob/dims[1]; j++){
-    printf("MAT C id %d->  %f \n",rank, C[i*lda+j]);
-    } }
-
+        for (j=0; j<Pglob/dims[1]; j++){
+            printf("MAT C id %d->  %f \n",rank, C[i*lda+j]);
+        }
+    }
 
     // ==================================================
     // test di efficienza
@@ -110,12 +115,13 @@ int main(int argc, char * argv[]) {
 
     srand(0);
     for(i=0; i<lda; i++){
-    for(j=0; j<lda; j++){
-    *(A+i*lda+j) = (float)rand()/RAND_MAX;
-    *(B+i*lda+j) = (float)rand()/RAND_MAX;
-    *(C+i*lda+j) = (float)rand()/RAND_MAX;
-    *(D+i*lda+j) =  *(C+i*lda+j) ;
-    }}
+        for(j=0; j<lda; j++){
+            *(A+i*lda+j) = (float)rand()/RAND_MAX;
+            *(B+i*lda+j) = (float)rand()/RAND_MAX;
+            *(C+i*lda+j) = (float)rand()/RAND_MAX;
+            *(D+i*lda+j) =  *(C+i*lda+j) ;
+        }
+    }
 
 
     if(rank==0) printf("               N         time       Gflops\n");
@@ -143,7 +149,7 @@ int main(int argc, char * argv[]) {
         time2=get_cur_time()-time1;
         printf(" proc = %d:   %4d   %4d   %e  %f \n",rank, Nglob, TROW*TCOL, time2,  2*Ndouble*Ndouble*Ndouble/time2/1.e9);
 
-        TROW = 4; TCOL =2 ; // test con 4 thread per processo
+        TROW = 4; TCOL =2 ; // test con 8 thread per processo
         MPI_Barrier(MPI_COMM_WORLD);
         time1=get_cur_time();
         matmatdist(GridCom, lda, lda, lda, A, B, C, Nglob, Nglob, Nglob, 256, 256, 256, TROW, TCOL);
