@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "619DA3132D0083BA00CF5D21"
-               BuildableName = "hpc-summa"
-               BlueprintName = "hpc-summa"
+               BuildableName = "hpc-matmatdist"
+               BlueprintName = "hpc-matmatdist"
                ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -49,8 +49,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "619DA3132D0083BA00CF5D21"
-            BuildableName = "hpc-summa"
-            BlueprintName = "hpc-summa"
+            BuildableName = "hpc-matmatdist"
+            BlueprintName = "hpc-matmatdist"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -110,8 +110,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "619DA3132D0083BA00CF5D21"
-            BuildableName = "hpc-summa"
-            BlueprintName = "hpc-summa"
+            BuildableName = "hpc-matmatdist"
+            BlueprintName = "hpc-matmatdist"
             ReferencedContainer = "container:parallel-distributed-computing.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

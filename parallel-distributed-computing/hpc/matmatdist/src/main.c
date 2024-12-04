@@ -1,6 +1,6 @@
 //
 //  main.c
-//  hpc-summa
+//  hpc-matmatdist
 //
 //  Created by Giuliano Aiello on 04/12/24.
 //
@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <mpi.h>
 #include <stdlib.h>
-#include "summa/summa.h"
+#include "matmatdist/matmatdist.h"
 #include "../../../common/c_timer/c_timer.h"
 
 int main(int argc, char * argv[]) {
@@ -22,12 +22,9 @@ int main(int argc, char * argv[]) {
     double time1, time2, Ndouble;
     MPI_Comm GridCom;
 
-    void matmatdist(MPI_Comm, int, int, int, double *, double *, double *, int, int, int, int, int, int, int, int);
-
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD,&rank);
     MPI_Comm_size(MPI_COMM_WORLD,&size);
-
 
     //
     // qua viene definita la griglia di processi
@@ -37,7 +34,6 @@ int main(int argc, char * argv[]) {
     dims[0] = 1; dims[1] = 2;
     period[0] = 1; period[1] = 1;
     MPI_Cart_create(MPI_COMM_WORLD, 2, dims, period, 0, &GridCom);
-
 
     //
     // allocazione dello spazio per i test
@@ -85,7 +81,6 @@ int main(int argc, char * argv[]) {
     for (j=0; j<Pglob/dims[1]; j++){
     C[i*lda+j] = 0.0;
     }}
-
 
     matmatdist(GridCom, lda, lda, lda, A, B, C, Nglob, Mglob, Pglob, 1, 1, 1, TROW, TCOL);
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -x ./build/hpc-summa.out ]; then
+if [ ! -x ./build/hpc-matmatdist.out ]; then
     echo "Executable not found. Exiting."
     exit 1
 fi
@@ -14,4 +14,4 @@ else
     NPCOL=4
 fi
 
-./build/hpc-summa.out $N $DIM_BLOCK $NPROW $NPCOL
+./build/hpc-matmatdist.out $N $DIM_BLOCK $NPROW $NPCOL

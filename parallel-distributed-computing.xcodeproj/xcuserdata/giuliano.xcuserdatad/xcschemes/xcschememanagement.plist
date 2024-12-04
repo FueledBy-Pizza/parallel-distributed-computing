@@ -14,15 +14,15 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>hpc-matmatdist.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>hpc-matmatthread.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
-		</dict>
-		<key>hpc-summa.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>laplace.xcscheme_^#shared#^_</key>
 		<dict>
