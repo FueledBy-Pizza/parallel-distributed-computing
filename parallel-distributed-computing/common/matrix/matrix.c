@@ -90,3 +90,16 @@ void print_matrix_double(const int N, const int LD, const double *A){
     }
     printf("\n");
 }
+
+void copy_matrix_double(double *A, int N_A, int LD_A, double *B, int N_B, int LD_B) {
+    int N, LD, i, j;
+
+    N = (N_A < N_B) ? N_A : N_B;
+    LD = (LD_A < LD_B) ? LD_A : LD_B;
+
+    for (i = 0; i < N; ++i) {
+        for (j = 0; j < LD; ++j) {
+            B[(i * LD_B) + j] = A[(i * LD_A) + j];
+        }
+    }
+}
