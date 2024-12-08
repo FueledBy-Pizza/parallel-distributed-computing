@@ -7,6 +7,7 @@
 
 #include "matmatdist.h"
 #include "../../../matmatthread/src/matmatthread/matmatthread.h"
+#include "../../../../common/matrix/matrix.h"
 #include <mpi.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -40,23 +41,33 @@ void matmatdist(MPI_Comm comm_grid, int LDA, int LDB, int LDC, double *A, double
     MPI_Comm comm_col;
     get_comm_row_col(comm_grid, &comm_row, &comm_col);
 
+    double *A_transmitted = malloc(sizeof(double) * LDA * LDA);
+    double *B_transmitted = malloc(sizeof(double) * LDB * LDB);
+
     int k;
     for (k = 0; k < mcm; k++) {
-        int sender_to_row = k % NPcol;
-        int sender_to_col = k % NProw;
+        int rank_sender_to_row = k % NPcol;
+        int rank_sender_to_col = k % NProw;
 
-        MPI_Bcast(A, N1 / NProw, MPI_DOUBLE, sender_to_row, comm_row);
-        MPI_Bcast(B, N2 / NPcol, MPI_DOUBLE, sender_to_col, comm_col);
+        copy_matrix_double(A, N1, LDA, A_transmitted, N1, LDA);
+        MPI_Bcast(A_transmitted, LDA * LDA, MPI_DOUBLE, rank_sender_to_row, comm_row);
 
-        matmatthread(LDA, LDB, LDC, A, B, C, N1, N2, N3, db1, db2, db3, NTROW, NTCOL);
+        copy_matrix_double(B, N2, LDB, B_transmitted, N2, LDB);
+        MPI_Bcast(B_transmitted, LDB * LDB, MPI_DOUBLE, rank_sender_to_col, comm_col);
+
+        matmatthread(LDA, LDB, LDC, A_transmitted, B_transmitted, C, N1, N2, N3, db1, db2, db3, NTROW, NTCOL);
     }
+
+    free(A_transmitted);
+    free(B_transmitted);
+
+    MPI_Comm_free(&comm_row);
+    MPI_Comm_free(&comm_col);
 
     free(dims);
     free(periods);
     free(coords);
 
-    MPI_Comm_free(&comm_row);
-    MPI_Comm_free(&comm_col);
 }
 
 void get_comm_row_col(MPI_Comm comm_grid, MPI_Comm *comm_row, MPI_Comm *comm_col) {

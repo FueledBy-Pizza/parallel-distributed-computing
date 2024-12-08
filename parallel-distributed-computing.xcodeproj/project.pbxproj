@@ -120,6 +120,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				common/c_timer/c_timer.c,
+				common/matrix/matrix.c,
 				hpc/gemm/src/gemm/gemm.c,
 				hpc/matmatblock/src/matmatblock/matmatblock.c,
 				hpc/matmatdist/src/main.c,

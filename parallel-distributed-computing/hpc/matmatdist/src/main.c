@@ -92,11 +92,8 @@ int main(int argc, char * argv[]) {
 
     matmatdist(GridCom, ld, ld, ld, A, B, C, N1, N2, N3, 1, 1, 1, TROW, TCOL);
 
-    //
-    // stampa delle matrici A, B e C
-    //
-    /*
-    for (i=0; i<N1/NProw; i++){
+
+    /*for (i=0; i<N1/NProw; i++){
         for (j=0; j<N2/mcm; j++){
             printf("MAT A id %d (%d,%d)->  %f \n", rank, i, j, A[i*ld+j]);
         }
@@ -109,7 +106,7 @@ int main(int argc, char * argv[]) {
             printf("MAT B id %d (%d,%d)->  %f \n", rank, i, j, B[i*ld+j]);
         }
         printf("\n");
-    }
+    }*/
     printf("------------------\n");
     for (i=0; i<N1/NProw; i++){
         for (j=0; j<N3/NPcol; j++){
@@ -118,10 +115,8 @@ int main(int argc, char * argv[]) {
         printf("\n");
     }
 
-    // ==================================================
-    // test di efficienza
-    // ==================================================
 
+    /*
     srand(0);
     for(i=0; i<ld; i++){
         for(j=0; j<ld; j++){
