@@ -10,156 +10,155 @@
 #include <stdlib.h>
 #include <math.h>
 #include "matmatdist/matmatdist.h"
-#include "../../../common/c_timer/c_timer.h"
 #include "../../../common/matrix/matrix.h"
+#include "../../../common/c_timer/c_timer.h"
+#include "../../../common/integer/integer.h"
 
-int main(int argc, char * argv[]) {
-    // usare questo programma chiamante per fare test di correttezza per matmatdist
-    // SOLO CON GLIGLIE DI PROCESSI (NPROW , NPCOL) = (1,1) e (2,2)
+#define PROC_GRID_DIMENSIONS 2
+#define NO_REORDER 0
 
-    int i, j, N1, N2, N3, ld, mcm;
-    int dims[2], period[2], coord[2], TROW, TCOL, proc_rank, comm_world_size;
-    int X, Y, Q, R;
-    double *A, *B, *C, *D;
-    double time1, time2, Ndouble;
-    MPI_Comm GridCom;
+void split_matrices_to_processes(double *A, double *B, double *C, int M1, int M2, int M3, int N2, int N3, int *coords, int *dims, int ld, int mcm) {
+    int i, j;
 
-    MPI_Init(&argc, &argv);
-    MPI_Comm_rank(MPI_COMM_WORLD,&proc_rank);
-    MPI_Comm_size(MPI_COMM_WORLD,&comm_world_size);
-
-    dims[0] = 2;
-    dims[1] = 2;
-
-    if (comm_world_size != dims[0] * dims[1]) {
-        fprintf(stderr, "Number of process launched (%d) is not equal to NProw X NPcol (%d X %d)!\n", comm_world_size, dims[0], dims[1]);
-        return EXIT_FAILURE;
-    }
-
-    int NProw = dims[0];
-    int NPcol = dims[1];
-    period[0] = 1;
-    period[1] = 1;
-    MPI_Cart_create(MPI_COMM_WORLD, 2, dims, period, 0, &GridCom);
-
-    //
-    // allocazione dello spazio per i test
-    //
-    ld = 4;
-    A=(double*)malloc(sizeof(double)*ld*ld);
-    B=(double*)malloc(sizeof(double)*ld*ld);
-    C=(double*)malloc(sizeof(double)*ld*ld);
-    D=(double*)malloc(sizeof(double)*ld*ld);
-
-
-    // ==================================================
-    // test di correttezza risultati. Verificare solo per griglie di processi (1,1) e (2,2)
-    // ==================================================
-
-    N1 = 2;
-    N2 = 4;
-    N3 = 4;
-    TROW = 1; TCOL =1 ;
-
-    MPI_Cart_coords(GridCom, proc_rank, 2, coord);
-
-    // il calcolo del mcm serve solo per la stampa del risultato del test di correttezza
-    X = dims[0]; Y = dims[1];
-    while(Y != 0){
-        Q = X/Y;
-        R = X - Q*Y;
-        X = Y;
-        Y = R;
-    }
-    mcm = (dims[0] * dims[1]) / X;
-
-    for (i = 0; i <(N1/NProw); i++){
-        for (j = 0; j < (N2/mcm); j++){
-            A[(i * ld) + j] = coord[0] * dims[1] * (N2/mcm) + coord[1] * (N2/mcm) + (i * N2) + j;
+    for (i = 0; i < M1; i++){
+        for (j = 0; j < M2; j++){
+            A[(i * ld) + j] = coords[0] * dims[1] * (N2 / mcm) + coords[1] * (N2 / mcm) + (i * N2) + j;
         }
     }
-    for (i = 0; i < (N2/mcm); i++){
-        for (j = 0; j < (N3/NPcol); j++){
-            B[(i * ld) + j] = 10 + coord[0] * dims[1] * N3 + coord[1] * (N3/dims[1]) + (i * N3) + j;
+    for (i = 0; i < M2; i++){
+        for (j = 0; j < M3; j++){
+            B[(i * ld) + j] = 10 + coords[0] * dims[1] * N3 + coords[1] * (N3 / dims[1]) + (i * N3) + j;
         }
     }
-    for (i = 0; i < (N1/NProw); i++){
-        for (j = 0; j < (N3/NPcol); j++){
+    for (i = 0; i < M1; i++){
+        for (j = 0; j < M3; j++){
             C[(i * ld) + j] = 0.0;
         }
     }
+}
 
-    matmatdist(GridCom, ld, ld, ld, A, B, C, N1, N2, N3, 1, 1, 1, TROW, TCOL);
+void print_local_matrix(double *A, int N, int M, int ld, int proc_rank, char mat) {
+    int i, j;
 
-
-    /*for (i=0; i<N1/NProw; i++){
-        for (j=0; j<N2/mcm; j++){
-            printf("MAT A id %d (%d,%d)->  %f \n", rank, i, j, A[i*ld+j]);
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < M; j++) {
+            printf("proc_rank %d. %c(%d, %d)->  %f \n", proc_rank, mat, i, j, A[(i * ld) + j]);
         }
         printf("\n");
     }
-    printf("------------------\n");
+    printf("-------------------------------------\n");
+}
 
-    for (i=0; i<N2/mcm; i++){
-        for (j=0; j<N3/NPcol; j++){
-            printf("MAT B id %d (%d,%d)->  %f \n", rank, i, j, B[i*ld+j]);
-        }
-        printf("\n");
-    }*/
-    printf("------------------\n");
-    for (i=0; i<N1/NProw; i++){
-        for (j=0; j<N3/NPcol; j++){
-            printf("MAT C id %d (%d,%d)->  %f \n", proc_rank, i, j, C[i*ld+j]);
-        }
-        printf("\n");
+int main(int argc, char * argv[]) {
+
+    int NProw = atoi(argv[1]);
+    int NPcol = atoi(argv[2]);
+
+    MPI_Init(&argc, &argv);
+
+    int comm_world_size = 0;
+    MPI_Comm_size(MPI_COMM_WORLD, &comm_world_size);
+    if (comm_world_size != (NProw * NPcol)) {
+        fprintf(stderr, "Number of process launched (%d) is not equal to NProw X NPcol (%d X %d)!\n", comm_world_size, NProw, NPcol);
+        return EXIT_FAILURE;
     }
 
-/*
-    srand(0);
-    for(i=0; i<ld; i++){
-        for(j=0; j<ld; j++){
-            *(A+i*ld+j) = (float)rand()/RAND_MAX;
-            *(B+i*ld+j) = (float)rand()/RAND_MAX;
-            *(C+i*ld+j) = (float)rand()/RAND_MAX;
-            *(D+i*ld+j) =  *(C+i*ld+j) ;
-        }
+    MPI_Comm comm_grid;
+    int dims[2]    = {NProw, NPcol};
+    int periods[2] = {1, 1};
+    MPI_Cart_create(MPI_COMM_WORLD, PROC_GRID_DIMENSIONS, dims, periods, NO_REORDER, &comm_grid);
+
+    int ld = 6144;
+    double *A = (double *) malloc(sizeof(double) * ld * ld);
+    double *B = (double *) malloc(sizeof(double) * ld * ld);
+    double *C = (double *) malloc(sizeof(double) * ld * ld);
+
+    int proc_rank = -1;
+    MPI_Comm_rank(MPI_COMM_WORLD,&proc_rank);
+    int coords[2];
+    MPI_Cart_coords(comm_grid, proc_rank, 2, coords);
+
+    int N1 = 2;
+    int N2 = 4;
+    int N3 = 4;
+    int mcm = lcm(NProw, NPcol);
+
+    // The three submatrices dimensions.
+    int M1 = N1 / NProw;
+    int M2 = N2 / mcm;
+    int M3 = N3 / NPcol;
+    split_matrices_to_processes(A, B, C, M1, M2, M3, N2, N3, coords, dims, ld, mcm);
+
+    int TROW = 1;
+    int TCOL = 1;
+    matmatdist(comm_grid, ld, ld, ld, A, B, C, N1, N2, N3, 1, 1, 1, TROW, TCOL);
+
+    print_local_matrix(A, M1, M2, ld, proc_rank, 'A');
+    print_local_matrix(B, M2, M3, ld, proc_rank, 'B');
+    print_local_matrix(C, M1, M3, ld, proc_rank, 'C');
+
+    init_matrix_randomly_double(ld, ld, A);
+    init_matrix_randomly_double(ld, ld, B);
+    init_matrix_randomly_double(ld, ld, C);
+
+    int step = 2048;
+    int N;
+    double value = 1.e9;
+    if(proc_rank == 0)
+        printf("              %d x %d processes.\n     N       T       time       Gflops\n", NProw, NPcol);
+    for (N = step; N <= (step * 3); N += step) {
+        double t0, t1, exec_time;
+        double Nflops = 2 * pow(N, 3);
+        double Gflops = 0.;
+        int dim_block = 256;
+
+        TROW = 1; TCOL = 1;
+        MPI_Barrier(MPI_COMM_WORLD);
+        t0 = get_cur_time();
+        matmatdist(comm_grid, ld, ld, ld, A, B, C, N, N, N, dim_block, dim_block, dim_block, TROW, TCOL);
+        t1 = get_cur_time();
+        exec_time = t1 - t0;
+        Gflops = Nflops / exec_time / value;
+        if (proc_rank == 0)
+            printf("   %4d   %4d   %e  %f \n", N, TROW * TCOL, exec_time,  Gflops);
+
+        TROW = 2; TCOL = 1;
+        MPI_Barrier(MPI_COMM_WORLD);
+        t0 = get_cur_time();
+        matmatdist(comm_grid, ld, ld, ld, A, B, C, N, N, N, dim_block, dim_block, dim_block, TROW, TCOL);
+        t1 = get_cur_time();
+        exec_time = t1 - t0;
+        Gflops = Nflops / exec_time / value;
+        if (proc_rank == 0)
+            printf("   %4d   %4d   %e  %f \n", N, TROW * TCOL, exec_time, Gflops);
+
+        TROW = 2; TCOL = 2;
+        MPI_Barrier(MPI_COMM_WORLD);
+        t0 = get_cur_time();
+        matmatdist(comm_grid, ld, ld, ld, A, B, C, N, N, N, dim_block, dim_block, dim_block, TROW, TCOL);
+        t1 = get_cur_time();
+        exec_time = t1 - t0;
+        Gflops = Nflops / exec_time / value;
+        if (proc_rank == 0)
+            printf("   %4d   %4d   %e  %f \n", N, TROW * TCOL, exec_time, Gflops);
+
+        TROW = 4; TCOL = 2;
+        MPI_Barrier(MPI_COMM_WORLD);
+        t0 = get_cur_time();
+        matmatdist(comm_grid, ld, ld, ld, A, B, C, N, N, N, dim_block, dim_block, dim_block, TROW, TCOL);
+        t1 = get_cur_time();
+        exec_time = t1 - t0;
+        Gflops = Nflops / exec_time / value;
+        if (proc_rank == 0)
+            printf("   %4d   %4d   %e  %f \n\n", N, TROW * TCOL, exec_time, Gflops);
     }
 
-
-    if(rank==0) printf("               N       T       time       Gflops\n");
-    for (N1 = 1024; N1 <= (1024 * 3); N1+=1024){
-        Ndouble = N1;
-
-        TROW = 1; TCOL =1 ; // test con 1 thread per processo
-        MPI_Barrier(MPI_COMM_WORLD);
-        time1=get_cur_time();
-        matmatdist(GridCom, ld, ld, ld, A, B, C, N1, N1, N1, 256, 256, 256, TROW, TCOL);
-        time2=get_cur_time()-time1;
-        printf(" proc = %d:   %4d   %4d   %e  %f \n",rank, N1, TROW*TCOL, time2,  2*Ndouble*Ndouble*Ndouble/time2/1.e9);
-
-        TROW = 2; TCOL =1 ; // test con 2 thread per processo
-        MPI_Barrier(MPI_COMM_WORLD);
-        time1=get_cur_time();
-        matmatdist(GridCom, ld, ld, ld, A, B, C, N1, N1, N1, 256, 256, 256, TROW, TCOL);
-        time2=get_cur_time()-time1;
-        printf(" proc = %d:   %4d   %4d   %e  %f \n",rank, N1, TROW*TCOL, time2,  2*Ndouble*Ndouble*Ndouble/time2/1.e9);
-
-        TROW = 2; TCOL =2 ; // test con 4 thread per processo
-        MPI_Barrier(MPI_COMM_WORLD);
-        time1=get_cur_time();
-        matmatdist(GridCom, ld, ld, ld, A, B, C, N1, N1, N1, 256, 256, 256, TROW, TCOL);
-        time2=get_cur_time()-time1;
-        printf(" proc = %d:   %4d   %4d   %e  %f \n",rank, N1, TROW*TCOL, time2,  2*Ndouble*Ndouble*Ndouble/time2/1.e9);
-
-        TROW = 4; TCOL =2 ; // test con 8 thread per processo
-        MPI_Barrier(MPI_COMM_WORLD);
-        time1=get_cur_time();
-        matmatdist(GridCom, ld, ld, ld, A, B, C, N1, N1, N1, 256, 256, 256, TROW, TCOL);
-        time2=get_cur_time()-time1;
-        printf(" proc = %d:   %4d   %4d   %e  %f \n",rank, N1, TROW*TCOL, time2,  2*Ndouble*Ndouble*Ndouble/time2/1.e9);
-    }
-*/
     MPI_Barrier(MPI_COMM_WORLD);
+
+    free(A);
+    free(B);
+    free(C);
+
     MPI_Finalize();
 
 }

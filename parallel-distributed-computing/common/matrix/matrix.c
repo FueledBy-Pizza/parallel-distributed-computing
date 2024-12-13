@@ -91,7 +91,7 @@ void print_matrix_double(const int N, const int LD, const double *A){
     printf("\n");
 }
 
-void copy_matrix_double(double *A, int N_A, int LD_A, double *B, int N_B, int LD_B) {
+void copy_matrix(double *A, int N_A, int LD_A, double *B, int N_B, int LD_B) {
     int N, LD, i, j;
 
     N = (N_A < N_B) ? N_A : N_B;

@@ -120,12 +120,10 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				common/c_timer/c_timer.c,
+				common/integer/integer.c,
 				common/matrix/matrix.c,
-				hpc/gemm/src/gemm/gemm.c,
-				hpc/matmatblock/src/matmatblock/matmatblock.c,
 				hpc/matmatdist/src/main.c,
 				hpc/matmatdist/src/matmatdist/matmatdist.c,
-				hpc/matmatthread/src/matmatthread/matmatthread.c,
 			);
 			target = 619DA3132D0083BA00CF5D21 /* hpc-matmatdist */;
 		};
@@ -760,6 +758,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = (
 					"/opt/homebrew/opt/open-mpi/include",
 					/opt/homebrew/opt/libomp/include,
@@ -787,6 +786,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = (
 					"/opt/homebrew/opt/open-mpi/include",
 					/opt/homebrew/opt/libomp/include,

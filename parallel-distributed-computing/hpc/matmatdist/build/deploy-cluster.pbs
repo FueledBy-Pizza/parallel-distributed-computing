@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#PBS -q studenti
+#PBS -l nodes=8:ppn=8
+#PBS -l mem=1GB
+#PBS -N matmatdist
+#PBS -o matmatdist.out
+#PBS -e matmatdist.err
+
+cd $PBS_O_WORKDIR
+
+sort -u $PBS_NODEFILE > machinefile
+NCPU=`wc -l < machinefile`
+
+rm -rf matmatdist
+rm -rf matmatdist.err
+rm -rf matmatdist.out
+
+MPI_DIR=/usr/lib64/openmpi/1.4-gcc/bin
+
+$MPI_DIR/mpicc -o matmatdist -O3 -fopenmp -lm ../src/main.c \
+                                              ../../../common/integer/integer.c \
+                                              ../../../common/matrix/matrix.c \
+                                              ../../../common/c_timer/c_timer.c \
+                                              ../src/matmatdist/matmatdist.c \
+
+$MPI_DIR/mpiexec -np 4 -machinefile machinefile matmatdist

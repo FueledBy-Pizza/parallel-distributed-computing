@@ -15,5 +15,7 @@
 #include <stdbool.h>
 
 bool is_even(int x);
+int gcd(int a, int b);
+int lcm(int a, int b);
 
 #endif /* integer_h */

@@ -56,7 +56,7 @@
       </MacroExpansion>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-np 4"
+            argument = "-np 8"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -64,16 +64,12 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "4096"
-            isEnabled = "NO">
-         </CommandLineArgument>
-         <CommandLineArgument
             argument = "2"
-            isEnabled = "NO">
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "3"
-            isEnabled = "NO">
+            argument = "4"
+            isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
@@ -83,18 +79,13 @@
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
-            key = "N"
-            value = "4096"
-            isEnabled = "NO">
-         </EnvironmentVariable>
-         <EnvironmentVariable
             key = "NPROW"
             value = "2"
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "NPCOL"
-            value = "3"
+            value = "2"
             isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
