@@ -75,7 +75,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "MPI_PROCS"
-            value = "4"
+            value = "8"
             isEnabled = "NO">
          </EnvironmentVariable>
          <EnvironmentVariable
@@ -85,7 +85,7 @@
          </EnvironmentVariable>
          <EnvironmentVariable
             key = "NPCOL"
-            value = "2"
+            value = "4"
             isEnabled = "NO">
          </EnvironmentVariable>
       </EnvironmentVariables>
