@@ -24,6 +24,6 @@ void init_matrix_randomly_double(const int N, const int LD, double *A);
 void print_matrix_float(const int N, const int LD, const float *A);
 void print_matrix_double(const int N, const int LD, const double *A);
 
-void copy_matrix(double *A, int N_A, int LD_A, double *B, int N_B, int LD_B);
+void copy_matrix_double(double *A, int N_A, int LD_A, double *B, int N_B, int LD_B);
 
 #endif /* matrix_h */

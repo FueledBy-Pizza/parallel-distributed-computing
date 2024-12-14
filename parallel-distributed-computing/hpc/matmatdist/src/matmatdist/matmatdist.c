@@ -6,6 +6,7 @@
 //
 
 #include "matmatdist.h"
+#include "../../../../common/matrix/matrix.h"
 #include "../../../../common/integer/integer.h"
 #include <omp.h>
 #include <mpi.h>
@@ -15,7 +16,7 @@
 /**
  @brief Copies `A` into `B`.
  */
-void copy_matrix_double(double *A, int N_A, int LD_A, double *B, int N_B, int LD_B) {
+/*void copy_matrix_double(double *A, int N_A, int LD_A, double *B, int N_B, int LD_B) {
     int N, LD, i, j;
     N = N_B;
     LD = LD_B;
@@ -25,7 +26,7 @@ void copy_matrix_double(double *A, int N_A, int LD_A, double *B, int N_B, int LD
             B[(i * LD) + j] = A[(i * LD_A) + j];
         }
     }
-}
+}*/
 
 /**
  @brief Performs a GeMM operation (`C`=`C`+`A``B`) in the ikj indexes order.
