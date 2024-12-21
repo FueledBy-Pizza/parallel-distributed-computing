@@ -1,19 +1,47 @@
 \begin{chapter}{Prolusion}
-    \begin{section}{TBD}
-		\texttt{main.c} Supercomputing is a way to solve a problem by using a supercomputer. The term "supercomputer" refers to a system that provides the most high performances, in that exact moment ("that moment" is specified because, as history has taught, today's enhanced technology is tomorrow's ordinary/outdated tool\footnote{In 80s, Cray 1 (100 Mflops) performed a calculation in one year. Nowadays (2023), the same calculation is performed in less than \SI{2}{\micro\second} by Frontier (1.6 Eflops)}). Performance is measured by the needed time to solve a particular application.
-        \par This is a citation in a footnote: \footnote{\cite{martin2009clean}, pp 123}.
-        \par Here is a glossary word: \gls{bug}
-    \end{section}
 	\begin{section}{Goal}
 		\par This document provides a comprehensive overview of a project developed in \texttt{C}, consisting of multiple modules delivered in incremental phases. The purpose of the project is to experiment parallel computing techniques and occasionally exploiting \glsxtrlong{hpc}.
 	\end{section}
 	\begin{section}{Environment}
-		\par The project was entirely developed on a macOS system, with the help of Xcode \glsxtrshort{ide}.
+		\par The project was entirely developed on a macOS system with the help of Xcode \glsxtrshort{ide}. Of course, this will mainly impact the build process.\gls{bug}
 	\end{section}
-	\begin{section}{TBD}
+	\begin{section}{Project directory layout}
+		\par The structure of the project’s root directory is outlined below.
+		\medskip
+		\dirtree{%
+			.1 parallel-distributed-computing/.
+			.2 common/.
+			.2 hpc/.
+			.3 gemm/.
+			.3 matmatblock/.
+			.3 matmatdist/.
+			.3 matmatthread/.
+			.2 laplace/.
+			.2 maxsum/.
+			.2 ringsum/.
+			.2 parallel-distributed-computing.entitlements.
+		}
+		\medskip
+		\texttt{common} package serves as a library of utility functions designed to support and be reused by various modules across the project.
+		\clearpage
+		\par The remaining directories represent the individual project modules, which constitute the deliverables of the project. Under each module the structure is a standard one:
+		\medskip
+		\dirtree{%
+			.1 <module>/.
+			.2 build/.
+			.3 deploy-cluster.pbs.
+			.3 Makefile[.gcc].
+			.2 src/.
+			.3 <module>/.
+			.3 main.c.
+			.2 config.sh.
+			.2 run.sh.
+		}
+		\medskip
 		\par Most parts of the \texttt{main.c} files are provided by the project supervisor.
 	\end{section}
 	\begin{section}{Build}
+		\par The main compiler of this project is Clang.
 		\par
 		\begin{subsection}{Xcode}
 			\par
