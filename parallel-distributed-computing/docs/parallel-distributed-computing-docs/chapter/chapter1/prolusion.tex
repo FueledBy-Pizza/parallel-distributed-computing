@@ -5,7 +5,7 @@
 	\end{section}
 	\begin{section}{Environment}
 		\par The project was entirely developed on a macOS system with the help of Xcode \glsxtrshort{ide}.\\
-		Of course, this will mainly impact the build process.
+		Naturally, this will mainly impact the build process.
 	\end{section}
 	\clearpage
 	\begin{section}{Project directory layout}
@@ -51,14 +51,6 @@
 		\begin{itemize}
 			\item \texttt{-O3} optimization flag to maximize performance.
 		\end{itemize}
-		\begin{subsection}{Xcode}
-			\par When it came to build with the Xcode, the development process adhered to the workflow and conventions defined by the chosen \glsxtrshort{ide}, leveraging its built-in tools and features to organize and manage the project. Particularly, this includes:
-			\begin{itemize}
-				\item Xcode targets
-				\item Xcode schemes
-				\item Xcode \texttt{.entitlements} file
-			\end{itemize}
-		\end{subsection}
 		\begin{subsection}{Libraries}
 			The following are the dynamically linked libraries integrated into the project.
 			\begin{itemize}
@@ -72,7 +64,27 @@
 				\item \texttt{unistd.h}
 			\end{itemize}
 		\end{subsection}
-		\begin{subsection}{Run}
+		\begin{subsection}{Xcode}
+			\par When it came to build with the Xcode, the development process adhered to the workflow and conventions defined by the chosen \glsxtrshort{ide}, leveraging its built-in tools and features to organize and manage the project. Particularly, this includes:
+			\begin{itemize}
+				\item Xcode targets
+				\item Xcode schemes
+				\item Xcode \texttt{.entitlements} file
+			\end{itemize}
+		\end{subsection}
+	\end{section}
+	\clearpage
+	\begin{section}{Run}
+		\begin{subsection}{Network Requirement}
+			\par Running an \glsxtrshort{mpi} module with no internet connection, makes the following error occur:
+			\begin{verbatim}
+					[Giulianos-MacBook-Pro.local:05355] ptl_tool: problems getting address for
+					index 0 (kernel index -1)
+					--------------------------------------------------------------------------
+					The PMIx server's listener thread failed to start. We cannot continue.
+					--------------------------------------------------------------------------
+					Program ended with exit code: 213
+			\end{verbatim}
 		\end{subsection}
 	\end{section}
 \end{chapter}
