@@ -14,6 +14,8 @@
 \usepackage{amsmath}
 \usepackage{tcolorbox}
 \usepackage{siunitx}
+\usepackage[noline,ruled]{algorithm2e}
+\usepackage{currfile}
 \usepackage{listings}
 \definecolor{cosmiclatte}{rgb}{1.0, 0.97, 0.91}
 \definecolor{burntumber}{rgb}{0.54, 0.2, 0.14}
@@ -70,6 +72,10 @@
         \centering
         \includesvg[width=4cm]{UniNa_logo.svg}
     \end{figure}
+}
+
+\newcommand{\pseudocodepath}{%
+    \currfiledir pseudocode/%
 }
 
 \makeglossaries

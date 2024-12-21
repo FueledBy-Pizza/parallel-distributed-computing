@@ -1,27 +1,20 @@
 \begin{chapter}{Maxsum}
     \begin{section}{Problem at a glance}
-        \par
+        \par Given a matrix, the objective is to compute the squared root sum of the elements in each row and identify the maximum squared root sum among these row sums.
     \end{section}
     \begin{section}{Algorithm}
-        \par
-    \end{section}
-    \newpage
-    \begin{section}{Figures}
-        \begin{subsection}{Option inkscapelatex}
-            \par This is an imported SVG with \LaTeX embedded text.
-            \begin{figure}[ht]
-                \centering
-                \includesvg[inkscapelatex=true]{drawing.svg}
-                \caption{\emph{True inkscapelatex option}}
-                \label{fig:latexembedded}
-            \end{figure}
-            \par This is an imported SVG without \LaTeX embedded text.
-            \begin{figure}[ht]
-                \centering
-                \includesvg[inkscapelatex=false]{drawing.svg}
-                \caption{\emph{False inkscapelatex option}}
-                \label{fig:latexnotembedded}
-            \end{figure}
+        \begin{subsection}{Parallelization}
+            \par The algorithm adopts a multithread solution.
+        \end{subsection}
+        \begin{subsection}{Pseudocode}
+            \par Every thread gets the whole matrix as input (even if the thread needs only a part of it) and the number of threads to run in parallel.
+            \par Steps:
+            \begin{enumerate}
+                \item Assign rows to threads.
+                \item Compute the maximum squared root sum for each thread.
+                \item Return the maximum squared root sum among all threads.
+            \end{enumerate}
+            \input{\pseudocodepath maxsum}
         \end{subsection}
     \end{section}
 \end{chapter}

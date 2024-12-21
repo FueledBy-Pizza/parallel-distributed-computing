@@ -1,0 +1,39 @@
+\begin{algorithm}
+    \footnotesize
+    \SetAlgoLined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    \Input{$matrix$, $numThreads$}
+    \Output{$maxSumOverall$}
+
+    \BlankLine
+    \BlankLine
+    \BlankLine
+
+    \texttt{STARTTHREADS(numThreads)}\\
+
+    \BlankLine
+
+    startRow = calculateStartingRow()\\
+    endRow = calculateEndingRow()\\
+    \BlankLine
+    \For{$currRow \gets startRow$ \KwTo $endRow$}{
+        $currSum \gets squareRootSum(currRow)$
+
+        \BlankLine
+
+        \If{$currSum > maxSum$}{
+            $maxSum \gets currSum$\;
+        }
+
+        \BlankLine
+
+        \texttt{CRITICAL}\\
+            \If{$maxSumOverall < maxSum$}{
+                $maxSumOverall \gets maxSum$\;
+            }
+    }
+
+    \caption{Maxsum}\label{alg:maxsum}
+\end{algorithm}
