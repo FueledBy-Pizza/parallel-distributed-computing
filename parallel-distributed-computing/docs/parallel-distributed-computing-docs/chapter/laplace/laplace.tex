@@ -1,0 +1,51 @@
+\begin{chapter}{Laplace}
+    \begin{section}{Problem at a glance}
+        \par Given a matrix and a number of iterations, the objective is to compute the Laplacian over the specified iterations.
+    \end{section}
+    \begin{section}{Algorithm}
+        \begin{subsection}{Parallelization}
+            \par The algorithm employs a multiprocess approach. A synchronization between processes is needed from the outset.
+        \end{subsection}
+        \begin{subsection}{Pseudocode}
+            Input:
+            \begin{itemize}
+                \item matrix
+                \item number of iteration(s)
+            \end{itemize}
+            Iteration step(s):
+            \begin{enumerate}
+                \item Assign rows to processes.
+                \item For each process $P_i$
+                \begin{enumerate}
+                    \begin{item}
+                        If $P_i \neq P_1$
+                        \begin{itemize}
+                            \item Send to the previous process the local first row.
+                            \item Receive from the previous process its last row.
+                        \end{itemize}
+                    \end{item}
+                    \begin{item}
+                        If $P_i \neq P_n$
+                        \begin{itemize}
+                            \item Receive from the next process its first row.
+                            \item Send to the next process the local last row.
+                        \end{itemize}
+                    \end{item}
+                    \item Compute the Laplacian considering only the local inner matrix, the matrix boundaries are left out.
+                    \begin{item}
+                        If $P_i \neq P_1$
+                        \begin{itemize}
+                            \item Compute the Laplacian considering only the local top row, with the auxiliary last row from the previous process.
+                        \end{itemize}
+                    \end{item}
+                    \begin{item}
+                        If $P_i \neq P_n$
+                        \begin{itemize}
+                            \item Compute the Laplacian considering only the bottom row, with the auxiliary first row from the next process.
+                        \end{itemize}
+                    \end{item}
+                \end{enumerate}
+            \end{enumerate}
+        \end{subsection}
+    \end{section}
+\end{chapter}
