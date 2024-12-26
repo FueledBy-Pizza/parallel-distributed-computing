@@ -1,0 +1,46 @@
+\begin{algorithm}
+    \footnotesize
+    \SetAlgoLined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    \Input{$matrix$, $iterations$}
+    \Output{$matrix$}
+
+    \BlankLine
+    \BlankLine
+    \BlankLine
+
+    \BlankLine
+    \For{$iter \gets 1$ \KwTo $iterations$}{
+        \If{$P_{i} \neq P_{1}$}{
+            \texttt{SEND($P_{i-1}$, $localFirstRow$)} \\
+            \texttt{RECV($P_{i-1}$, $receivedLastRow$)}
+        }
+
+        \BlankLine
+
+        \If{$P_{i} \neq P_{n}$}{
+            \texttt{RECV($P_{i+1}$, $receivedFirstRow$)} \\
+            \texttt{SEND($P_{i+1}$, $localLastRow$)}
+        }
+
+        \BlankLine
+
+        laplacian(inner(matrix))
+
+        \BlankLine
+
+        \If{$P_{i} \neq P_{1}$}{
+            laplacian(matrix, receivedLastRow)
+        }
+
+        \BlankLine
+
+        \If{$P_{i} \neq P_{n}$}{
+            laplacian(matrix, receivedFirstRow)
+        }
+    }
+
+    \caption{Laplace}\label{alg:laplace}
+\end{algorithm}

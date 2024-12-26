@@ -5,6 +5,7 @@
     \begin{section}{Algorithm}
         \begin{subsection}{Parallelization}
             \par The algorithm employs a multiprocess approach. A synchronization between processes is needed from the outset.
+            \par The input matrix is distributed among the processes, harnessing the advantages of parallelism, representing a spatial advantage other than a temporal one.
         \end{subsection}
         \begin{subsection}{Pseudocode}
             Input:
@@ -20,15 +21,15 @@
                     \begin{item}
                         If $P_i \neq P_1$
                         \begin{itemize}
-                            \item Send to the previous process the local first row.
-                            \item Receive from the previous process its last row.
+                            \item Send to $P_{i-1}$ the local first row
+                            \item Receive from $P_{i-1}$ its last row
                         \end{itemize}
                     \end{item}
                     \begin{item}
                         If $P_i \neq P_n$
                         \begin{itemize}
-                            \item Receive from the next process its first row.
-                            \item Send to the next process the local last row.
+                            \item Receive from $P_{i+1}$ its first row
+                            \item Send to $P_{i+1}$ the local last row
                         \end{itemize}
                     \end{item}
                     \item Compute the Laplacian considering only the local inner matrix, the matrix boundaries are left out.
@@ -41,11 +42,13 @@
                     \begin{item}
                         If $P_i \neq P_n$
                         \begin{itemize}
-                            \item Compute the Laplacian considering only the bottom row, with the auxiliary first row from the next process.
+                            \item Compute the Laplacian considering only the local bottom row, with the auxiliary first row from the next process.
                         \end{itemize}
                     \end{item}
                 \end{enumerate}
             \end{enumerate}
+            An auxiliary matrix is used to facilitate the computation.
+            \input{\pseudocodepath laplace}
         \end{subsection}
     \end{section}
 \end{chapter}
