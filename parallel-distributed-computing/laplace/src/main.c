@@ -40,28 +40,28 @@ int main(int argc, const char * argv[]) {
     daprev = (float *) malloc(N * sizeof(float));
     danext = (float *) malloc(N * sizeof(float));
 
-    for (i = 0; i< N/nproc; i++){              // tutta la matrice locale = 0
-        for (j = 0; j< N; j++){
-            A[i*LD+j] = 0.;
-        }
-    }
-
-    if (myid == 0){
+    for (i = 0; i < (N / nproc); i++){                      // Initialize local matrix to 0.
         for (j = 0; j < N; j++){
-            A[0*LD+j] = j;                // prima riga matrice del proc id=0  da 0 a 399
+            A[(i * LD) + j] = 0.;
         }
     }
 
-    if (myid == nproc-1){
+    if (myid == 0){                                         // First row of the matrix pf process ranked 0 from 0 to N-1.
         for (j = 0; j < N; j++){
-            A[(N/nproc-1)*LD+j] = N - 1 - j;      // ultima riga matrice del proc id=nproc-1 da 399 a 0
+            A[(0 * LD) + j] = j;
         }
     }
 
-    ifirst = myid * N/nproc;
-    for (i = 0; i < N/nproc; i++){
-        A[i*LD+0] = ifirst + i;             // bordo sinistro da ifirst a ilast-1 in ogni proc
-        A[i*LD+N-1] = N - 1 - A[i*LD+0];      // A[i][0] + A[i][N-1] = 0 sempre
+    if (myid == nproc - 1){                                 // Last row of the matrix of process ranked N-1 from N-1 to 0.
+        for (j = 0; j < N; j++){
+            A[((N / nproc) - 1) * LD + j] = N - 1 - j;
+        }
+    }
+
+    ifirst = myid * (N / nproc);
+    for (i = 0; i < (N / nproc); i++){
+        A[(i * LD) + 0] = ifirst + i;                       // Left border from ifirst a ilast-1 in every process.
+        A[(i * LD) + (N - 1)] = N - 1 - A[(i * LD) + 0];    // A[i][0] + A[i][N-1] = 0 in every process.
     }
 
     if (myid ==0)
@@ -72,16 +72,16 @@ int main(int argc, const char * argv[]) {
     t2 = get_cur_time();
 
     if (myid == 0)
-        printf("\nFunction %s addressed the problem in %f(s) running time with %d processes.\n", "laplace", t2-t1, nproc);
+        printf("\nFunction %s addressed the problem in %f(s) running time with %d processes.\n", "laplace", t2 - t1, nproc);
 
     if (myid==0)
-        printf("\nFirst row %d --> %f      %f", myid, A[1*LD+1], A[1*LD+398]);
+        printf("\nFirst row %d --> %f      %f", myid, A[(1 * LD) + 1], A[(1 * LD) + 398]);
     if (myid==3)
-        printf("\nCenter %d    --> %f      %f", myid, A[49*LD+199], A[49*LD+200]);
+        printf("\nCenter %d    --> %f      %f", myid, A[(49 * LD) + 199], A[(49 * LD) + 200]);
     if (myid==4)
-        printf("\nCenter %d    --> %f      %f", myid, A[0*LD+199], A[0*LD+200]);
+        printf("\nCenter %d    --> %f      %f", myid, A[(0 * LD) + 199], A[(0 * LD) + 200]);
     if (myid==7)
-        printf("\nLast row %d  --> %f    %f\n", myid, A[48*LD+1], A[48*LD+398]);
+        printf("\nLast row %d  --> %f    %f\n", myid, A[(48 * LD) + 1], A[(48 * LD) + 398]);
 
     free(A);
     free(Anew);

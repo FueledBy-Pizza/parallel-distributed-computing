@@ -13,7 +13,14 @@
 #define NEXT_TO_PREV 10
 #define PREV_TO_NEXT 20
 
-void laplace (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter) {
+/**
+ @param A the matrix on which the laplacian is computed.
+ @param B a support matrix.
+ @param daprev a support vector.
+ @param danext a support vector.
+ @param Niter computing cycles.
+ */
+void laplace (float *A, float *B, float *daprev, float *danext, int N, int LD, int Niter) {
     int proc_rank = -1, n_proc = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
@@ -34,26 +41,29 @@ void laplace (float *A, float *Anew, float *daprev, float *danext, int N, int LD
             MPI_Send(&(A[last_row_index]), N, MPI_FLOAT, proc_rank_next, PREV_TO_NEXT, MPI_COMM_WORLD);
         }
 
-        calculate_inner(A, N, LD, Anew, rows_per_proc);
+        calculate_inner(A, N, LD, B, rows_per_proc);
         if (!(is_first_proc_rank(proc_rank))) {
-            calculate_row_top(A, N, LD, Anew, daprev);
+            calculate_row_top(A, N, LD, B, daprev);
         }
         if (!(is_last_proc_rank(proc_rank))) {
-            calculate_row_bottom(A, N, LD, rows_per_proc, Anew, danext);
+            calculate_row_bottom(A, N, LD, rows_per_proc, B, danext);
         }
 
-        copy_inner(A, N, LD, Anew, rows_per_proc);
+        copy_inner(A, N, LD, B, rows_per_proc);
         if (!(is_first_proc_rank(proc_rank))) {
-            copy_row_top(A, N, Anew);
+            copy_row_top(A, N, B);
         }
         if (!(is_last_proc_rank(proc_rank))) {
-            copy_row_bottom(A, N, LD, rows_per_proc, Anew);
+            copy_row_bottom(A, N, LD, rows_per_proc, B);
         }
 
     }
 }
 
-void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int LD, int Niter) {
+/**
+ @brief Performs a non-blocking version of `laplace` function.
+ */
+void laplace_nb (float *A, float *B, float *daprev, float *danext, int N, int LD, int Niter) {
     int proc_rank = -1, n_proc = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
     MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
@@ -77,32 +87,32 @@ void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int
             MPI_Isend(&(A[last_row_index]), N, MPI_FLOAT, proc_rank_next, PREV_TO_NEXT, MPI_COMM_WORLD, &request_sendlast);
         }
 
-        calculate_inner(A, N, LD, Anew, rows_per_proc);
+        calculate_inner(A, N, LD, B, rows_per_proc);
         // Before reading a chunk that is going to be recv, it must be ensured it's already recv.
         if (!(is_first_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_daprev, &status_daprev) == MPI_SUCCESS)
-                calculate_row_top(A, N, LD, Anew, daprev);
+                calculate_row_top(A, N, LD, B, daprev);
             else
                 handle_mpi_error(proc_rank, status_daprev.MPI_ERROR);
         }
         if (!(is_last_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_danext, &status_danext) == MPI_SUCCESS)
-                calculate_row_bottom(A, N, LD, rows_per_proc, Anew, danext);
+                calculate_row_bottom(A, N, LD, rows_per_proc, B, danext);
             else
                 handle_mpi_error(proc_rank, status_danext.MPI_ERROR);
         }
 
-        copy_inner(A, N, LD, Anew, rows_per_proc);
+        copy_inner(A, N, LD, B, rows_per_proc);
         // Before writing a chunk that is going to be sent, it must be ensured it's already sent.
         if (!(is_first_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_sendfirst, &status_sendfirst) == MPI_SUCCESS)
-                copy_row_top(A, N, Anew);
+                copy_row_top(A, N, B);
             else
                 handle_mpi_error(proc_rank, status_sendfirst.MPI_ERROR);
         }
         if (!(is_last_proc_rank(proc_rank))) {
             if (MPI_Wait(&request_sendlast, &status_sendlast) == MPI_SUCCESS)
-                copy_row_bottom(A, N, LD, rows_per_proc, Anew);
+                copy_row_bottom(A, N, LD, rows_per_proc, B);
             else
                 handle_mpi_error(proc_rank, status_sendlast.MPI_ERROR);
         }
@@ -110,36 +120,36 @@ void laplace_nb (float *A, float *Anew, float *daprev, float *danext, int N, int
 }
 
 /**
- @brief For every inner element of `Anew`, calculates its discrete Laplacian by taking into account elements of `A`.
- @param N_Anew a "logic" number of rows of `Anew` up to which (except first and last) the discrete Laplacian calculation will be applied. `Anew` physically has `N` rows.
+ @brief For every inner element of `B`, calculates its discrete Laplacian by taking into account elements of `A`.
+ @param N_B a "logic" number of rows of `B` up to which (except first and last) the discrete Laplacian calculation will be applied. `B` physically has `N` rows.
  */
-void calculate_inner(const float *A, const int N, const int LD, float *Anew, const int N_Anew){
+void calculate_inner(const float *A, const int N, const int LD, float *B, const int N_B){
     int i, j;
-    for (i = 1; i < N_Anew - 1; ++i) {
+    for (i = 1; i < N_B - 1; ++i) {
         for (j = 1; j < N - 1; ++j) {
-            Anew[(i * LD) + j] = discrete_laplacian(A, i, j, LD);
+            B[(i * LD) + j] = discrete_laplacian(A, i, j, LD);
         }
     }
 }
 
 /**
- @brief For every inner top-row element of `Anew`, calculates its discrete Laplacian by taking into account elements of `A` and `daprev` as the top row.
+ @brief For every inner top-row element of `B`, calculates its discrete Laplacian by taking into account elements of `A` and `daprev` as the top row.
  */
-void calculate_row_top(const float *A, const int N, const int LD, float *Anew, const float *daprev) {
+void calculate_row_top(const float *A, const int N, const int LD, float *B, const float *daprev) {
     int j;
     for (j = 1; j < N - 1; ++j) {
-        Anew[j] = discrete_laplacian_top(A, j, LD, daprev);
+        B[j] = discrete_laplacian_top(A, j, LD, daprev);
     }
 }
 
 /**
- @brief For every inner bottom-row element of `Anew`, calculates its discrete Laplacian by taking into account elements of `A` and `danext` as the bottom row.
+ @brief For every inner bottom-row element of `B`, calculates its discrete Laplacian by taking into account elements of `A` and `danext` as the bottom row.
  */
-void calculate_row_bottom(const float *A, const int N, const int LD, const int rows_per_proc, float *Anew, const float *danext) {
+void calculate_row_bottom(const float *A, const int N, const int LD, const int rows_per_proc, float *B, const float *danext) {
     int last_row = (rows_per_proc - 1) * LD;
     int j;
     for (j = 1; j < N - 1; ++j) {
-        Anew[last_row + j] = discrete_laplacian_bottom(A, rows_per_proc - 1, j, LD, danext);
+        B[last_row + j] = discrete_laplacian_bottom(A, rows_per_proc - 1, j, LD, danext);
     }
 }
 
@@ -198,35 +208,35 @@ float discrete_laplacian_bottom(const float *A, const int i, const int j, const 
 }
 
 /**
- @brief Performs a copy of `Anew`'s inner matrix into `A`'s inner matrix.
+ @brief Performs a copy of `B`'s inner matrix into `A`'s inner matrix.
  */
-void copy_inner(float *A, const int N, const int LD, const float *Anew, const int N_Anew) {
+void copy_inner(float *A, const int N, const int LD, const float *B, const int N_B) {
     int i, j;
-    for (i = 1; i < N_Anew - 1; ++i) {
+    for (i = 1; i < N_B - 1; ++i) {
         int row = i * LD;
         for (j = 1; j < N - 1; ++j) {
-            A[row + j] = Anew[row + j];
+            A[row + j] = B[row + j];
         }
     }
 }
 
 /**
- @brief Performs a copy of `Anew`'s top-row into `A`'s top-row.
+ @brief Performs a copy of `B`'s top-row into `A`'s top-row.
  */
-void copy_row_top(float *A, const int N, float *Anew) {
+void copy_row_top(float *A, const int N, float *B) {
     int j;
     for (j = 1; j < N - 1; ++j) {
-        A[j] = Anew[j];
+        A[j] = B[j];
     }
 }
 
 /**
- @brief Performs a copy of `Anew`'s bottom-row into `A`'s bottom-row.
+ @brief Performs a copy of `B`'s bottom-row into `A`'s bottom-row.
  */
-void copy_row_bottom(float *A, const int N, const int LD, const int rows_per_proc, const float * Anew) {
+void copy_row_bottom(float *A, const int N, const int LD, const int rows_per_proc, const float *B) {
     int last_row = (rows_per_proc - 1) * LD, j;
     for (j = 1; j < N - 1; ++j) {
-        A[last_row + j] = Anew[last_row + j];
+        A[last_row + j] = B[last_row + j];
     }
 }
 
