@@ -52,6 +52,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		61CEAF242D39A58B00449D14 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		61DF17172CF0E86100065A51 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,6 +87,7 @@
 		612A816F2CD93F320020E786 /* laplace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = laplace; sourceTree = BUILT_PRODUCTS_DIR; };
 		619D66E32CE8DA1400E95D23 /* hpc-gemm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-gemm"; sourceTree = BUILT_PRODUCTS_DIR; };
 		619DA3142D0083BA00CF5D21 /* hpc-matmatdist */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-matmatdist"; sourceTree = BUILT_PRODUCTS_DIR; };
+		61CEAF262D39A58B00449D14 /* cascadesum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cascadesum; sourceTree = BUILT_PRODUCTS_DIR; };
 		61DF17192CF0E86100065A51 /* hpc-matmatblock */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "hpc-matmatblock"; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E7DD0F2CC83F23005C25CB /* ringsum */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ringsum; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -130,9 +140,21 @@
 			);
 			target = 619DA3132D0083BA00CF5D21 /* hpc-matmatdist */;
 		};
+		61CEAF302D39A59100449D14 /* Exceptions for "parallel-distributed-computing" folder in "cascadesum" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				cascadesum/src/cascadesum/cascadesum.c,
+				cascadesum/src/main.c,
+				common/integer/integer.c,
+				common/vector/vector.c,
+			);
+			target = 61CEAF252D39A58B00449D14 /* cascadesum */;
+		};
 		61CF42B12CBFC79700559C11 /* Exceptions for "parallel-distributed-computing" folder in "maxsum" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				cascadesum/src/cascadesum/cascadesum.c,
+				cascadesum/src/main.c,
 				common/integer/integer.c,
 				common/mpi_proc/mpi_proc_vector/mpi_proc_vector.c,
 				common/mpi_proc/mpi_proc.c,
@@ -192,6 +214,7 @@
 				61DF17232CF0E86700065A51 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatblock" target */,
 				612493CE2CF897FF00E56AB1 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatthread" target */,
 				619DA31E2D0083BE00CF5D21 /* Exceptions for "parallel-distributed-computing" folder in "hpc-matmatdist" target */,
+				61CEAF302D39A59100449D14 /* Exceptions for "parallel-distributed-computing" folder in "cascadesum" target */,
 			);
 			path = "parallel-distributed-computing";
 			sourceTree = "<group>";
@@ -234,6 +257,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61CEAF232D39A58B00449D14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		61DF17162CF0E86100065A51 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +292,7 @@
 				61DF17192CF0E86100065A51 /* hpc-matmatblock */,
 				612493C42CF897E200E56AB1 /* hpc-matmatthread */,
 				619DA3142D0083BA00CF5D21 /* hpc-matmatdist */,
+				61CEAF262D39A58B00449D14 /* cascadesum */,
 			);
 			sourceTree = "<group>";
 		};
@@ -366,6 +397,25 @@
 			productReference = 619DA3142D0083BA00CF5D21 /* hpc-matmatdist */;
 			productType = "com.apple.product-type.tool";
 		};
+		61CEAF252D39A58B00449D14 /* cascadesum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61CEAF2A2D39A58C00449D14 /* Build configuration list for PBXNativeTarget "cascadesum" */;
+			buildPhases = (
+				61CEAF222D39A58B00449D14 /* Sources */,
+				61CEAF232D39A58B00449D14 /* Frameworks */,
+				61CEAF242D39A58B00449D14 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cascadesum;
+			packageProductDependencies = (
+			);
+			productName = cascadesum;
+			productReference = 61CEAF262D39A58B00449D14 /* cascadesum */;
+			productType = "com.apple.product-type.tool";
+		};
 		61DF17182CF0E86100065A51 /* hpc-matmatblock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 61DF171F2CF0E86100065A51 /* Build configuration list for PBXNativeTarget "hpc-matmatblock" */;
@@ -428,6 +478,9 @@
 					619DA3132D0083BA00CF5D21 = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					61CEAF252D39A58B00449D14 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 					61DF17182CF0E86100065A51 = {
 						CreatedOnToolsVersion = 16.0;
 					};
@@ -457,6 +510,7 @@
 				61DF17182CF0E86100065A51 /* hpc-matmatblock */,
 				612493C32CF897E200E56AB1 /* hpc-matmatthread */,
 				619DA3132D0083BA00CF5D21 /* hpc-matmatdist */,
+				61CEAF252D39A58B00449D14 /* cascadesum */,
 			);
 		};
 /* End PBXProject section */
@@ -491,6 +545,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		619DA3102D0083BA00CF5D21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61CEAF222D39A58B00449D14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -816,6 +877,36 @@
 			};
 			name = Release;
 		};
+		61CEAF2B2D39A58C00449D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
+				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
+				OTHER_LDFLAGS = "-lmpi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61CEAF2C2D39A58C00449D14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "parallel-distributed-computing/parallel-distributed-computing.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8LQ8VYP25V;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
+				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
+				OTHER_LDFLAGS = "-lmpi";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		61DF171D2CF0E86100065A51 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -920,6 +1011,15 @@
 			buildConfigurations = (
 				619DA3182D0083BA00CF5D21 /* Debug */,
 				619DA3192D0083BA00CF5D21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61CEAF2A2D39A58C00449D14 /* Build configuration list for PBXNativeTarget "cascadesum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61CEAF2B2D39A58C00449D14 /* Debug */,
+				61CEAF2C2D39A58C00449D14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

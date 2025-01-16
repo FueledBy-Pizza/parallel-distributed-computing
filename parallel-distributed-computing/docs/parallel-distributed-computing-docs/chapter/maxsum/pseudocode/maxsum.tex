@@ -15,22 +15,20 @@
 
     \BlankLine
 
-    startRow = calculateStartingRow()\\
-    endRow = calculateEndingRow()\\
     \BlankLine
-    \For{$currRow \gets startRow$ \KwTo $endRow$}{
+    \For{currRow $\gets$ startRow \KwTo endRow}{
         $currSum \gets squareRootSum(currRow)$
 
         \BlankLine
 
-        \If{$currSum > maxSum$}{
+        \If{currSum $>$ maxSum}{
             $maxSum \gets currSum$
         }
 
         \BlankLine
 
         \texttt{CRITICAL}\\
-            \If{$maxSumOverall < maxSum$}{
+            \If{maxSumOverall $<$ maxSum}{
                 $maxSumOverall \gets maxSum$
             }
     }
