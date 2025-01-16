@@ -13,5 +13,7 @@
 #define vector_h
 
 int vector_sum(int *A, int length);
+void populate_vector_sequentially(int *A, int length);
+void print_vector(int *A, int length);
 
 #endif /* vector_h */

@@ -10,6 +10,7 @@
  */
 
 #include "vector.h"
+#include <stdio.h>
 
 int vector_sum(int *A, int length){
     int sum = 0;
@@ -20,4 +21,18 @@ int vector_sum(int *A, int length){
     }
 
     return sum;
+}
+
+void populate_vector_sequentially(int *A, int length){
+    int i;
+    for (i = 0; i < length; ++i) {
+        A[i] = i;
+    }
+}
+
+void print_vector(int *A, int length){
+    int i;
+    for (i = 0; i < length; ++i) {
+        printf("A[i]: %d\n", A[i]);
+    }
 }
