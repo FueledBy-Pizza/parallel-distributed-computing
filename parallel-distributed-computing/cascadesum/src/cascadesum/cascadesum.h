@@ -8,6 +8,6 @@
 #ifndef cascadesum_h
 #define cascadesum_h
 
-#include <stdio.h>
+int cascadesum(int *A, int length);
 
 #endif /* cascadesum_h */

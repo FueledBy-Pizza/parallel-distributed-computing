@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <mpi.h>
+#include "cascadesum/cascadesum.h"
 #include "../../common/vector/vector.h"
 #include "../../common/integer/integer.h"
 
@@ -38,6 +39,11 @@ int main(int argc, const char * argv[]) {
 
     int proc_rank = -1;
     MPI_Comm_rank(MPI_COMM_WORLD, &proc_rank);
+
+    if (proc_rank == PROC_ROOT) {
+        printf("VECTOR_SIZE is %d, the vector will contain integers from 0 to %d.\n", vector_size, vector_size - 1);
+    }
+
     int n_proc = -1;
     MPI_Comm_size(MPI_COMM_WORLD, &n_proc);
 
@@ -45,7 +51,10 @@ int main(int argc, const char * argv[]) {
     int local_vector[n_items_per_proc];
     MPI_Scatter(global_vector, n_items_per_proc, MPI_INT, local_vector, n_items_per_proc, MPI_INT, PROC_ROOT, MPI_COMM_WORLD);
 
-    // cascade_sum...
+    int vector_sum = cascadesum(local_vector, n_items_per_proc);
+    if (proc_rank == PROC_ROOT) {
+        printf("\nHello from root process, vector sum is %d.\n", vector_sum);
+    }
 
     MPI_Finalize();
 
