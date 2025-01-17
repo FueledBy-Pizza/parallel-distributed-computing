@@ -11,6 +11,7 @@
 #include "cascadesum/cascadesum.h"
 #include "../../common/vector/vector.h"
 #include "../../common/integer/integer.h"
+#include "../../common/c_timer/c_timer.h"
 
 # define PROC_ROOT 0
 
@@ -35,6 +36,11 @@ int main(int argc, const char * argv[]) {
     global_vector = (int *) malloc(sizeof(int) * vector_size);
     populate_vector_sequentially(global_vector, vector_size);
 
+    double t1 = get_cur_time();
+    int vec_sum = vector_sum(global_vector, vector_size);
+    double t2 = get_cur_time();
+    double t_singleprocess = t2 - t1;
+
     MPI_Init(&argc, (char ***) &argv);
 
     int proc_rank = -1;
@@ -51,9 +57,17 @@ int main(int argc, const char * argv[]) {
     int local_vector[n_items_per_proc];
     MPI_Scatter(global_vector, n_items_per_proc, MPI_INT, local_vector, n_items_per_proc, MPI_INT, PROC_ROOT, MPI_COMM_WORLD);
 
-    int vector_sum = cascadesum(local_vector, n_items_per_proc);
+    t1 = get_cur_time();
+    vec_sum = cascadesum(local_vector, n_items_per_proc);
+    t2 = get_cur_time();
+    double t_multiprocess = t2 - t1;
+
+    double speedup = t_singleprocess / t_multiprocess;
+    double efficiency = speedup / n_proc;
+
     if (proc_rank == PROC_ROOT) {
-        printf("\nHello from root process, vector sum is %d.\n", vector_sum);
+        printf("Hello from root process, vector sum is %d.\n", vec_sum);
+        printf("\nSingle-process execution time is %e, multi-process execution time is %e.\nSpeedup: %f\nEfficiency: %f\n", t_singleprocess, t_multiprocess, speedup, efficiency);
     }
 
     MPI_Finalize();

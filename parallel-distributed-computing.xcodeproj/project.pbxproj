@@ -145,6 +145,7 @@
 			membershipExceptions = (
 				cascadesum/src/cascadesum/cascadesum.c,
 				cascadesum/src/main.c,
+				common/c_timer/c_timer.c,
 				common/integer/integer.c,
 				common/vector/vector.c,
 			);

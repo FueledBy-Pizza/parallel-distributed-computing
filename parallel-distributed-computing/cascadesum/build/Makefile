@@ -2,6 +2,7 @@ CC = mpicc
 SOURCES = ../src/cascadesum/cascadesum.c \
           ../../common/integer/integer.c \
           ../../common/vector/vector.c \
+          ../../common/c_timer/c_timer.c \
           ../src/main.c
 TARGET = cascadesum.out
 
