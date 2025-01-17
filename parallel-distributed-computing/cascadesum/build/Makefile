@@ -1,4 +1,5 @@
 CC = mpicc
+CFLAGS = -O3
 SOURCES = ../src/cascadesum/cascadesum.c \
           ../../common/integer/integer.c \
           ../../common/vector/vector.c \
@@ -11,7 +12,7 @@ all: $(TARGET)
 
 # Rule to build the target
 $(TARGET): $(SOURCES)
-	$(CC) $(SOURCES) -o $@
+	$(CC) $(CFLAGS) $(SOURCES) -o $@
 
 # Check for build errors
 .PHONY: all clean

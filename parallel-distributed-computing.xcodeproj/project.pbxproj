@@ -886,6 +886,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
 				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
 				OTHER_LDFLAGS = "-lmpi";
@@ -901,6 +902,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8LQ8VYP25V;
 				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/include";
 				LIBRARY_SEARCH_PATHS = "/opt/homebrew/opt/open-mpi/lib";
 				OTHER_LDFLAGS = "-lmpi";

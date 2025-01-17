@@ -15,6 +15,8 @@
 
 # define PROC_ROOT 0
 
+void print_cc(void);
+
 int main(int argc, const char * argv[]) {
 
     if (argc < 2) {
@@ -31,6 +33,8 @@ int main(int argc, const char * argv[]) {
         fprintf(stderr, "vector_size % mpi_proc must be zero!\n");
         return EXIT_FAILURE;
     }
+
+    print_cc();
 
     int *global_vector = NULL;
     global_vector = (int *) malloc(sizeof(int) * vector_size);
@@ -68,6 +72,7 @@ int main(int argc, const char * argv[]) {
     if (proc_rank == PROC_ROOT) {
         printf("Hello from root process, vector sum is %d.\n", vec_sum);
         printf("\nSingle-process execution time is %e, multi-process execution time is %e.\nSpeedup: %f\nEfficiency: %f\n", t_singleprocess, t_multiprocess, speedup, efficiency);
+        printf("\nTheoretical ideal speedup should have been %e.\n", t_singleprocess / n_proc);
     }
 
     MPI_Finalize();
@@ -75,4 +80,23 @@ int main(int argc, const char * argv[]) {
     free(global_vector);
 
     return 0;
+}
+
+void print_cc(void) {
+    #ifdef __clang__
+        printf("\tCompiler: Clang\n");
+        printf("\tVersion: %d.%d.%d\n", __clang_major__, __clang_minor__, __clang_patchlevel__);
+    #endif
+
+    #ifdef __GNUC__
+        // Ensure it's not Clang (Clang also defines __GNUC__)
+    #ifndef __clang__
+        printf("\tCompiler: GCC\n");
+        printf("\tVersion: %d.%d.%d\n", __GNUC__, __GNUC_MINOR__, __GNUC_PATCHLEVEL__);
+    #endif
+    #endif
+
+    #ifdef __OPTIMIZE__
+        printf("\tOptimization: Enabled\n");
+    #endif
 }
