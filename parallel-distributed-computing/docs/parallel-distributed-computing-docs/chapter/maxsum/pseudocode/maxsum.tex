@@ -15,6 +15,11 @@
 
     \BlankLine
 
+    $startRow \gets getStartingRowIndex(threadRank)$ \\
+    $endRow \gets getEndingRowIndex(threadRank)$
+
+    \BlankLine
+
     \BlankLine
     \For{currRow $\gets$ startRow \KwTo endRow}{
         $currSum \gets squareRootSum(currRow)$

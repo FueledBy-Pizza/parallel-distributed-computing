@@ -1,10 +1,10 @@
 \begin{chapter}{Maxsum}
     \begin{section}{Problem at a glance}
-        \par Given a matrix, the objective is to identify the row with the highest squared root sum.
+        \par Given a matrix, the objective is to identify the row with the maximum squared root sum.
     \end{section}
     \begin{section}{Algorithm}
         \begin{subsection}{Parallelization}
-            \par The algorithm employs a multithreaded approach, each thread can compute indipendently its local maximum squared root. Once a thread has completed its task, a synchronization is needed with the other threads in order to determine the overall maximum squared root.
+            \par The algorithm employs a multithreaded approach, each thread can compute indipendently its local maximum squared root sum. Once a thread has completed its task, a synchronization is needed with the other threads in order to determine the overall maximum squared root sum.
         \end{subsection}
         \begin{subsection}{Pseudocode}
             Input:
@@ -18,8 +18,9 @@
                 \item For each thread:
                 \begin{enumerate}
                     \item Compute the local maximum squared root sum.
+                    \item Perform a thread-safe update of the overall maximum squared root sum variable.
                 \end{enumerate}
-                \item Return the overall maximum squared root sum among all threads.
+                \item Return the overall maximum squared root sum.
             \end{enumerate}
             \input{\pseudocodepath maxsum}
         \end{subsection}
