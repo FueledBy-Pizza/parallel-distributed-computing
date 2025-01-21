@@ -7,12 +7,12 @@
             \par The algorithm employs a multithreaded approach, each thread can compute indipendently its local maximum squared root sum. Once a thread has completed its task, a synchronization is needed with the other threads in order to determine the overall maximum squared root sum.
         \end{subsection}
         \begin{subsection}{Pseudocode}
-            Input:
+            \textbf{Input}:
             \begin{itemize}
                 \item matrix
                 \item number of thread(s) for parallel execution
             \end{itemize}
-            Steps:
+            \textbf{Steps}:
             \begin{enumerate}
                 \item Assign rows to threads.
                 \item For each thread:
