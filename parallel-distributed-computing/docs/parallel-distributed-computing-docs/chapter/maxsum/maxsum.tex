@@ -9,18 +9,14 @@
         \begin{subsection}{Pseudocode}
             \textbf{Input}:
             \begin{itemize}
-                \item matrix
+                \item global matrix
                 \item number of thread(s) for parallel execution
             \end{itemize}
             \textbf{Steps}:
             \begin{enumerate}
-                \item Assign rows to threads.
-                \item For each thread:
-                \begin{enumerate}
-                    \item Compute the local maximum squared root sum.
-                    \item Perform a thread-safe update of the overall maximum squared root sum variable.
-                \end{enumerate}
-                \item Return the overall maximum squared root sum.
+                \item Compute the indices of the global matrix corresponding to the local matrix of the thread.
+                \item Compute the local maximum squared root sum.
+                \item Perform a thread-safe update of the overall maximum squared root sum variable.
             \end{enumerate}
             \input{\pseudocodepath maxsum}
         \end{subsection}
