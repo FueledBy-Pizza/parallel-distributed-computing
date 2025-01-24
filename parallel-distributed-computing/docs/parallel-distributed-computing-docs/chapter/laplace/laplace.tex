@@ -6,6 +6,8 @@
         \begin{subsection}{Parallelization}
             \par The algorithm employs a multiprocess approach. A synchronization between processes is needed from the outset.
             \par The global matrix is distributed among the processes, harnessing the advantages of parallelism, representing a spatial advantage other than a temporal one.
+            \par The algorithm comes in two versions: in the first one, communication between processes takes place in a classic way where sending a message ``blocks'' the execution and will resume it when a reception happens; in the second one, sending a message won't ``block'' the execution, instead, execution is blocked when the expected receive message needs to be accessed.\\
+            Clearly, the second version is expected to be slightly faster than the other one.
         \end{subsection}
         \begin{subsection}{Pseudocode}
             \textbf{Input}:
@@ -38,6 +40,47 @@
             \end{enumerate}
             An auxiliary matrix is involved to facilitate the computation.
             \input{\pseudocodepath laplace}
+            \input{\pseudocodepath laplace_nb}
+        \end{subsection}
+        \clearpage
+        \begin{subsection}{Performance Analysis}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{laplace-exectime.svg}
+                \caption{\emph{Laplace algorithm execution time}}
+                \label{fig:laplace-exectime}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{laplace-speedup.svg}
+                \caption{\emph{Laplace algorithm speedup}}
+                \label{fig:laplace-speedup}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{laplace-efficiency.svg}
+                \caption{\emph{Laplace algorithm efficiency}}
+                \label{fig:laplace-efficiency}
+            \end{figure}
+
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{laplace_nb-exectime.svg}
+                \caption{\emph{Laplace non-blocking algorithm execution time}}
+                \label{fig:laplace_nb-exectime}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{laplace_nb-speedup.svg}
+                \caption{\emph{Laplace non-blocking algorithm speedup}}
+                \label{fig:laplace_nb-speedup}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{laplace_nb-efficiency.svg}
+                \caption{\emph{Laplace non-blocking algorithm efficiency}}
+                \label{fig:laplace_nb-efficiency}
+            \end{figure}
         \end{subsection}
     \end{section}
 \end{chapter}

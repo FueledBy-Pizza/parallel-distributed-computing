@@ -14,13 +14,13 @@
     \BlankLine
     \For{$iter \gets 1$ \KwTo $iterations$}{
         \If{$P_{i} \neq P_{1}$}{
-            \texttt{SEND($P_{i-1}$, $localFirstRow$)} \\
-            \texttt{RECV($P_{i-1}$, $receivedLastRow$)}
+            \texttt{IMMEDIATE\_SEND($P_{i-1}$, $localFirstRow$, SEND\_NEXTTOPREV)} \\
+            \texttt{IMMEDIATE\_RECV($P_{i-1}$, $receivedLastRow$, RECV\_PREVTONEXT)}
         }
         \BlankLine
         \If{$P_{i} \neq P_{n}$}{
-            \texttt{RECV($P_{i+1}$, $receivedFirstRow$)} \\
-            \texttt{SEND($P_{i+1}$, $localLastRow$)}
+            \texttt{IMMEDIATE\_RECV($P_{i+1}$, $receivedFirstRow$, RECV\_NEXTTOPREV)} \\
+            \texttt{IMMEDIATE\_SEND($P_{i+1}$, $localLastRow$, SEND\_PREVTONEXT)}
         }
 
         \BlankLine
@@ -28,10 +28,12 @@
         laplacian(inner(matrix))
         \BlankLine
         \If{$P_{i} \neq P_{1}$}{
+            \texttt{WAIT RECV\_PREVTONEXT} \\
             laplacian(matrix, receivedLastRow)
         }
         \BlankLine
         \If{$P_{i} \neq P_{n}$}{
+            \texttt{WAIT RECV\_NEXTTOPREV} \\
             laplacian(matrix, receivedFirstRow)
         }
 
@@ -40,14 +42,16 @@
         copy(outputMatrix, inner(matrix))
         \BlankLine
         \If{$P_{i} \neq P_{1}$}{
-            copy(outputMatrix, lastRow(matrix))
+            \texttt{WAIT SEND\_NEXTTOPREV} \\
+            copy(outputMatrix, firstRow(matrix))
         }
         \BlankLine
         \If{$P_{i} \neq P_{n}$}{
-            copy(outputMatrix, firstRow(matrix))
+            \texttt{WAIT SEND\_PREVTONEXT} \\
+            copy(outputMatrix, lastRow(matrix))
         }
     }
 
-    \caption{Laplace}
-    \label{alg:laplace}
+    \caption{Laplace non blocking}
+    \label{alg:laplace_nb}
 \end{algorithm}
