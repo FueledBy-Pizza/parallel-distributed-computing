@@ -1,0 +1,22 @@
+\begin{chapter}{MatMatikj}
+    \begin{section}{Problem at a glance}
+        \par Given matrices $A$, $B$, $C$, the objective is to compute the \glsxtrshort{gemm} operation $C = C + A * B$ by iterating over the matrices while leveraging the ikj ordering of indices. This increase cache memory utilization.
+    \end{section}
+    \begin{section}{Algorithm}
+        \begin{subsection}{Parallelization}
+            No parallelization is planned for this algorithm.
+        \end{subsection}
+        \begin{subsection}{Pseudocode}
+            \textbf{Input}:
+            \begin{itemize}
+                \item $A$, $B$, $C$ matrices
+            \end{itemize}
+            \textbf{Steps}:
+            \begin{itemize}
+                \item iterate over the three input matrices in an `ikj' order
+                \item compute $C = C + A * B$ for each step
+            \end{itemize}
+            \input{\pseudocodepath matmatikj}
+        \end{subsection}
+    \end{section}
+\end{chapter}

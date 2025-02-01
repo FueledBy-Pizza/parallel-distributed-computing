@@ -1,0 +1,25 @@
+\begin{algorithm}
+    \footnotesize
+    \SetAlgoLined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    \Input{$A^{N1 \times N2}$, $B^{N2 \times N3}$, $C^{N1 \times N3}$}
+    \Output{$C^{N1 \times N3}$}
+
+    \BlankLine
+    \BlankLine
+    \BlankLine
+
+    \BlankLine
+    \For{$i \gets 1$ \KwTo $N1$}{
+        \For{$k \gets 1$ \KwTo $N2$}{
+            \For{$j \gets 1$ \KwTo $N3$}{
+                $\mathbf{C}(i,j) = \mathbf{C}(i,j) + \mathbf{A}(i,k) + \mathbf{B}(k,j)$
+            }
+        }
+    }
+
+    \caption{MatMatikj}
+    \label{alg:matmatikj}
+\end{algorithm}
