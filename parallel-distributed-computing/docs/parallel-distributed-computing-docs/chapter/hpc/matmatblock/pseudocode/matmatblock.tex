@@ -1,0 +1,26 @@
+\begin{algorithm}
+    \footnotesize
+    \SetAlgoLined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+    \SetKw{KwBy}{by}
+
+    \Input{$A^{N1 \times N2}$, $B^{N2 \times N3}$, $C^{N1 \times N3}$, $blockN1$, $blockN2$, $blockN3$}
+    \Output{$C^{N1 \times N3}$}
+
+    \BlankLine
+    \BlankLine
+    \BlankLine
+
+    \BlankLine
+    \For{$ii \gets 1$ \KwTo $N1$ \KwBy $blockN1$}{
+        \For{$jj \gets 1$ \KwTo $N3$ \KwBy $blockN3$}{
+            \For{$kk \gets 1$ \KwTo $N2$ \KwBy $blockN2$}{
+                $MatMatikj(\mathbf{A}(ii,kk), \mathbf{B}(kk,jj), \mathbf{C}(ii,jj))$
+            }
+        }
+    }
+
+    \caption{MatMatblock}
+    \label{alg:matmatblock}
+\end{algorithm}

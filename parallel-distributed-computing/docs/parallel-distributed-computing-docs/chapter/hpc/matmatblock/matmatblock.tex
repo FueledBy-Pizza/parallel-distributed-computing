@@ -1,13 +1,23 @@
-\usepackage{glossaries-extra}\begin{chapter}{MatMatBlock}
+\begin{chapter}{MatMatBlock}
     \begin{section}{Problem at a glance}
-        Given matrices \texttt{A}, \texttt{B}, \texttt{C}, the goal is to perform a MatMatBlock algorithm to compute \texttt{C = C + AB}.
+        \par Given matrices $A$, $B$, $C$, the goal is to compute the \glsxtrshort{gemm} operation $C = C + A * B$ in `blocks', by leveraging the best performance of MatMatikj algorithm.
     \end{section}
     \begin{section}{Algorithm}
         \begin{subsection}{Parallelization}
-            This algorithm leverages on a \glsxtrlong{gemm} algorithm that maximizes the number of cache memory accesses and minimizes the number of central memory accesses, thus aiming for \glsxtrlong{hpc}.
+            No parallelization is planned for this algorithm.
         \end{subsection}
         \begin{subsection}{Pseudocode}
-
+            \textbf{Input}:
+            \begin{itemize}
+                \item $A$, $B$, $C$ matrices
+                \item $blockN1$, $blockN2$, $blockN3$ block dimensions of $N1$, $N2$, $N3$
+            \end{itemize}
+            \textbf{Steps}:
+            \begin{itemize}
+                \item iterate over the three input matrices in steps of $blockN1$, $blockN2$, $blockN3$
+                \item execute MatMatikj algorithm for each step
+            \end{itemize}
+            \input{\pseudocodepath matmatblock}
         \end{subsection}
     \end{section}
 \end{chapter}
