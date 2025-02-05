@@ -14,9 +14,9 @@
 
     \BlankLine
     \For{$ii \gets 1$ \KwTo $N1$ \KwBy $blockN1$}{
-        \For{$jj \gets 1$ \KwTo $N3$ \KwBy $blockN3$}{
-            \For{$kk \gets 1$ \KwTo $N2$ \KwBy $blockN2$}{
-                $MatMatikj(\mathbf{A}(ii,kk), \mathbf{B}(kk,jj), \mathbf{C}(ii,jj))$
+        \For{$jj \gets 1$ \KwTo $N2$ \KwBy $blockN2$}{
+            \For{$kk \gets 1$ \KwTo $N3$ \KwBy $blockN3$}{
+                $MatMatikj(\mathbf{A}(ii,jj), \mathbf{B}(jj,kk), \mathbf{C}(ii,kk))$
             }
         }
     }
