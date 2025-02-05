@@ -1,0 +1,34 @@
+\begin{algorithm}
+    \footnotesize
+    \SetAlgoLined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    \Input{$A^{N1 \times N2}$, $B^{N2 \times N3}$, $C^{N1 \times N3}$, $blockN1$, $blockN2$, $blockN3$, $NTROW$, $NTCOL$}
+    \Output{$C^{N1 \times N3}$}
+
+    \BlankLine
+    \BlankLine
+    \BlankLine
+
+    $numThreads \gets NTROW \ast NTCOL$
+
+    \BlankLine
+
+    \texttt{STARTTHREADS(numThreads)}\\
+
+    \BlankLine
+
+    $startRow \gets getStartingRowIndex(threadRank)$ \\
+    $startCol \gets getStartingColIndex(threadRank)$
+
+    \BlankLine
+
+    \BlankLine
+    $MatMatBlock(\mathbf{A}^{(N1/NTROW) \times N2}(startRow,0),$\\
+    $\qquad \qquad \qquad \quad \mathbf{B}^{N2 \times (N3/NTCOL)}(0,startCol),$\\
+    $\qquad \qquad \qquad \quad \mathbf{C}^{(N1/NTROW) \times (N3/NTCOL)}(startRow,startCol),$\\
+    $\qquad \qquad \qquad \quad blockN1, blockN2, blockN3)$
+
+    \caption{MatMatThread}\label{alg:matmatthread}
+\end{algorithm}

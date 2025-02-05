@@ -1,12 +1,42 @@
 \begin{chapter}{MatMatThread}
     \begin{section}{Problem at a glance}
-        Given matrices \texttt{A}, \texttt{B}, \texttt{C}, the goal is to perform a multithreaded MatMatBlock algorithm to compute \texttt{C = C + AB}.
+        \par Given matrices $A$, $B$, $C$, the goal is to compute the \glsxtrshort{gemm} operation $C = C + AB$ in a multithreaded MatMatBlock algorithm.
     \end{section}
     \begin{section}{Algorithm}
         \begin{subsection}{Parallelization}
+            \par The algorithm employs a multithreaded approach, each thread can compute independently its local \glsxtrshort{gemm} operation. Each thread is responsible for executing a single \glsxtrshort{gemm} operation. No synchronization is needed among the threads.
         \end{subsection}
         \begin{subsection}{Pseudocode}
-
+            \textbf{Input}:
+            \begin{itemize}
+                \item $A^{N1 \times N2}$, $B^{N2 \times N3}$, $C^{N1 \times N3}$ matrices
+                \item $blockN1$, $blockN2$, $blockN3$ block dimensions of $N1$, $N2$, $N3$
+                \item $NTROW, NTCOL$ number of threads(s) on rows and columns of $C$ that will be assigned to compute part of the whole \glsxtrshort{gemm} operation on $C$
+            \end{itemize}
+            \textbf{Steps}:
+            \begin{itemize}
+                \item Compute the indices of the global matrix corresponding to the local matrix of the thread.
+                \item Execute MatMatBlock algorithm
+            \end{itemize}
+            \input{\pseudocodepath matmatthread}
+        \end{subsection}
+        \clearpage
+        \begin{subsection}{Performance Analysis}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{matmatthread-exectime.svg}
+                \label{fig:matmatthread-exectime}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{matmatthread-speedup.svg}
+                \label{fig:matmatthread-speedup}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{matmatthread-efficiency.svg}
+                \label{fig:matmatthread-efficiency}
+            \end{figure}
         \end{subsection}
     \end{section}
 \end{chapter}

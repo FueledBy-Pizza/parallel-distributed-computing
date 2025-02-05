@@ -9,13 +9,13 @@
         \begin{subsection}{Pseudocode}
             \textbf{Input}:
             \begin{itemize}
-                \item $A$, $B$, $C$ matrices
+                \item $A^{N1 \times N2}$, $B^{N2 \times N3}$, $C^{N1 \times N3}$ matrices
                 \item $blockN1$, $blockN2$, $blockN3$ block dimensions of $N1$, $N2$, $N3$
             \end{itemize}
             \textbf{Steps}:
             \begin{itemize}
-                \item iterate over the three input matrices in steps of $blockN1$, $blockN2$, $blockN3$
-                \item execute MatMatikj algorithm for each step
+                \item Iterate over the three input matrices in steps of $blockN1$, $blockN2$, $blockN3$
+                \item Execute MatMatikj algorithm for each step
             \end{itemize}
             \input{\pseudocodepath matmatblock}
         \end{subsection}

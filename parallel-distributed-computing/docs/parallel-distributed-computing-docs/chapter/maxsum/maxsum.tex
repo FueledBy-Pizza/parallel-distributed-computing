@@ -4,7 +4,7 @@
     \end{section}
     \begin{section}{Algorithm}
         \begin{subsection}{Parallelization}
-            \par The algorithm employs a multithreaded approach, each thread can compute indipendently its local maximum squared root sum. Once a thread has completed its task, a synchronization is needed with the other threads in order to determine the overall maximum squared root sum.
+            \par The algorithm employs a multithreaded approach, each thread can compute independently its local maximum squared root sum. Once a thread has completed its task, a synchronization is needed with the other threads in order to determine the overall maximum squared root sum.
         \end{subsection}
         \begin{subsection}{Pseudocode}
             \textbf{Input}:
@@ -25,7 +25,6 @@
             \begin{figure}[ht]
                 \centering
                 \includesvg[inkscapelatex=false, width=\textwidth]{maxsum-exectime.svg}
-                %\caption{\emph{The neuron structure}}
                 \label{fig:maxsum-exectime}
             \end{figure}
             \begin{figure}[ht]

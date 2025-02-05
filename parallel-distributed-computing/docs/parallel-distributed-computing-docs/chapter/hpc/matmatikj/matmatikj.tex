@@ -9,12 +9,12 @@
         \begin{subsection}{Pseudocode}
             \textbf{Input}:
             \begin{itemize}
-                \item $A$, $B$, $C$ matrices
+                \item $A^{N1 \times N2}$, $B^{N2 \times N3}$, $C^{N1 \times N3}$ matrices
             \end{itemize}
             \textbf{Steps}:
             \begin{itemize}
-                \item iterate over the three input matrices using the `ikj' order
-                \item compute $C = C + AB$ incrementally for each step
+                \item Iterate over the three input matrices using the `ikj' order
+                \item Compute $C = C + AB$ incrementally for each step
             \end{itemize}
             \input{\pseudocodepath matmatikj}
         \end{subsection}
