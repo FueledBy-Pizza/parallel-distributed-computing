@@ -27,7 +27,24 @@
         \end{subsection}
         \clearpage
         \begin{subsection}{Performance Analysis}
-
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{matmatdist-exectime.svg}
+                \caption{$2 \times 2$ \emph{process MatMatDist algorithm execution time}}
+                \label{fig:matmatdist-exectime}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{matmatdist-speedup.svg}
+                \caption{$2 \times 2$ \emph{process MatMatDist algorithm speedup}}
+                \label{fig:matmatdist-speedup}
+            \end{figure}
+            \begin{figure}[ht]
+                \centering
+                \includesvg[inkscapelatex=false, width=\textwidth]{matmatdist-efficiency.svg}
+                \caption{$2 \times 2$ \emph{process MatMatDist algorithm efficiency}}
+                \label{fig:matmatdist-efficiency}
+            \end{figure}
         \end{subsection}
     \end{section}
 \end{chapter}
