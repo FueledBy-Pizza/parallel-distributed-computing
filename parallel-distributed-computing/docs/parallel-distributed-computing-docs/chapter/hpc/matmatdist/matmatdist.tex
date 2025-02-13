@@ -1,0 +1,33 @@
+\begin{chapter}{MatMatDist}
+    \begin{section}{Problem at a glance}
+        \par Given matrices $A$, $B$, $C$, $blockN1$, $blockN2$, $blockN3$, a number of $NTROW \times NTCOL$ threads, a number of $NPROW \times NPCOL$ processes, the goal is to compute the \glsxtrshort{gemm} operation $C = C + AB$ using \glsxtrshort{summa} in a MatMatThread approach.
+    \end{section}
+    \begin{section}{Algorithm}
+        \begin{subsection}{Parallelization}
+            \par The algorithm employs a \glsxtrshort{summa}. It is a multiprocess approach where each process is responsible for executing a single \glsxtrshort{gemm} operation of a $C$ block.
+            \par Each process cannot independently compute the local \glsxtrshort{gemm} operation; instead, the missing blocks are received from a process performing a broadcast.
+        \end{subsection}
+        \begin{subsection}{Pseudocode}
+            \textbf{Input}:
+            \begin{itemize}
+                \item $A^{M1 \times M2}$, $B^{M2 \times M3}$, $C^{M1 \times M3}$ matrices\\
+                $M1 = N1 / NPROW, M2 = N2 / mcm(NPROW, NPCOL), M3 = N3 / NPCOL$
+                \item $blockN1$, $blockN2$, $blockN3$ block dimensions of $N1$, $N2$, $N3$ (used by MatMatBlock algorithm)
+                \item $NPROW, NPCOL$ number of processes on rows and columns of $C$ that will be assigned to compute part of the whole \glsxtrshort{gemm} operation on $C$
+            \end{itemize}
+            \textbf{Steps}:\\
+            \begin{itemize}
+                \item Construct a row communicator and a column communicator for each process
+                \item Calculate the process that will broadcast on row communicator and on column communicator
+                \item Perform a broadcast of $\mathbf{A}$ on row communicator
+                \item Perform a broadcast of $\mathbf{B}$ on column communicator
+                \item Execute MatMatThread algorithm
+            \end{itemize}
+            \input{\pseudocodepath matmatdist}
+        \end{subsection}
+        \clearpage
+        \begin{subsection}{Performance Analysis}
+
+        \end{subsection}
+    \end{section}
+\end{chapter}

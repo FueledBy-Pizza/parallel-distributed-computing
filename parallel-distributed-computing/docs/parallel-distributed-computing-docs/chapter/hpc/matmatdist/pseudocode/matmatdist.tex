@@ -1,0 +1,33 @@
+\begin{algorithm}
+    \footnotesize
+    \SetAlgoLined
+    \SetKwInOut{Input}{Input}
+    \SetKwInOut{Output}{Output}
+
+    \Input{$A^{M1 \times M2}$, $B^{M2 \times M3}$, $C^{M1 \times M3}$, $blockN1$, $blockN2$, $blockN3$, $NTROW$, $NTCOL$, $NPROW$, $NPCOL$}
+    \Output{$C^{N1 \times N3}$}
+
+    \BlankLine
+    \BlankLine
+    \BlankLine
+
+    $getRowColComm(\texttt{COMM\_WORLD}, \texttt{COMM\_ROW}, \texttt{COMM\_COL})$
+
+    \BlankLine
+
+    \For{$k \gets 1$ \KwTo $mcm(NPROW, NPCOL)$}{
+        $senderRow \gets k \bmod NPCOL$\\
+        $senderCol \gets k \bmod NPROW$
+
+        \BlankLine
+
+        \texttt{BCAST(COMM\_ROW, $A$, $-i$)}\\
+        \texttt{BCAST(COMM\_COL, $B$, $-j$)}
+
+        \BlankLine
+
+        $MatMatThread(\mathbf{A}^{\left(M1 \times M2\right)}, \mathbf{B}^{\left(M2 \times M3 \right)}, \mathbf{C}^{\left(M1 \times M3 \right)}, blockN1, blockN2, blockN3, NTROW, NTCOL)$
+    }
+
+    \caption{MatMatDist}\label{alg:matmatdist}
+\end{algorithm}

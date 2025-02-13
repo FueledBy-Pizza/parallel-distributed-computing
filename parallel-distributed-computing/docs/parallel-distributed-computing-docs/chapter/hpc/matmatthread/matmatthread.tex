@@ -1,18 +1,18 @@
 \begin{chapter}{MatMatThread}
     \begin{section}{Problem at a glance}
-        \par Given matrices $A$, $B$, $C$, $blockN1$, $blockN2$, $blockN3$, a number of $NTROW \times NTCOL$ threads, the goal is to compute the \glsxtrshort{gemm} operation $C = C + AB$ using \glsxtrshort{summa} in a multithreaded MatMatBlock approach.
+        \par Given matrices $A$, $B$, $C$, $blockN1$, $blockN2$, $blockN3$, a number of $NTROW \times NTCOL$ threads, the goal is to compute the \glsxtrshort{gemm} operation $C = C + AB$ in a multithreaded MatMatBlock approach.
     \end{section}
     \begin{section}{Algorithm}
         \begin{subsection}{Parallelization}
-            \par The algorithm employs a multithreaded approach where each thread is responsible for executing a single \glsxtrshort{gemm} operation of a submatrix $C$.
+            \par The algorithm employs a multithreaded approach where each thread is responsible for executing a single \glsxtrshort{gemm} operation of a $C$ block.
             \par Each thread can compute independently its local \glsxtrshort{gemm} operation, no synchronization is needed among the threads.
         \end{subsection}
         \begin{subsection}{Pseudocode}
             \textbf{Input}:
             \begin{itemize}
                 \item $A^{N1 \times N2}$, $B^{N2 \times N3}$, $C^{N1 \times N3}$ matrices
-                \item $blockN1$, $blockN2$, $blockN3$ block dimensions of $N1$, $N2$, $N3$
-                \item $NTROW, NTCOL$ number of threads(s) on rows and columns of $C$ that will be assigned to compute part of the whole \glsxtrshort{gemm} operation on $C$
+                \item $blockN1$, $blockN2$, $blockN3$ block dimensions of $N1$, $N2$, $N3$ (used by MatMatBlock algorithm)
+                \item $NTROW, NTCOL$ number of thread(s) on rows and columns of $C$ that will be assigned to compute part of the whole \glsxtrshort{gemm} operation on $C$
             \end{itemize}
             \textbf{Steps}:
             \begin{itemize}
