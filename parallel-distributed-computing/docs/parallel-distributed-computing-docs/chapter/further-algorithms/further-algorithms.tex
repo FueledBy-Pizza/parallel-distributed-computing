@@ -4,8 +4,15 @@
         \par The latter is more efficient with respect to time complexity, requiring only $\log_2(P)$ steps for message passing, as opposed to $P - 1$, where $P$ denotes the number of processes involved.
     \end{section}
     \begin{section}{MatMatThread}
-        \par The MatMatThread implemented algorithm is \glsxtrshort{summa}.
+        \par MatMatThread is implemented with $NTROW \times NTCOL$ threads. Each thread performs a single matrix-matrix product, i.e. computes a \textbf{single block} of $\mathbf{C}$. It gives the best $\frac{N_{mem}}{N{flop}}$ ratio, $N_{mem} = \mathcal{O}(N^2)$.
+        \par Another similar idea of approaching MatMatThread has been analyzed: $NTHREADS$ threads are given, each of which performs a single matrix-matrix product, i.e. computes a \textbf{single block of rows} of $\mathbf{C}$, $N_{mem} = \mathcal{O}(N^2)$.\\
+        \par Other two approaches have been analyzed, too. They exhibit $N_{mem} = \mathcal{O}(N^3)$ and are:
+        \begin{itemize}
+            \item $NTROW \times NTCOL$ threads are given. A thread performs more vector-vector products, i.e. computes \textbf{more sparse} elements $\mathbf{C}(i,j)$.
+            \item $NTHREADS$ threads are given. A thread performs more vector-matrix products, i.e. computes \textbf{more sparse} rows $\mathbf{C}(i,:)$.
+        \end{itemize}
+        This difference in the complexity of $N_{mem}$ that shows up is due to more main memory accesses to the same elements.
     \end{section}
-    %TODO: write MatMathThread from Pages
     %TODO: write MatMathDist from Pages
+    %\par Another analyzed way of approaching MatMatDist is the Cannon algorithm. Despite it reaches an efficiency $E = \frac{1}{1 + \frac{\sqrt{P}}{N} \cdot \frac{N_{mem}}{N_{flop}}}$, it can't be used for a number of threads which is not a perfect square.
 \end{chapter}
