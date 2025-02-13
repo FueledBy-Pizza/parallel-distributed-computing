@@ -1,10 +1,11 @@
 \begin{chapter}{MatMatThread}
     \begin{section}{Problem at a glance}
-        \par Given matrices $A$, $B$, $C$, the goal is to compute the \glsxtrshort{gemm} operation $C = C + AB$ in a multithreaded MatMatBlock algorithm.
+        \par Given matrices $A$, $B$, $C$, $blockN1$, $blockN2$, $blockN3$, a number of $NTROW \times NTCOL$ threads, the goal is to compute the \glsxtrshort{gemm} operation $C = C + AB$ in a multithreaded MatMatBlock algorithm.
     \end{section}
     \begin{section}{Algorithm}
         \begin{subsection}{Parallelization}
-            \par The algorithm employs a multithreaded approach, each thread can compute independently its local \glsxtrshort{gemm} operation. Each thread is responsible for executing a single \glsxtrshort{gemm} operation. No synchronization is needed among the threads.
+            \par The algorithm employs a multithreaded approach where each thread is responsible for executing a single \glsxtrshort{gemm} operation of a submatrix $C$.
+            \par Each thread can compute independently its local \glsxtrshort{gemm} operation, no synchronization is needed among the threads.
         \end{subsection}
         \begin{subsection}{Pseudocode}
             \textbf{Input}:
@@ -20,6 +21,11 @@
             \end{itemize}
             \input{\pseudocodepath matmatthread}
         \end{subsection}
+        \begin{figure}[ht]
+            \centering
+            \includesvg[inkscapelatex=false]{matmatthread.svg}
+            \label{fig:matmatthread}
+        \end{figure}
         \clearpage
         \begin{subsection}{Performance Analysis}
             \begin{figure}[ht]
